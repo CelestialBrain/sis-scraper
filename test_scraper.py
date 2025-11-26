@@ -13,13 +13,6 @@ from main_scraper import is_pdf_url
 from curriculum_parser import parse_curriculum_pdf
 
 
-# Mark network-dependent tests
-pytestmark_network = pytest.mark.skipif(
-    os.environ.get('SKIP_NETWORK_TESTS', 'false').lower() == 'true',
-    reason="Network tests are disabled"
-)
-
-
 class TestIsPdfUrl:
     """Unit tests for the is_pdf_url helper function."""
     

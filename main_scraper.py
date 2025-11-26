@@ -15,6 +15,7 @@ from curriculum_parser import parse_curriculum_pdf
 # Configuration
 BASE_URL = "https://www.addu.edu.ph/undergraduate-programs/"
 OUTPUT_CSV = "addu_curriculum_database.csv"
+TEMP_PDF_FILENAME = "temp_curriculum.pdf"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 }
@@ -32,6 +33,19 @@ def is_pdf_url(url):
     parsed = urlparse(url)
     path = parsed.path.lower()
     return path.endswith('.pdf')
+
+def extract_program_name_from_url(url):
+    """
+    Extract a human-readable program name from a PDF URL.
+    
+    Args:
+        url: The URL containing the program name
+        
+    Returns:
+        Program name with spaces instead of hyphens
+    """
+    filename = url.split('/')[-1]
+    return filename.replace('.pdf', '').replace('-', ' ')
 
 def main():
     """Main scraper function."""
@@ -77,22 +91,21 @@ def main():
                 print(f"   -> Detected direct PDF link, downloading and parsing...")
                 
                 # Extract program name from URL
-                program_name = link.split('/')[-1].replace('.pdf', '').replace('-', ' ')
+                program_name = extract_program_name_from_url(link)
                 
                 # Download PDF directly
-                temp_filename = "temp_curriculum.pdf"
                 pdf_resp = requests.get(link, headers=HEADERS)
                 pdf_resp.raise_for_status()
-                with open(temp_filename, 'wb') as f:
+                with open(TEMP_PDF_FILENAME, 'wb') as f:
                     f.write(pdf_resp.content)
                 
                 # Parse using the curriculum parser
-                rows = parse_curriculum_pdf(temp_filename, program_name)
+                rows = parse_curriculum_pdf(TEMP_PDF_FILENAME, program_name)
                 print(f"   -> parse_curriculum_pdf returned {len(rows)} rows for {program_name}")
                 all_data.extend(rows)
                 
                 # Delete Temp File
-                os.remove(temp_filename)
+                os.remove(TEMP_PDF_FILENAME)
                 
             else:
                 # Visit the specific program page (HTML)
@@ -110,25 +123,24 @@ def main():
                     if not pdf_url.startswith("http"):
                         pdf_url = "https://www.addu.edu.ph" + pdf_url
                     
-                    # Clean up name: "Bachelor-of-Arts-in-Anthropology.pdf" -> "Bachelor of Arts in Anthropology"
-                    program_name = pdf_url.split('/')[-1].replace('.pdf', '').replace('-', ' ')
+                    # Extract program name from URL
+                    program_name = extract_program_name_from_url(pdf_url)
                     
                     print(f"   -> Found PDF: {program_name}")
                     
                     # Download Temp File
-                    temp_filename = "temp_curriculum.pdf"
                     pdf_resp = requests.get(pdf_url, headers=HEADERS)
                     pdf_resp.raise_for_status()
-                    with open(temp_filename, 'wb') as f:
+                    with open(TEMP_PDF_FILENAME, 'wb') as f:
                         f.write(pdf_resp.content)
                     
                     # Parse using the new curriculum parser
-                    rows = parse_curriculum_pdf(temp_filename, program_name)
+                    rows = parse_curriculum_pdf(TEMP_PDF_FILENAME, program_name)
                     print(f"   -> parse_curriculum_pdf returned {len(rows)} rows for {program_name}")
                     all_data.extend(rows)
                     
                     # Delete Temp File
-                    os.remove(temp_filename)
+                    os.remove(TEMP_PDF_FILENAME)
                     
                 else:
                     print("   -> No PDF found on this page.")
