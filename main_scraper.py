@@ -71,15 +71,31 @@ def main():
         
         # Find all links on the page
         for link in soup.find_all("a", href=True):
-            href = link['href']
+            href = link.get("href")
+            if not href:
+                continue
             
-            # Make sure it's an absolute URL
+            # Normalize to absolute URL
             if not href.startswith("http"):
                 href = "https://www.addu.edu.ph" + href
             
-            # Filter for relevant academic pages
-            if ("bachelor" in href.lower() or "/academics/" in href) and "addu.edu.ph" in href:
+            href_lower = href.lower()
+            
+            # 1. Catch direct PDFs immediately
+            if href_lower.endswith(".pdf"):
                 if href not in program_links:
+                    print(f"   Found direct PDF: {href}")
+                    program_links.append(href)
+            
+            # 2. Allow "Graduate", "Programs", and "Bachelor" pages
+            elif (
+                "bachelor" in href_lower
+                or "graduate" in href_lower
+                or "programs" in href_lower
+                or "/academics/" in href_lower
+            ) and "addu.edu.ph" in href_lower:
+                if href not in program_links:
+                    print(f"   Found program page: {href}")
                     program_links.append(href)
         
         print(f"Found {len(program_links)} potential program pages.")
