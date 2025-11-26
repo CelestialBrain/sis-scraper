@@ -157,7 +157,7 @@ export class BaselineManager {
     }
 
     if (result.deptRegressions?.length > 0) {
-      console.warn(`\n  Department regressions:`);
+      console.warn('\n  Department regressions:');
       result.deptRegressions.forEach(dept => {
         console.warn(`    ${dept.department}: ${dept.previous} → ${dept.current} (${dept.percentChange}%)`);
       });

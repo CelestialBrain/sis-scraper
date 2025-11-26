@@ -1,5 +1,6 @@
 /**
- * Tests for utility functions
+ * Tests for utility functions from multiple modules
+ * Includes tests for supabase utilities and scraper helpers
  */
 
 import { describe, test, expect } from '@jest/globals';

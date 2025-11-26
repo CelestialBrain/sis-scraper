@@ -98,7 +98,9 @@ export class SupabaseManager {
   }
 
   /**
-   * Extract department from course code
+   * Extract department code from course code
+   * Extracts the alphabetic prefix from the course code and converts to uppercase.
+   * Examples: "CS 101" → "CS", "MATH 201" → "MATH", "SocWk 1130" → "SOCWK"
    * 
    * @param {string} code - Course code
    * @returns {string} Department code
@@ -106,7 +108,7 @@ export class SupabaseManager {
   _extractDepartment(code) {
     if (!code) return 'UNKNOWN';
     
-    // Extract prefix (letters before numbers)
+    // Extract prefix (letters at the start of the code)
     const match = code.match(/^([A-Za-z]+)/);
     return match ? match[1].toUpperCase() : 'UNKNOWN';
   }

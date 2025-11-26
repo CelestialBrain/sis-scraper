@@ -6,7 +6,6 @@
  */
 
 import { promises as fs } from 'fs';
-import path from 'path';
 import { SISScraper, compareTermCodes } from './scraper.js';
 import { SupabaseManager, ALL_DEPARTMENTS_LABEL } from './supabase.js';
 import { GoogleSheetsManager } from './sheets.js';
@@ -95,7 +94,7 @@ async function saveArtifacts(allTermsData, isSingleTerm) {
       JSON.stringify(deptData, null, 2),
       'utf-8'
     );
-    console.log(`[Artifacts] Saved data/schedules-per-department.json`);
+    console.log('[Artifacts] Saved data/schedules-per-department.json');
 
   } else {
     // Multi-term mode
@@ -125,7 +124,7 @@ async function saveArtifacts(allTermsData, isSingleTerm) {
       JSON.stringify(multiTermData, null, 2),
       'utf-8'
     );
-    console.log(`[Artifacts] Saved data/schedules-per-department.json (multi-term)`);
+    console.log('[Artifacts] Saved data/schedules-per-department.json (multi-term)');
   }
 
   endPhase('artifacts');
@@ -314,7 +313,7 @@ async function main() {
     console.log(`Total courses scraped: ${allTermsData.reduce((sum, t) => sum + t.cleanSchedule.length, 0)}`);
     console.log(`Supabase sync: ${supabaseManager.isEnabled() ? 'completed' : 'skipped'}`);
     console.log(`Google Sheets sync: ${sheetsManager.isEnabled() && spreadsheetId ? 'completed' : 'skipped'}`);
-    console.log(`Local artifacts: saved to data/`);
+    console.log('Local artifacts: saved to data/');
 
     if (regressionFailed) {
       console.error('\n❌ FAILED: Baseline regression detected');
