@@ -8,6 +8,7 @@ This scraper automatically collects curriculum data from the AdDU undergraduate 
 
 ### Features
 
+- **Direct PDF URL handling**: Automatically detects and processes program URLs that point directly to PDF files
 - **Multi-format PDF parsing**: Handles two distinct curriculum layouts:
   - **Stacked List Layout**: Used by Arts & Sciences programs (e.g., Anthropology, Development Studies)
   - **Split/Parallel Layout**: Used by Engineering and Science programs (e.g., Robotics, Biology)
@@ -15,6 +16,7 @@ This scraper automatically collects curriculum data from the AdDU undergraduate 
 - **Data normalization**: Converts various unit formats (e.g., "3.0" and "1-3-2") into standardized values
 - **Automated scraping**: GitHub Actions workflow runs weekly to keep data up-to-date
 - **No AI required**: Pure Python parsing using regex and table extraction
+- **Comprehensive test coverage**: Unit and integration tests with pytest
 
 ## Database Schema
 
@@ -51,6 +53,16 @@ python main_scraper.py
 
 The script will generate `addu_curriculum_database.csv` in the current directory.
 
+4. Run tests:
+```bash
+pytest test_scraper.py -v
+```
+
+To skip network-dependent tests:
+```bash
+pytest test_scraper.py -v -m "not network"
+```
+
 ## GitHub Actions Automation
 
 The scraper runs automatically via GitHub Actions:
@@ -67,6 +79,21 @@ The scraper runs automatically via GitHub Actions:
 3. Click **Run workflow**
 
 ## Technical Details
+
+### Direct PDF URL Detection
+
+The scraper now handles two types of program URLs:
+
+1. **HTML program pages**: Pages that contain links to curriculum PDFs
+2. **Direct PDF URLs**: URLs that point directly to PDF files (e.g., `https://www.addu.edu.ph/.../Bachelor-of-Science-in-Social-Work.pdf`)
+
+The `is_pdf_url()` helper function uses `urllib.parse.urlparse` to check if a URL's path ends with `.pdf` (case-insensitive). When a direct PDF is detected:
+- The scraper downloads it immediately
+- No HTML parsing is performed
+- The PDF is passed directly to the curriculum parser
+- Logging clearly indicates "Detected direct PDF link, downloading and parsing..."
+
+This prevents false "No PDF found on this page" errors for programs whose URLs are themselves PDFs.
 
 ### PDF Parsing Strategy
 
@@ -109,6 +136,7 @@ Uses regex pattern `[A-Za-z]{2,8}\s?-?\d{3,4}[A-Za-z]?` to match codes like:
 - `pdfplumber`: PDF table extraction
 - `pandas`: Data manipulation and CSV export
 - `openpyxl`: Excel support (optional)
+- `pytest`: Testing framework
 
 ## Project Structure
 
@@ -116,12 +144,30 @@ Uses regex pattern `[A-Za-z]{2,8}\s?-?\d{3,4}[A-Za-z]?` to match codes like:
 sis-scraper/
 ├── main_scraper.py          # Main scraper script
 ├── curriculum_parser.py     # PDF parsing logic module
+├── test_scraper.py          # Test suite
+├── pytest.ini              # Pytest configuration
 ├── requirements.txt         # Python dependencies
 ├── .github/
 │   └── workflows/
 │       └── scrape.yml      # GitHub Actions workflow
 ├── README.md               # This file
 └── addu_curriculum_database.csv  # Output (generated)
+```
+
+## Testing
+
+The project includes comprehensive test coverage:
+
+- **Unit tests**: Test the `is_pdf_url()` helper with various URL formats
+- **Integration tests**: Test PDF parsing with real curriculum documents (requires network access)
+
+Run tests:
+```bash
+# Run all tests except network-dependent ones
+pytest test_scraper.py -v -m "not network"
+
+# Run all tests including network-dependent ones
+pytest test_scraper.py -v
 ```
 
 ## Limitations

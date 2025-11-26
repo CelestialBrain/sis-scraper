@@ -23,6 +23,9 @@ wheels/
 .installed.cfg
 *.egg
 
+# Pytest
+.pytest_cache/
+
 # Temporary files
 temp_curriculum.pdf
 *.tmp
