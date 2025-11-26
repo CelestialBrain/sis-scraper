@@ -44,7 +44,14 @@ def extract_program_name_from_url(url):
     Returns:
         Program name with spaces instead of hyphens
     """
-    filename = url.split('/')[-1]
+    # Parse URL to get just the path (strip query params and fragments)
+    parsed = urlparse(url)
+    path = parsed.path
+    
+    # Get the filename from the path
+    filename = path.split('/')[-1]
+    
+    # Remove .pdf extension and replace hyphens with spaces
     return filename.replace('.pdf', '').replace('-', ' ')
 
 def main():
@@ -56,7 +63,7 @@ def main():
     program_links = []
     
     # Step 1: Get all program links from the main page
-    print("\n[1/3] Fetching program links...")
+    print("\n📡 [1/3] Fetching program links...")
     try:
         response = requests.get(BASE_URL, headers=HEADERS)
         response.raise_for_status()
@@ -81,14 +88,14 @@ def main():
         return
     
     # Step 2: Loop through each program and extract PDFs
-    print("\n[2/3] Processing program pages...")
+    print("\n📄 [2/3] Processing program pages...")
     for i, link in enumerate(program_links):
-        print(f"Processing [{i+1}/{len(program_links)}]: {link}")
+        print(f"   🔎 Processing [{i+1}/{len(program_links)}]: {link}")
         
         try:
             # Check if the link itself is a direct PDF
             if is_pdf_url(link):
-                print(f"   -> Detected direct PDF link, downloading and parsing...")
+                print(f"   📕 -> Detected direct PDF link, downloading and parsing...")
                 
                 # Extract program name from URL
                 program_name = extract_program_name_from_url(link)
@@ -101,7 +108,7 @@ def main():
                 
                 # Parse using the curriculum parser
                 rows = parse_curriculum_pdf(TEMP_PDF_FILENAME, program_name)
-                print(f"   -> parse_curriculum_pdf returned {len(rows)} rows for {program_name}")
+                print(f"   📈 -> parse_curriculum_pdf returned {len(rows)} rows for {program_name}")
                 all_data.extend(rows)
                 
                 # Delete Temp File
@@ -113,34 +120,37 @@ def main():
                 sub_response.raise_for_status()
                 sub_soup = BeautifulSoup(sub_response.content, "html.parser")
                 
-                # Find the PDF link
-                pdf_tag = sub_soup.find("a", href=lambda h: h and h.lower().endswith('.pdf'))
+                # Find ALL PDF links on this page (not just the first one)
+                pdf_tags = sub_soup.find_all("a", href=lambda h: h and h.lower().endswith('.pdf'))
                 
-                if pdf_tag:
-                    pdf_url = pdf_tag['href']
+                if pdf_tags:
+                    print(f"   -> Found {len(pdf_tags)} PDF(s) on this page")
                     
-                    # Make sure it's an absolute URL
-                    if not pdf_url.startswith("http"):
-                        pdf_url = "https://www.addu.edu.ph" + pdf_url
-                    
-                    # Extract program name from URL
-                    program_name = extract_program_name_from_url(pdf_url)
-                    
-                    print(f"   -> Found PDF: {program_name}")
-                    
-                    # Download Temp File
-                    pdf_resp = requests.get(pdf_url, headers=HEADERS)
-                    pdf_resp.raise_for_status()
-                    with open(TEMP_PDF_FILENAME, 'wb') as f:
-                        f.write(pdf_resp.content)
-                    
-                    # Parse using the new curriculum parser
-                    rows = parse_curriculum_pdf(TEMP_PDF_FILENAME, program_name)
-                    print(f"   -> parse_curriculum_pdf returned {len(rows)} rows for {program_name}")
-                    all_data.extend(rows)
-                    
-                    # Delete Temp File
-                    os.remove(TEMP_PDF_FILENAME)
+                    for pdf_idx, pdf_tag in enumerate(pdf_tags, 1):
+                        pdf_url = pdf_tag['href']
+                        
+                        # Make sure it's an absolute URL
+                        if not pdf_url.startswith("http"):
+                            pdf_url = "https://www.addu.edu.ph" + pdf_url
+                        
+                        # Extract program name from URL
+                        program_name = extract_program_name_from_url(pdf_url)
+                        
+                        print(f"   📄 -> Found PDF {pdf_idx}/{len(pdf_tags)}: {program_name}")
+                        
+                        # Download Temp File
+                        pdf_resp = requests.get(pdf_url, headers=HEADERS)
+                        pdf_resp.raise_for_status()
+                        with open(TEMP_PDF_FILENAME, 'wb') as f:
+                            f.write(pdf_resp.content)
+                        
+                        # Parse using the curriculum parser
+                        rows = parse_curriculum_pdf(TEMP_PDF_FILENAME, program_name)
+                        print(f"   📈 -> parse_curriculum_pdf returned {len(rows)} rows for {program_name}")
+                        all_data.extend(rows)
+                        
+                        # Delete Temp File
+                        os.remove(TEMP_PDF_FILENAME)
                     
                 else:
                     print("   -> No PDF found on this page.")
@@ -152,7 +162,7 @@ def main():
         time.sleep(1)
     
     # Step 3: Save Results
-    print("\n[3/3] Saving results...")
+    print("\n💾 [3/3] Saving results...")
     if all_data:
         df = pd.DataFrame(all_data)
         df.to_csv(OUTPUT_CSV, index=False)

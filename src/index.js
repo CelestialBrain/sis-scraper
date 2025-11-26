@@ -11,61 +11,10 @@ import { SupabaseManager, ALL_DEPARTMENTS_LABEL } from './supabase.js';
 import { GoogleSheetsManager } from './sheets.js';
 import { BaselineManager } from './baseline.js';
 
-// Track phase timings
-const phaseTimings = {};
-
-/**
- * Record start time for a phase
- */
-function startPhase(name) {
-  phaseTimings[name] = { start: Date.now() };
-  console.log(`\n${'='.repeat(60)}`);
-  console.log(`[${name.toUpperCase()}] Starting...`);
-  console.log('='.repeat(60));
-}
-
-/**
- * Record end time for a phase
- */
-function endPhase(name) {
-  if (phaseTimings[name]) {
-    phaseTimings[name].end = Date.now();
-    phaseTimings[name].duration = phaseTimings[name].end - phaseTimings[name].start;
-    const seconds = (phaseTimings[name].duration / 1000).toFixed(2);
-    console.log(`[${name.toUpperCase()}] Completed in ${seconds}s`);
-  }
-}
-
-/**
- * Print performance summary
- */
-function printPerformanceSummary() {
-  console.log(`\n${'='.repeat(60)}`);
-  console.log('PERFORMANCE SUMMARY');
-  console.log('='.repeat(60));
-
-  const phases = Object.entries(phaseTimings);
-  const totalTime = phases.reduce((sum, [_, timing]) => sum + (timing.duration || 0), 0);
-
-  phases.forEach(([name, timing]) => {
-    if (timing.duration) {
-      const seconds = (timing.duration / 1000).toFixed(2);
-      const percent = ((timing.duration / totalTime) * 100).toFixed(1);
-      console.log(`  ${name.padEnd(20)} ${seconds.padStart(8)}s  (${percent.padStart(5)}%)`);
-    }
-  });
-
-  console.log('  ' + '-'.repeat(40));
-  console.log(`  ${'Total'.padEnd(20)} ${(totalTime / 1000).toFixed(2).padStart(8)}s`);
-  console.log('='.repeat(60));
-}
-
 /**
  * Save local artifacts
  */
 async function saveArtifacts(allTermsData, isSingleTerm) {
-  startPhase('artifacts');
-
   // Ensure data directory exists
   await fs.mkdir('data', { recursive: true });
 
@@ -126,18 +75,15 @@ async function saveArtifacts(allTermsData, isSingleTerm) {
     );
     console.log('[Artifacts] Saved data/schedules-per-department.json (multi-term)');
   }
-
-  endPhase('artifacts');
 }
 
 /**
  * Main execution function
  */
 async function main() {
-  console.log('\n' + '='.repeat(60));
-  console.log('SIS CURRICULUM SCRAPER');
-  console.log('='.repeat(60));
-  console.log(`Started at: ${new Date().toISOString()}`);
+  console.log('\n═══════════════════════════════════════════════════════');
+  console.log('🎓 SIS Curriculum Scraper');
+  console.log('═══════════════════════════════════════════════════════\n');
 
   let exitCode = 0;
   let regressionFailed = false;
@@ -148,13 +94,14 @@ async function main() {
     const termOverride = process.env.SIS_TERM;
     const spreadsheetId = process.env.SPREADSHEET_ID;
 
-    console.log('\nConfiguration:');
+    console.log('Configuration:');
     console.log(`  Scrape Mode: ${scrapeMode}`);
     console.log(`  Term Override: ${termOverride || 'none'}`);
     console.log(`  Spreadsheet ID: ${spreadsheetId ? '✓ configured' : '✗ not configured'}`);
 
     // Initialize components
-    startPhase('init');
+    const initStart = Date.now();
+    console.log('\n🚀 Initializing scraper...');
     const scraper = new SISScraper();
     const supabaseManager = new SupabaseManager();
     const sheetsManager = new GoogleSheetsManager();
@@ -168,15 +115,19 @@ async function main() {
     console.log(`\n[Init] Supabase sync: ${supabaseManager.isEnabled() ? 'enabled' : 'disabled'}`);
     console.log(`[Init] Google Sheets: ${sheetsManager.isEnabled() ? 'enabled' : 'disabled'}`);
     console.log(`[Init] Baseline config: ${JSON.stringify(baselineManager.getConfigSummary())}`);
-    endPhase('init');
+    const initTime = Date.now() - initStart;
+    console.log(`   ⏱  Duration: ${(initTime / 1000).toFixed(1)}s`);
 
     // Login (placeholder for future auth requirements)
-    startPhase('login');
+    const loginStart = Date.now();
+    console.log('\n🔓 Logging in...');
     await scraper.login();
-    endPhase('login');
+    const loginTime = Date.now() - loginStart;
+    console.log(`   ⏱  Duration: ${(loginTime / 1000).toFixed(1)}s`);
 
     // Determine terms to scrape
-    startPhase('termDiscovery');
+    const termDiscoveryStart = Date.now();
+    console.log('\n🔍 Discovering terms...');
     let termsToScrape = [];
 
     if (termOverride) {
@@ -189,10 +140,12 @@ async function main() {
     }
 
     console.log(`[Terms] Will scrape ${termsToScrape.length} term(s): ${termsToScrape.join(', ')}`);
-    endPhase('termDiscovery');
+    const termDiscoveryTime = Date.now() - termDiscoveryStart;
+    console.log(`   ⏱  Duration: ${(termDiscoveryTime / 1000).toFixed(1)}s`);
 
     // Scrape terms
-    startPhase('scraping');
+    const scrapeStart = Date.now();
+    console.log('\n📥 Scraping curriculum data...');
     const allTermsData = [];
 
     for (const term of termsToScrape) {
@@ -219,7 +172,8 @@ async function main() {
 
     // Sort by term code
     allTermsData.sort((a, b) => compareTermCodes(a.term, b.term));
-    endPhase('scraping');
+    const scrapeTime = Date.now() - scrapeStart;
+    console.log(`   ⏱  Duration: ${(scrapeTime / 1000).toFixed(1)}s`);
 
     // Baseline comparison
     console.log('\n' + '='.repeat(60));
@@ -255,7 +209,8 @@ async function main() {
 
     // Supabase sync
     if (supabaseManager.isEnabled()) {
-      startPhase('supabase');
+      const supabaseStart = Date.now();
+      console.log('\n🚀 Starting Supabase sync...');
 
       for (const termData of allTermsData) {
         await supabaseManager.syncToSupabase(
@@ -266,14 +221,16 @@ async function main() {
         );
       }
 
-      endPhase('supabase');
+      const supabaseTime = Date.now() - supabaseStart;
+      console.log(`   ⏱  Duration: ${(supabaseTime / 1000).toFixed(1)}s`);
     } else {
       console.log('\n[Supabase] Skipped (not configured)');
     }
 
     // Google Sheets sync
     if (sheetsManager.isEnabled() && spreadsheetId) {
-      startPhase('sheets');
+      const sheetsStart = Date.now();
+      console.log('\n📊 Syncing to Google Sheets...');
 
       const isSingleTerm = allTermsData.length === 1;
 
@@ -295,13 +252,18 @@ async function main() {
         }
       }
 
-      endPhase('sheets');
+      const sheetsTime = Date.now() - sheetsStart;
+      console.log(`   ⏱  Duration: ${(sheetsTime / 1000).toFixed(1)}s`);
     } else {
       console.log('\n[Sheets] Skipped (not configured)');
     }
 
     // Save local artifacts
+    const artifactsStart = Date.now();
+    console.log('\n💾 Saving local artifacts...');
     await saveArtifacts(allTermsData, allTermsData.length === 1);
+    const artifactsTime = Date.now() - artifactsStart;
+    console.log(`   ⏱  Duration: ${(artifactsTime / 1000).toFixed(1)}s`);
 
     // Print summary
     printPerformanceSummary();
@@ -332,11 +294,15 @@ async function main() {
     exitCode = 1;
   }
 
-  console.log('\n' + '='.repeat(60));
-  console.log(`Finished at: ${new Date().toISOString()}`);
-  console.log('='.repeat(60) + '\n');
-
   process.exit(exitCode);
+}
+
+/**
+ * Print performance summary
+ */
+function printPerformanceSummary() {
+  // Placeholder - timing is now inline with each phase
+  console.log('\n✅ All phases complete');
 }
 
 // Error handlers
