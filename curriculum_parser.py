@@ -74,13 +74,26 @@ def extract_course_code(text):
     if not text:
         return None, ""
     
-    # Regex: 2-8 letters (mixed case), optional space/dash, 3-4 digits, optional trailing letter
+    # Normalize whitespace first - collapse multiple spaces to single space
+    normalized = " ".join(text.split())
+    
+    # Regex: 2-8 letters (mixed case), optional whitespace/dash, 3-4 digits, optional trailing letter
     # Examples: ROBO 1101, BIO 100A, SocWk 1130, Anthro 1201, CSc-1100
     pattern = r"([A-Za-z]{2,8}\s?-?\d{3,4}[A-Za-z]?)"
-    match = re.search(pattern, text)
+    match = re.search(pattern, normalized)
     if match:
         code = match.group(1)
-        remaining = text.replace(code, "", 1).strip()
+        
+        # Normalize the code format: ensure space between letters and numbers
+        # e.g., "ENGL1101" -> "ENGL 1101", but preserve "CSc-1100"
+        if '-' not in code and ' ' not in code:
+            # Find where digits start and insert space
+            for i, char in enumerate(code):
+                if char.isdigit():
+                    code = code[:i] + " " + code[i:]
+                    break
+        
+        remaining = normalized.replace(match.group(1), "", 1).strip()
         return code, remaining
     return None, text
 
@@ -257,8 +270,12 @@ def _parse_standard_layout(table, program_name, current_year, current_sem):
             first_cell = clean_text(row[0])
             second_cell = clean_text(row[1]) if len(row) > 1 else ""
             
+            # Skip empty rows
+            if not first_cell and not second_cell:
+                continue
+            
             # Filter out garbage rows - check first cell
-            if len(first_cell) < 3:
+            if len(first_cell) < 2:
                 continue
             if "semester" in first_cell_lower or "year" in first_cell_lower:
                 continue
@@ -288,9 +305,47 @@ def _parse_standard_layout(table, program_name, current_year, current_sem):
                     "units": units
                 })
             else:
-                # If first cell doesn't contain a course code, check if the pattern
-                # matches after stripping common prefixes or if it's in a different format
-                pass  # Skip non-matching rows
+                # If first cell doesn't contain a course code, try combining first two cells
+                # This handles cases where pdfplumber splits the code across cells
+                # e.g., "SocWk" in cell 0, "1130" in cell 1
+                # or "ENGL 1" in cell 0, "101" in cell 1 (split within the number)
+                
+                # Try direct combination first
+                combined = first_cell + second_cell  # No space - handles "ENGL 1" + "101" -> "ENGL 1101"
+                code, leftover = extract_course_code(combined)
+                
+                # If that didn't work, try with space
+                if not code:
+                    combined = first_cell + " " + second_cell
+                    code, leftover = extract_course_code(combined)
+                
+                if code:
+                    # Title is in the third cell or later, or use leftover
+                    title = ""
+                    title_start_idx = 2
+                    if len(row) > 2 and row[2]:
+                        title = clean_text(row[2])
+                        title_start_idx = 3
+                    elif leftover:
+                        title = leftover
+                    
+                    # Find the first usable units value by scanning remaining cells
+                    units = 0.0
+                    for i in range(title_start_idx, len(row)):
+                        if row[i]:
+                            parsed = parse_units(row[i])
+                            if parsed > 0:
+                                units = parsed
+                                break
+                    
+                    extracted_data.append({
+                        "program": program_name,
+                        "year": current_year,
+                        "semester": current_sem,
+                        "code": code,
+                        "title": title,
+                        "units": units
+                    })
                 
         except Exception as e:
             # Log error instead of silently suppressing
