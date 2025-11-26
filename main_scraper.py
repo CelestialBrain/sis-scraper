@@ -81,13 +81,13 @@ def main():
             
             href_lower = href.lower()
             
-            # 1. Catch direct PDFs immediately
+            # Catch direct PDFs immediately
             if href_lower.endswith(".pdf"):
                 if href not in program_links:
                     print(f"   Found direct PDF: {href}")
                     program_links.append(href)
             
-            # 2. Allow "Graduate", "Programs", and "Bachelor" pages
+            # Allow "Graduate", "Programs", and "Bachelor" pages
             elif (
                 "bachelor" in href_lower
                 or "graduate" in href_lower

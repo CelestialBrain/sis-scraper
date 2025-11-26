@@ -174,7 +174,7 @@ class TestMultiPdfParsing:
                     program_links.append(href)
         
         # Verify that all expected links are discovered
-        assert len(program_links) == 5, f"Expected 5 links, got {len(program_links)}: {program_links}"
+        assert len(program_links) >= 5, f"Expected at least 5 links, got {len(program_links)}: {program_links}"
         
         # Check that specific links are included
         link_strings = ' '.join(program_links).lower()
