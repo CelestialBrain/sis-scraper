@@ -70,10 +70,20 @@ The scraper runs automatically via GitHub Actions:
 
 ### PDF Parsing Strategy
 
+The PDF parsing logic is encapsulated in the `curriculum_parser.py` module, which provides:
+
+- `parse_curriculum_pdf(pdf_path, program_name)`: Main function that handles all PDF layouts
+- Detailed logging to stdout for debugging when new PDF layouts appear
+- Support for both split/parallel and standard stacked layouts
+
 The scraper uses a **funnel strategy** to handle multiple PDF formats:
 
 1. **Ingestion**: Uses `pdfplumber` to extract tables from PDFs
-2. **Layout Detection**: Auto-router examines headers and table width to identify format
+2. **Layout Detection**: Auto-router examines headers and table width to identify format:
+   - Headers containing `lec`/`lab` → Split layout (Engineering)
+   - Headers containing `first semester` and `second semester` → Split layout (Biology)
+   - Wide tables with >8 columns → Split layout
+   - Otherwise → Standard stacked layout
 3. **Extraction**: Applies format-specific logic:
    - **Stacked List**: Reads rows sequentially with state machine for year/semester context
    - **Split/Parallel**: Splits wide tables at midpoint to separate left (Sem 1) and right (Sem 2) columns
@@ -86,10 +96,11 @@ The scraper uses a **funnel strategy** to handle multiple PDF formats:
 
 ### Course Code Extraction
 
-Uses regex pattern `[A-Z]{2,6}\s?-?\d{3,4}[A-Z]?` to match codes like:
-- `ROBO 1101`
-- `ANTHRO1130`
-- `BIO 100A`
+Uses regex pattern `[A-Za-z]{2,8}\s?-?\d{3,4}[A-Za-z]?` to match codes like:
+- `ROBO 1101` (uppercase)
+- `SocWk 1130` (mixed case)
+- `ANTHRO1130` (no space)
+- `BIO 100A` (trailing letter)
 
 ## Dependencies
 
@@ -104,6 +115,7 @@ Uses regex pattern `[A-Z]{2,6}\s?-?\d{3,4}[A-Z]?` to match codes like:
 ```
 sis-scraper/
 ├── main_scraper.py          # Main scraper script
+├── curriculum_parser.py     # PDF parsing logic module
 ├── requirements.txt         # Python dependencies
 ├── .github/
 │   └── workflows/
