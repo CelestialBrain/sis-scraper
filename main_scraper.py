@@ -153,7 +153,7 @@ def main():
                         os.remove(TEMP_PDF_FILENAME)
                     
                 else:
-                    print("   -> No PDF found on this page.")
+                    print("   ⚠️  -> No PDF found on this page.")
                 
         except Exception as e:
             print(f"   -> Error: {e}")

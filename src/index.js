@@ -266,8 +266,6 @@ async function main() {
     console.log(`   ⏱  Duration: ${(artifactsTime / 1000).toFixed(1)}s`);
 
     // Print summary
-    printPerformanceSummary();
-
     console.log('\n' + '='.repeat(60));
     console.log('FINAL SUMMARY');
     console.log('='.repeat(60));
@@ -295,14 +293,6 @@ async function main() {
   }
 
   process.exit(exitCode);
-}
-
-/**
- * Print performance summary
- */
-function printPerformanceSummary() {
-  // Placeholder - timing is now inline with each phase
-  console.log('\n✅ All phases complete');
 }
 
 // Error handlers
