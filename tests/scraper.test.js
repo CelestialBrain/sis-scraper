@@ -2,10 +2,22 @@
  * Tests for SISScraper
  */
 
-import { describe, test, expect } from '@jest/globals';
+import { describe, test, expect, jest, beforeEach, afterEach } from '@jest/globals';
 import { SISScraper, compareTermCodes } from '../src/scraper.js';
 
 describe('SISScraper', () => {
+  let consoleLogSpy;
+  
+  beforeEach(() => {
+    // Spy on console.log to capture logging output
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+  });
+  
+  afterEach(() => {
+    // Restore console.log after each test
+    consoleLogSpy.mockRestore();
+  });
+  
   test('should initialize with default options', () => {
     const scraper = new SISScraper();
     expect(scraper).toBeDefined();
@@ -30,6 +42,27 @@ describe('SISScraper', () => {
     const result = await scraper.login();
     expect(result).toBe(true);
   });
+  
+  test('login should emit debug log when debugMode is true', async () => {
+    const scraper = new SISScraper({ debug: true });
+    await scraper.login();
+    
+    // Check that the debug log was emitted with emoji prefix
+    expect(consoleLogSpy).toHaveBeenCalledWith(
+      expect.stringContaining('🔓')
+    );
+    expect(consoleLogSpy).toHaveBeenCalledWith(
+      expect.stringContaining('[SISScraper]')
+    );
+  });
+  
+  test('login should not emit debug log when debugMode is false', async () => {
+    const scraper = new SISScraper({ debug: false });
+    await scraper.login();
+    
+    // Check that no debug logs were emitted
+    expect(consoleLogSpy).not.toHaveBeenCalled();
+  });
 
   test('getAvailableTerms should return default term', async () => {
     const scraper = new SISScraper();
@@ -51,6 +84,24 @@ describe('SISScraper', () => {
     // CSV line with empty values
     const line3 = 'value1,,value3';
     expect(scraper._parseCSVLine(line3)).toEqual(['value1', '', 'value3']);
+  });
+  
+  test('init should emit debug logs when debugMode is true', async () => {
+    const scraper = new SISScraper({ debug: true });
+    
+    try {
+      await scraper.init();
+    } catch (error) {
+      // May fail if Python files don't exist, but we're checking logs
+    }
+    
+    // Check that initialization log was emitted with emoji
+    expect(consoleLogSpy).toHaveBeenCalledWith(
+      expect.stringContaining('🧩')
+    );
+    expect(consoleLogSpy).toHaveBeenCalledWith(
+      expect.stringContaining('[SISScraper]')
+    );
   });
 });
 

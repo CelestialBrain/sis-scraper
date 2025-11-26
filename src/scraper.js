@@ -60,13 +60,17 @@ export class SISScraper {
    */
   async init() {
     if (this.debugMode) {
-      console.log('[SISScraper] Initializing scraper...');
+      console.log('🧩 [SISScraper] Initializing SIS Curriculum Scraper...');
     }
 
     // Verify Python scraper exists
     try {
       await fs.access(this.pythonScraperPath);
       await fs.access(this.parserPath);
+      
+      if (this.debugMode) {
+        console.log('   ✅ [SISScraper] Python scraper files verified');
+      }
     } catch (error) {
       throw new Error(`Python scraper files not found: ${error.message}`);
     }
@@ -82,7 +86,7 @@ export class SISScraper {
    */
   async login() {
     if (this.debugMode) {
-      console.log('[SISScraper] Login not required for PDF-based scraping');
+      console.log('🔓 [SISScraper] Login not required for PDF-based scraping');
     }
     return true;
   }
@@ -194,9 +198,10 @@ export class SISScraper {
    */
   async scrapeCurriculum(termOverride = null) {
     const term = termOverride || process.env.SIS_TERM || 'AY2024-Current';
+    const scrapeStart = Date.now();
     
     if (this.debugMode) {
-      console.log(`[SISScraper] Scraping curriculum for term: ${term}`);
+      console.log(`📚 [SISScraper] Scraping curriculum for term: ${term}`);
     }
 
     // Run Python scraper
@@ -232,6 +237,20 @@ export class SISScraper {
       course_count: courses.length,
       courses: courses
     }));
+    
+    if (this.debugMode) {
+      console.log(`   📊 [SISScraper] Loaded ${scheduleData.length} courses from ${deptResults.length} departments`);
+    }
+    
+    const scrapeDuration = Date.now() - scrapeStart;
+    
+    // Structured completion log matching aisis-scraper style
+    console.log('✅ SIS CURRICULUM SCRAPE COMPLETE', {
+      term: term,
+      departments: deptResults.length,
+      courses: scheduleData.length,
+      duration_ms: scrapeDuration
+    });
 
     return {
       term,

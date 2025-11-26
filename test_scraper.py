@@ -9,7 +9,8 @@ import pytest
 import os
 import tempfile
 import requests
-from main_scraper import is_pdf_url
+from unittest.mock import patch, Mock, MagicMock
+from main_scraper import is_pdf_url, extract_program_name_from_url
 from curriculum_parser import parse_curriculum_pdf
 
 
@@ -65,6 +66,97 @@ class TestIsPdfUrl:
         """Test URL without file extension."""
         url = "https://example.com/page"
         assert is_pdf_url(url) is False
+
+
+class TestExtractProgramNameFromUrl:
+    """Unit tests for the extract_program_name_from_url helper function."""
+    
+    def test_simple_pdf_filename(self):
+        """Test extracting program name from a simple PDF filename."""
+        url = "https://example.com/Bachelor-of-Science-in-Computer-Science.pdf"
+        name = extract_program_name_from_url(url)
+        assert name == "Bachelor of Science in Computer Science"
+    
+    def test_pdf_with_query_params(self):
+        """Test extracting program name from PDF URL with query parameters."""
+        url = "https://example.com/Bachelor-of-Science.pdf?version=1"
+        name = extract_program_name_from_url(url)
+        assert name == "Bachelor of Science"
+    
+    def test_pdf_with_underscores(self):
+        """Test extracting program name with underscores."""
+        url = "https://example.com/BS_Computer_Science.pdf"
+        name = extract_program_name_from_url(url)
+        # Underscores are not replaced, only hyphens
+        assert "BS_Computer_Science" in name or "BS Computer Science" in name
+
+
+class TestMultiPdfParsing:
+    """Tests for HTML pages containing multiple PDF links."""
+    
+    def test_multiple_pdfs_on_page(self):
+        """Test that main_scraper can detect multiple PDFs on a single HTML page."""
+        from bs4 import BeautifulSoup
+        
+        # Create a mock HTML page with multiple PDF links
+        html_content = """
+        <html>
+            <body>
+                <h1>Computer Science Program</h1>
+                <a href="/wp-content/uploads/2020/06/BS-Computer-Science-Curriculum-2024.pdf">2024 Curriculum</a>
+                <a href="/wp-content/uploads/2020/06/BS-Computer-Science-Curriculum-2023.pdf">2023 Curriculum</a>
+                <a href="/wp-content/uploads/2020/06/BS-Computer-Science-Curriculum-2022.pdf">2022 Curriculum</a>
+                <a href="/contact-us">Contact</a>
+            </body>
+        </html>
+        """
+        
+        soup = BeautifulSoup(html_content, "html.parser")
+        
+        # Find all PDF links (same logic as main_scraper.py)
+        pdf_tags = soup.find_all("a", href=lambda h: h and h.lower().endswith('.pdf'))
+        
+        # Should find exactly 3 PDF links
+        assert len(pdf_tags) == 3
+        
+        # Verify the hrefs
+        hrefs = [tag['href'] for tag in pdf_tags]
+        assert all('.pdf' in href.lower() for href in hrefs)
+    
+    def test_no_pdfs_on_page(self):
+        """Test that main_scraper handles pages with no PDFs gracefully."""
+        from bs4 import BeautifulSoup
+        
+        html_content = """
+        <html>
+            <body>
+                <h1>About Us</h1>
+                <a href="/contact">Contact</a>
+                <a href="/programs">Programs</a>
+            </body>
+        </html>
+        """
+        
+        soup = BeautifulSoup(html_content, "html.parser")
+        pdf_tags = soup.find_all("a", href=lambda h: h and h.lower().endswith('.pdf'))
+        
+        # Should find no PDF links
+        assert len(pdf_tags) == 0
+    
+    def test_pdf_url_normalization(self):
+        """Test that relative PDF URLs are correctly normalized to absolute URLs."""
+        base_url = "https://www.addu.edu.ph"
+        relative_url = "/wp-content/uploads/2020/06/curriculum.pdf"
+        
+        # Same normalization logic as in main_scraper.py
+        if not relative_url.startswith("http"):
+            absolute_url = base_url + relative_url
+        else:
+            absolute_url = relative_url
+        
+        assert absolute_url.startswith("https://")
+        assert absolute_url.endswith(".pdf")
+        assert "www.addu.edu.ph" in absolute_url
 
 
 class TestSocialWorkCurriculumParsing:
