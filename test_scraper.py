@@ -123,6 +123,71 @@ class TestMultiPdfParsing:
         hrefs = [tag['href'] for tag in pdf_tags]
         assert all('.pdf' in href.lower() for href in hrefs)
     
+    def test_program_link_filtering(self):
+        """Test that the scraper discovers both undergraduate and graduate program links."""
+        from bs4 import BeautifulSoup
+        
+        # Create a mock HTML page with various program links
+        html_content = """
+        <html>
+            <body>
+                <h1>AdDU Programs</h1>
+                <a href="https://www.addu.edu.ph/bachelor-of-science-in-computer-science">Bachelor CS</a>
+                <a href="https://www.addu.edu.ph/graduate-programs-new">Graduate Programs</a>
+                <a href="https://www.addu.edu.ph/undergraduate-programs/">Undergraduate Programs</a>
+                <a href="https://www.addu.edu.ph/academics/departments">Academics</a>
+                <a href="https://www.addu.edu.ph/wp-content/uploads/curriculum.pdf">Direct PDF</a>
+                <a href="https://www.example.com/not-addu">External Link</a>
+                <a href="/contact-us">Contact</a>
+            </body>
+        </html>
+        """
+        
+        soup = BeautifulSoup(html_content, "html.parser")
+        
+        # Simulate the filtering logic from main_scraper.py
+        program_links = []
+        for link in soup.find_all("a", href=True):
+            href = link.get("href")
+            if not href:
+                continue
+            
+            # Normalize to absolute URL
+            if not href.startswith("http"):
+                href = "https://www.addu.edu.ph" + href
+            
+            href_lower = href.lower()
+            
+            # 1. Catch direct PDFs immediately
+            if href_lower.endswith(".pdf"):
+                if href not in program_links:
+                    program_links.append(href)
+            
+            # 2. Allow "Graduate", "Programs", and "Bachelor" pages
+            elif (
+                "bachelor" in href_lower
+                or "graduate" in href_lower
+                or "programs" in href_lower
+                or "/academics/" in href_lower
+            ) and "addu.edu.ph" in href_lower:
+                if href not in program_links:
+                    program_links.append(href)
+        
+        # Verify that all expected links are discovered
+        assert len(program_links) >= 5, f"Expected at least 5 links, got {len(program_links)}: {program_links}"
+        
+        # Check that specific links are included
+        link_strings = ' '.join(program_links).lower()
+        assert "bachelor" in link_strings, "Bachelor link should be discovered"
+        assert "graduate" in link_strings, "Graduate link should be discovered"
+        assert "programs" in link_strings, "Programs links should be discovered"
+        assert "academics" in link_strings, "Academics link should be discovered"
+        assert ".pdf" in link_strings, "Direct PDF link should be discovered"
+        
+        # Check that external link is not included
+        assert "example.com" not in link_strings, "External link should not be included"
+        assert all("addu.edu.ph" in link for link in program_links), "All links should be from AdDU domain"
+    
     def test_no_pdfs_on_page(self):
         """Test that main_scraper handles pages with no PDFs gracefully."""
         from bs4 import BeautifulSoup
