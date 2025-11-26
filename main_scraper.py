@@ -77,7 +77,7 @@ def parse_pdf_content(pdf_path, program_name):
             tables = page.extract_tables(table_settings={
                 "vertical_strategy": "text",
                 "horizontal_strategy": "text"
-            })
+            }) or []
             
             for table in tables:
                 if not table:
@@ -212,6 +212,7 @@ def main():
     print("\n[1/3] Fetching program links...")
     try:
         response = requests.get(BASE_URL, headers=HEADERS)
+        response.raise_for_status()
         soup = BeautifulSoup(response.content, "html.parser")
         
         # Find all links on the page
@@ -240,6 +241,7 @@ def main():
         try:
             # Visit the specific program page
             sub_response = requests.get(link, headers=HEADERS)
+            sub_response.raise_for_status()
             sub_soup = BeautifulSoup(sub_response.content, "html.parser")
             
             # Find the PDF link
@@ -259,8 +261,10 @@ def main():
                 
                 # Download Temp File
                 temp_filename = "temp_curriculum.pdf"
+                pdf_resp = requests.get(pdf_url, headers=HEADERS)
+                pdf_resp.raise_for_status()
                 with open(temp_filename, 'wb') as f:
-                    f.write(requests.get(pdf_url, headers=HEADERS).content)
+                    f.write(pdf_resp.content)
                 
                 # Parse
                 rows = parse_pdf_content(temp_filename, program_name)
