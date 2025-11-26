@@ -9,8 +9,43 @@ permissions:
   contents: write
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install Python Dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Install Node.js Dependencies
+        run: |
+          npm ci
+      
+      - name: Run Python Tests
+        run: |
+          pytest test_scraper.py -v -m "not network"
+      
+      - name: Run JavaScript Tests
+        run: |
+          npm test
+  
   scrape:
     runs-on: ubuntu-latest
+    needs: test
     
     steps:
       - name: Checkout Code

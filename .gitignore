@@ -43,3 +43,18 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Node.js
+node_modules/
+package-lock.json
+*.tgz
+.npm
+.eslintcache
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Data artifacts
+data/
+!data/.gitkeep
