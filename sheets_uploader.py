@@ -93,7 +93,10 @@ def upload_to_sheets(df, spreadsheet_id=None, sheet_name="Curriculum"):
             ).execute()
         except Exception as clear_error:
             # Sheet might not exist yet, try to create it
-            logger.info(f"[Sheets] Clear failed, attempting to create sheet: {clear_error}")
+            # Note: googleapiclient.errors.HttpError would be more specific but
+            # we handle any error here since the recovery action is the same
+            error_type = type(clear_error).__name__
+            logger.info(f"[Sheets] Clear failed ({error_type}), attempting to create sheet")
             _ensure_sheet_exists(sheets_api, spreadsheet_id, sheet_name)
         
         # Write data

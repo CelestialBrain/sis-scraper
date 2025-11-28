@@ -40,8 +40,16 @@ HEADERS = {
 }
 
 # Environment configuration (AISIS-style)
-CURRICULUM_CONCURRENCY = int(os.environ.get("CURRICULUM_CONCURRENCY", "2"))
-CURRICULUM_DELAY_MS = int(os.environ.get("CURRICULUM_DELAY_MS", "100"))
+def _get_env_int(name, default):
+    """Get an integer from environment variable with safe fallback."""
+    try:
+        return int(os.environ.get(name, default))
+    except (ValueError, TypeError):
+        logger.warning(f"Invalid value for {name}, using default: {default}")
+        return int(default)
+
+CURRICULUM_CONCURRENCY = _get_env_int("CURRICULUM_CONCURRENCY", "2")
+CURRICULUM_DELAY_MS = _get_env_int("CURRICULUM_DELAY_MS", "100")
 CURRICULUM_LIMIT = os.environ.get("CURRICULUM_LIMIT")  # Optional: limit number of programs
 CURRICULUM_SAMPLE = os.environ.get("CURRICULUM_SAMPLE")  # Optional: filter to specific programs
 
@@ -104,8 +112,8 @@ def cleanup_thread_temp_file():
         try:
             if os.path.exists(_thread_local.temp_file):
                 os.remove(_thread_local.temp_file)
-        except OSError:
-            pass
+        except OSError as e:
+            logger.debug(f"[Cleanup] Could not remove temp file: {e}")
 
 
 def download_and_parse_pdf(pdf_url):
@@ -268,10 +276,13 @@ def apply_filters(pdf_urls):
     
     # Apply limit if set
     if CURRICULUM_LIMIT:
-        limit = int(CURRICULUM_LIMIT)
-        if len(filtered) > limit:
-            filtered = filtered[:limit]
-            logger.info(f"[Filter] CURRICULUM_LIMIT applied: limited to {limit} PDFs")
+        try:
+            limit = int(CURRICULUM_LIMIT)
+            if len(filtered) > limit:
+                filtered = filtered[:limit]
+                logger.info(f"[Filter] CURRICULUM_LIMIT applied: limited to {limit} PDFs")
+        except ValueError:
+            logger.warning(f"[Filter] Invalid CURRICULUM_LIMIT value: {CURRICULUM_LIMIT}")
     
     return filtered
 

@@ -31,7 +31,13 @@ def get_supabase_config():
     """
     supabase_url = os.environ.get("SUPABASE_URL", "")
     ingest_token = os.environ.get("DATA_INGEST_TOKEN", "")
-    batch_size = int(os.environ.get("SUPABASE_CLIENT_BATCH_SIZE", DEFAULT_BATCH_SIZE))
+    
+    # Safe integer parsing with fallback
+    try:
+        batch_size = int(os.environ.get("SUPABASE_CLIENT_BATCH_SIZE", DEFAULT_BATCH_SIZE))
+    except (ValueError, TypeError):
+        logger.warning(f"Invalid SUPABASE_CLIENT_BATCH_SIZE, using default: {DEFAULT_BATCH_SIZE}")
+        batch_size = DEFAULT_BATCH_SIZE
     
     # Construct full endpoint URL
     endpoint = supabase_url.rstrip("/") + DEFAULT_INGEST_ENDPOINT if supabase_url else ""
@@ -120,14 +126,16 @@ def send_to_supabase(df, config=None):
                 total_sent += len(batch)
                 logger.info(f"[Supabase] Batch {batch_idx} sent successfully")
             else:
-                error_msg = f"HTTP {response.status_code}: {response.text[:200]}"
+                # Sanitize error message - don't expose full response body
+                error_msg = f"HTTP {response.status_code}"
                 logger.error(f"[Supabase] Batch {batch_idx} failed: {error_msg}")
                 errors.append({"batch": batch_idx, "error": error_msg})
                 
         except requests.RequestException as e:
-            error_msg = str(e)
-            logger.error(f"[Supabase] Batch {batch_idx} request failed: {error_msg}")
-            errors.append({"batch": batch_idx, "error": error_msg})
+            # Sanitize error - only log exception type, not full details
+            error_type = type(e).__name__
+            logger.error(f"[Supabase] Batch {batch_idx} request failed: {error_type}")
+            errors.append({"batch": batch_idx, "error": error_type})
     
     success = len(errors) == 0
     result = {
