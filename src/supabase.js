@@ -7,6 +7,9 @@
 
 export const ALL_DEPARTMENTS_LABEL = 'All Departments';
 
+// Hard-coded university code - NOT from environment (AISIS-aligned)
+const UNIVERSITY_CODE = 'ADDU';
+
 /**
  * Chunk an array into smaller arrays of specified size
  * 
@@ -62,10 +65,11 @@ export class SupabaseManager {
   constructor(options = {}) {
     this.ingestToken = options.ingestToken || process.env.DATA_INGEST_TOKEN;
     this.ingestEndpoint = options.ingestEndpoint || process.env.SUPABASE_INGEST_ENDPOINT;
-    this.batchSize = parseInt(options.batchSize || process.env.SUPABASE_CLIENT_BATCH_SIZE || '100');
+    this.batchSize = parseInt(options.batchSize || process.env.SUPABASE_CLIENT_BATCH_SIZE || '2000');
     this.concurrency = parseInt(options.concurrency || process.env.SCHEDULE_SEND_CONCURRENCY || '5');
     this.debugMode = options.debug || process.env.DEBUG_SCRAPER === 'true';
-    this.universityCode = options.universityCode || process.env.UNIVERSITY_CODE || 'ADDU';
+    // Use hard-coded constant, not from options or env
+    this.universityCode = UNIVERSITY_CODE;
     console.log(`[Supabase] Initialized with university_code: ${this.universityCode}`);
   }
 
