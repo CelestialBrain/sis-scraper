@@ -95,7 +95,7 @@ describe('SupabaseManager', () => {
   });
 
   describe('university_code support', () => {
-    test('should default university_code to ADDU when not provided', () => {
+    test('should always use hard-coded ADDU university_code', () => {
       const defaultManager = new SupabaseManager({
         ingestToken: 'test-token',
         ingestEndpoint: 'https://example.com/ingest'
@@ -103,13 +103,14 @@ describe('SupabaseManager', () => {
       expect(defaultManager.universityCode).toBe('ADDU');
     });
 
-    test('should use custom university_code from options', () => {
+    test('should ignore custom university_code from options (hard-coded to ADDU)', () => {
+      // Per AISIS alignment, university_code is hard-coded to ADDU
       const customManager = new SupabaseManager({
         ingestToken: 'test-token',
         ingestEndpoint: 'https://example.com/ingest',
-        universityCode: 'ADMU'
+        universityCode: 'ADMU'  // This should be ignored
       });
-      expect(customManager.universityCode).toBe('ADMU');
+      expect(customManager.universityCode).toBe('ADDU');
     });
 
     test('should include university_code in transformed schedule data', () => {
@@ -128,11 +129,12 @@ describe('SupabaseManager', () => {
       expect(result[0].university_code).toBe('ADDU');
     });
 
-    test('should include custom university_code in transformed schedule data', () => {
+    test('should always include ADDU university_code regardless of options', () => {
+      // Per AISIS alignment, university_code is hard-coded to ADDU
       const customManager = new SupabaseManager({
         ingestToken: 'test-token',
         ingestEndpoint: 'https://example.com/ingest',
-        universityCode: 'ADMU'
+        universityCode: 'ADMU'  // This should be ignored
       });
 
       const input = [{
@@ -147,7 +149,7 @@ describe('SupabaseManager', () => {
 
       const result = customManager.transformScheduleData(input);
 
-      expect(result[0].university_code).toBe('ADMU');
+      expect(result[0].university_code).toBe('ADDU');
     });
   });
 });

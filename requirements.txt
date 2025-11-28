@@ -4,3 +4,5 @@ pdfplumber==0.11.0
 pandas==2.2.0
 openpyxl==3.1.2
 pytest==8.0.0
+google-api-python-client==2.111.0
+google-auth==2.26.1
