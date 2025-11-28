@@ -65,6 +65,8 @@ export class SupabaseManager {
     this.batchSize = parseInt(options.batchSize || process.env.SUPABASE_CLIENT_BATCH_SIZE || '100');
     this.concurrency = parseInt(options.concurrency || process.env.SCHEDULE_SEND_CONCURRENCY || '5');
     this.debugMode = options.debug || process.env.DEBUG_SCRAPER === 'true';
+    this.universityCode = options.universityCode || process.env.UNIVERSITY_CODE || 'ADDU';
+    console.log(`[Supabase] Initialized with university_code: ${this.universityCode}`);
   }
 
   /**
@@ -93,7 +95,8 @@ export class SupabaseManager {
       units: record.units || 0,
       // Additional fields for compatibility
       department: this._extractDepartment(record.code),
-      level: record.year || 1
+      level: record.year || 1,
+      university_code: this.universityCode
     }));
   }
 
@@ -177,7 +180,8 @@ export class SupabaseManager {
       records: batch,
       metadata: {
         timestamp: new Date().toISOString(),
-        source: 'sis-scraper-js'
+        source: 'sis-scraper-js',
+        university_code: this.universityCode
       }
     };
 

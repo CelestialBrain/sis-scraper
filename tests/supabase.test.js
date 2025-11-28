@@ -93,4 +93,61 @@ describe('SupabaseManager', () => {
   test('should return correct ALL_DEPARTMENTS_LABEL constant', () => {
     expect(ALL_DEPARTMENTS_LABEL).toBe('All Departments');
   });
+
+  describe('university_code support', () => {
+    test('should default university_code to ADDU when not provided', () => {
+      const defaultManager = new SupabaseManager({
+        ingestToken: 'test-token',
+        ingestEndpoint: 'https://example.com/ingest'
+      });
+      expect(defaultManager.universityCode).toBe('ADDU');
+    });
+
+    test('should use custom university_code from options', () => {
+      const customManager = new SupabaseManager({
+        ingestToken: 'test-token',
+        ingestEndpoint: 'https://example.com/ingest',
+        universityCode: 'ADMU'
+      });
+      expect(customManager.universityCode).toBe('ADMU');
+    });
+
+    test('should include university_code in transformed schedule data', () => {
+      const input = [{
+        term_code: '2024-1',
+        program: 'BS Computer Science',
+        year: 1,
+        semester: '1st Semester',
+        code: 'CS 101',
+        title: 'Introduction to Programming',
+        units: 3
+      }];
+
+      const result = manager.transformScheduleData(input);
+
+      expect(result[0].university_code).toBe('ADDU');
+    });
+
+    test('should include custom university_code in transformed schedule data', () => {
+      const customManager = new SupabaseManager({
+        ingestToken: 'test-token',
+        ingestEndpoint: 'https://example.com/ingest',
+        universityCode: 'ADMU'
+      });
+
+      const input = [{
+        term_code: '2024-1',
+        program: 'BS Information Technology',
+        year: 2,
+        semester: '1st Semester',
+        code: 'IT 201',
+        title: 'Web Development',
+        units: 3
+      }];
+
+      const result = customManager.transformScheduleData(input);
+
+      expect(result[0].university_code).toBe('ADMU');
+    });
+  });
 });
