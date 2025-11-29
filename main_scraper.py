@@ -33,7 +33,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Configuration
-BASE_URL = "https://www.addu.edu.ph/undergraduate-programs/"
 OUTPUT_CSV = "addu_curriculum_database.csv"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
@@ -406,7 +405,7 @@ def main():
     print(f"  CURRICULUM_LIMIT: {CURRICULUM_LIMIT or 'None'}")
     print(f"  CURRICULUM_SAMPLE: {CURRICULUM_SAMPLE or 'None'}")
     print(f"  UNIVERSITY_CODE: {UNIVERSITY_CODE}")
-    print(f"  Target URL: {BASE_URL}")
+    print(f"  Target URLs: {len(BASE_URLS)} base pages")
     
     all_data = []
     
