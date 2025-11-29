@@ -8,6 +8,9 @@ It includes robust parsing for multiple PDF layouts and detailed logging for deb
 import pdfplumber
 import re
 
+# Words that match the course code pattern but are not valid course codes
+IGNORE_CODES = {"FORMATION", "SEMESTER", "YEAR", "PAGE", "TOTAL", "UNITS"}
+
 
 def clean_text(text):
     """
@@ -77,12 +80,27 @@ def extract_course_code(text):
     # Normalize whitespace first - collapse multiple spaces to single space
     normalized = " ".join(text.split())
     
+    # Check if text starts with any ignored word (case-insensitive)
+    # This catches cases like "FORMATION 123" where the regex would incorrectly
+    # match "ORMATION 123" (skipping the first letter) instead of recognizing
+    # that the text starts with an ignored word
+    first_word = normalized.split()[0].upper() if normalized else ""
+    if first_word in IGNORE_CODES:
+        return None, text
+    
     # Regex: 2-8 letters (mixed case), optional whitespace/dash, 3-4 digits, optional trailing letter
     # Examples: ROBO 1101, BIO 100A, SocWk 1130, Anthro 1201, CSc-1100
     pattern = r"([A-Za-z]{2,8}\s?-?\d{3,4}[A-Za-z]?)"
     match = re.search(pattern, normalized)
     if match:
         code = match.group(1)
+        
+        # Extract the prefix (letters only) and check against ignored codes
+        prefix_match = re.match(r"([A-Za-z]+)", code)
+        if prefix_match:
+            prefix = prefix_match.group(1).upper()
+            if prefix in IGNORE_CODES:
+                return None, text
         
         # Normalize the code format: ensure space between letters and numbers
         # e.g., "ENGL1101" -> "ENGL 1101", but preserve "CSc-1100"
