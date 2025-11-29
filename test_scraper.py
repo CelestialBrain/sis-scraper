@@ -11,7 +11,114 @@ import tempfile
 import requests
 from unittest.mock import patch, Mock, MagicMock
 from main_scraper import is_pdf_url, extract_program_name_from_url
-from curriculum_parser import parse_curriculum_pdf
+from curriculum_parser import parse_curriculum_pdf, extract_course_code, IGNORE_CODES
+
+
+class TestExtractCourseCode:
+    """Unit tests for the extract_course_code function."""
+    
+    def test_valid_course_code_with_space(self):
+        """Test extracting a valid course code with space separator."""
+        code, remaining = extract_course_code("ENGL 1101")
+        assert code == "ENGL 1101"
+        assert remaining == ""
+    
+    def test_valid_course_code_without_space(self):
+        """Test extracting a valid course code without space separator."""
+        code, remaining = extract_course_code("MATH1001")
+        assert code == "MATH 1001"  # Should normalize with space
+        assert remaining == ""
+    
+    def test_valid_course_code_with_trailing_letter(self):
+        """Test extracting a valid course code with trailing letter."""
+        code, remaining = extract_course_code("BIO 100A")
+        assert code == "BIO 100A"
+        assert remaining == ""
+    
+    def test_valid_course_code_with_dash(self):
+        """Test extracting a valid course code with dash separator."""
+        code, remaining = extract_course_code("CSc-1100")
+        assert code == "CSc-1100"
+        assert remaining == ""
+    
+    def test_valid_mixed_case_code(self):
+        """Test extracting a valid course code with mixed case prefix."""
+        code, remaining = extract_course_code("SocWk 1130")
+        assert code == "SocWk 1130"
+        assert remaining == ""
+    
+    def test_code_with_remaining_text(self):
+        """Test extracting course code with remaining description text."""
+        code, remaining = extract_course_code("ENGL 1101 Introduction to English")
+        assert code == "ENGL 1101"
+        assert remaining == "Introduction to English"
+    
+    def test_ignored_code_formation(self):
+        """Test that FORMATION is correctly ignored."""
+        code, remaining = extract_course_code("FORMATION 123")
+        assert code is None
+        assert remaining == "FORMATION 123"
+    
+    def test_ignored_code_semester(self):
+        """Test that SEMESTER is correctly ignored."""
+        code, remaining = extract_course_code("SEMESTER 2024")
+        assert code is None
+        assert remaining == "SEMESTER 2024"
+    
+    def test_ignored_code_year(self):
+        """Test that YEAR is correctly ignored."""
+        code, remaining = extract_course_code("YEAR 2024")
+        assert code is None
+        assert remaining == "YEAR 2024"
+    
+    def test_ignored_code_page(self):
+        """Test that PAGE is correctly ignored."""
+        code, remaining = extract_course_code("PAGE 1234")
+        assert code is None
+        assert remaining == "PAGE 1234"
+    
+    def test_ignored_code_total(self):
+        """Test that TOTAL is correctly ignored."""
+        code, remaining = extract_course_code("TOTAL 100A")
+        assert code is None
+        assert remaining == "TOTAL 100A"
+    
+    def test_ignored_code_units(self):
+        """Test that UNITS is correctly ignored."""
+        code, remaining = extract_course_code("UNITS 300")
+        assert code is None
+        assert remaining == "UNITS 300"
+    
+    def test_ignored_code_case_insensitive(self):
+        """Test that ignored codes work case-insensitively."""
+        code, remaining = extract_course_code("Formation 123 test")
+        assert code is None
+        assert remaining == "Formation 123 test"
+        
+        code, remaining = extract_course_code("Units 123")
+        assert code is None
+        assert remaining == "Units 123"
+    
+    def test_empty_input(self):
+        """Test handling of empty input."""
+        code, remaining = extract_course_code("")
+        assert code is None
+        assert remaining == ""
+        
+        code, remaining = extract_course_code(None)
+        assert code is None
+        assert remaining == ""
+    
+    def test_no_match(self):
+        """Test input with no valid course code."""
+        code, remaining = extract_course_code("Introduction to Programming")
+        assert code is None
+        assert remaining == "Introduction to Programming"
+    
+    def test_ignore_codes_set_exists(self):
+        """Test that IGNORE_CODES set is correctly defined."""
+        expected_codes = {"FORMATION", "SEMESTER", "YEAR", "PAGE", "TOTAL", "UNITS"}
+        assert IGNORE_CODES == expected_codes
 
 
 class TestIsPdfUrl:
