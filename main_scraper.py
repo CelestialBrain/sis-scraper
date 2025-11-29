@@ -16,7 +16,7 @@ import os
 import time
 import tempfile
 import logging
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 
@@ -157,99 +157,207 @@ def download_and_parse_pdf(pdf_url):
         cleanup_thread_temp_file()
 
 
+# Advanced discovery configuration
+BASE_URLS = [
+    "https://www.addu.edu.ph/undergraduate-programs/",
+    "https://www.addu.edu.ph/graduate-programs/",
+    "https://www.addu.edu.ph/academics/school-of-engineering-and-architecture/",
+    "https://www.addu.edu.ph/academics/school-of-nursing/",
+    "https://www.addu.edu.ph/academics/school-of-arts-and-sciences/",
+]
+HEAD_CHECK_LIMIT = 50
+ENABLE_HEAD_PROBE = os.environ.get("ENABLE_HEAD_PROBE", "true").lower() == "true"
+
+# Keywords that suggest a URL might be a download link (for HEAD probing)
+DOWNLOAD_KEYWORDS = ["curriculum", "prospectus", "download", "course", "checklist", "plan"]
+
+# Substrings to filter out non-curriculum garbage URLs
+GARBAGE_SUBSTRINGS = ["manual", "handbook", "memo", "calendar", "policy", "policies"]
+
+
+def is_addu_domain(url):
+    """
+    Check if a URL belongs to the AdDU domain.
+    
+    Args:
+        url: The URL to check
+        
+    Returns:
+        True if the URL's hostname ends with 'addu.edu.ph', False otherwise
+    """
+    try:
+        parsed = urlparse(url)
+        hostname = parsed.hostname or ""
+        return hostname.endswith("addu.edu.ph")
+    except Exception:
+        return False
+
+
+def is_garbage_url(url):
+    """
+    Check if a URL is likely non-curriculum content (garbage).
+    
+    Args:
+        url: The URL to check
+        
+    Returns:
+        True if the URL contains garbage substrings, False otherwise
+    """
+    url_lower = url.lower()
+    return any(garbage in url_lower for garbage in GARBAGE_SUBSTRINGS)
+
+
+def has_download_keyword(url):
+    """
+    Check if a URL contains likely download-related keywords.
+    
+    Args:
+        url: The URL to check
+        
+    Returns:
+        True if URL contains download keywords, False otherwise
+    """
+    url_lower = url.lower()
+    return any(keyword in url_lower for keyword in DOWNLOAD_KEYWORDS)
+
+
+def is_department_page(url):
+    """
+    Check if a URL is a department/school/college/academics page worth crawling.
+    
+    Args:
+        url: The URL to check
+        
+    Returns:
+        True if the URL looks like a department or academics page, False otherwise
+    """
+    url_lower = url.lower()
+    return any(keyword in url_lower for keyword in [
+        "/school-", "/college-", "/academics/", "/department", 
+        "graduate", "undergraduate", "programs", "bachelor"
+    ])
+
+
+def is_pdf_content(url, head_check_counter):
+    """
+    Check if a URL points to PDF content.
+    
+    Uses a fast-path check for .pdf extension, and optionally uses HEAD
+    request for URLs with download keywords.
+    
+    Args:
+        url: The URL to check
+        head_check_counter: Dict with 'count' key tracking HEAD requests made
+        
+    Returns:
+        True if the URL is detected as PDF content, False otherwise
+    """
+    # Fast-path: URL ends with .pdf
+    parsed = urlparse(url)
+    path = parsed.path.lower()
+    if path.endswith('.pdf'):
+        return True
+    
+    # Optional HEAD probe for URLs with download keywords
+    if not ENABLE_HEAD_PROBE:
+        return False
+    
+    if head_check_counter['count'] >= HEAD_CHECK_LIMIT:
+        return False
+    
+    if not has_download_keyword(url):
+        return False
+    
+    try:
+        head_check_counter['count'] += 1
+        resp = requests.head(url, headers=HEADERS, timeout=10, allow_redirects=True)
+        content_type = resp.headers.get('Content-Type', '').lower()
+        return 'application/pdf' in content_type
+    except Exception:
+        return False
+
+
 def discover_pdf_urls(delay_ms=100):
     """
     Discover all curriculum PDF URLs from the AdDU website.
+    
+    Crawls multiple base URLs with shallow recursion (depth 1) to discover
+    curriculum PDFs from undergraduate, graduate, and department pages.
     
     Args:
         delay_ms: Delay in milliseconds between HTTP requests
         
     Returns:
-        list: List of PDF URLs discovered
+        list: De-duplicated list of PDF URLs discovered
     """
-    pdf_urls = []
-    program_links = []
+    pdf_urls_set = set()
+    visited = set()
+    pages_to_crawl = []  # (url, depth) tuples
     delay_sec = delay_ms / 1000.0
+    head_check_counter = {'count': 0}
     
-    logger.info(f"[Discovery] Starting URL discovery from {BASE_URL}")
+    logger.info(f"[Discovery] Starting URL discovery from {len(BASE_URLS)} base URLs")
     
-    try:
-        response = requests.get(BASE_URL, headers=HEADERS, timeout=30)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.content, "html.parser")
-        
-        # Find all links on the page
-        for link in soup.find_all("a", href=True):
-            href = link.get("href")
-            if not href:
-                continue
-            
-            # Normalize to absolute URL
-            if not href.startswith("http"):
-                href = "https://www.addu.edu.ph" + href
-            
-            href_lower = href.lower()
-            
-            # Catch direct PDFs immediately
-            if href_lower.endswith(".pdf"):
-                if href not in pdf_urls:
-                    logger.debug(f"[Discovery] Found direct PDF: {href}")
-                    pdf_urls.append(href)
-            
-            # Allow "Graduate", "Programs", and "Bachelor" pages
-            elif (
-                "bachelor" in href_lower
-                or "graduate" in href_lower
-                or "programs" in href_lower
-                or "/academics/" in href_lower
-            ) and "addu.edu.ph" in href_lower:
-                if href not in program_links:
-                    logger.debug(f"[Discovery] Found program page: {href}")
-                    program_links.append(href)
-        
-        logger.info(f"[Discovery] Found {len(pdf_urls)} direct PDFs and {len(program_links)} program pages")
-        
-    except Exception as e:
-        logger.error(f"[Discovery] Error fetching main page: {e}")
-        return []
+    # Initialize with base URLs at depth 0
+    for base_url in BASE_URLS:
+        pages_to_crawl.append((base_url, 0))
     
-    # Visit each program page to find more PDFs
-    for i, link in enumerate(program_links):
-        if is_pdf_url(link):
-            # Already a PDF URL
-            if link not in pdf_urls:
-                pdf_urls.append(link)
+    while pages_to_crawl:
+        current_url, depth = pages_to_crawl.pop(0)
+        
+        # Skip already visited pages
+        if current_url in visited:
             continue
         
+        # Skip non-AdDU domains
+        if not is_addu_domain(current_url):
+            continue
+        
+        visited.add(current_url)
+        
+        # Polite delay between requests
+        if delay_sec > 0 and len(visited) > 1:
+            time.sleep(delay_sec)
+        
+        logger.debug(f"[Discovery] Crawling (depth={depth}): {current_url}")
+        
         try:
-            # Polite delay between requests
-            if delay_sec > 0:
-                time.sleep(delay_sec)
+            response = requests.get(current_url, headers=HEADERS, timeout=30)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.content, "html.parser")
             
-            logger.debug(f"[Discovery] Checking page [{i+1}/{len(program_links)}]: {link}")
-            
-            sub_response = requests.get(link, headers=HEADERS, timeout=30)
-            sub_response.raise_for_status()
-            sub_soup = BeautifulSoup(sub_response.content, "html.parser")
-            
-            # Find ALL PDF links on this page
-            pdf_tags = sub_soup.find_all("a", href=lambda h: h and h.lower().endswith('.pdf'))
-            
-            for pdf_tag in pdf_tags:
-                pdf_url = pdf_tag['href']
+            # Find all links on the page
+            for link in soup.find_all("a", href=True):
+                href = link.get("href")
+                if not href:
+                    continue
                 
-                # Make sure it's an absolute URL
-                if not pdf_url.startswith("http"):
-                    pdf_url = "https://www.addu.edu.ph" + pdf_url
+                # Normalize to absolute URL using urljoin
+                abs_url = urljoin(current_url, href)
                 
-                if pdf_url not in pdf_urls:
-                    logger.debug(f"[Discovery] Found PDF on page: {pdf_url}")
-                    pdf_urls.append(pdf_url)
+                # Skip non-AdDU domains
+                if not is_addu_domain(abs_url):
+                    continue
+                
+                # Skip garbage URLs
+                if is_garbage_url(abs_url):
+                    logger.debug(f"[Discovery] Skipping garbage URL: {abs_url}")
+                    continue
+                
+                # Check if this is a PDF
+                if is_pdf_content(abs_url, head_check_counter):
+                    if abs_url not in pdf_urls_set:
+                        logger.debug(f"[Discovery] Found PDF: {abs_url}")
+                        pdf_urls_set.add(abs_url)
+                # If depth < 1 and it's a department/academics page, queue for crawling
+                elif depth < 1 and is_department_page(abs_url) and abs_url not in visited:
+                    pages_to_crawl.append((abs_url, depth + 1))
                     
         except Exception as e:
-            logger.warning(f"[Discovery] Error processing page {link}: {e}")
+            logger.warning(f"[Discovery] Error crawling {current_url}: {e}")
     
-    logger.info(f"[Discovery] Total PDFs discovered: {len(pdf_urls)}")
+    pdf_urls = list(pdf_urls_set)
+    logger.info(f"[Discovery] Total PDFs found: {len(pdf_urls)}")
     return pdf_urls
 
 
