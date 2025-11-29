@@ -7,9 +7,31 @@ It includes robust parsing for multiple PDF layouts and detailed logging for deb
 
 import pdfplumber
 import re
+import logging
+
+# Configure module logger
+logger = logging.getLogger(__name__)
 
 # Words that match the course code pattern but are not valid course codes
 IGNORE_CODES = {"FORMATION", "SEMESTER", "YEAR", "PAGE", "TOTAL", "UNITS"}
+
+# Regex for validating course codes: 2-6 letters, optional space/dash, 1-5 digits, optional trailing letter
+# Examples: "MATH 101", "ECE 313", "BIO 1130", "SocWk 1130", "NSTP-1"
+VALID_CODE_PATTERN = re.compile(r'^[A-Za-z]{2,6}\s?-?\d{1,5}[A-Za-z]?$', re.IGNORECASE)
+
+# Regex for detecting header bleed rows that should be dropped
+# Matches patterns like:
+# - "Effective 2019" / "Effective 2020"
+# - "Revised 2008"
+# - "Curriculum Effective 2019-2020"
+# - "Semester SY 2019-2020"
+HEADER_REGEX = re.compile(
+    r'(effective\s+\d{4}|revised\s+\d{4}|curriculum\s+effective|semester\s+sy\s+\d{4})',
+    re.IGNORECASE
+)
+
+# Special subject labels that should be preserved even if they don't match VALID_CODE_PATTERN
+SPECIAL_SUBJECTS = {"NSTP", "THESIS", "ASSEMBLY", "FYDP", "OJT", "PRACTICUM", "INTERNSHIP"}
 
 
 def clean_text(text):
@@ -374,6 +396,110 @@ def _parse_standard_layout(table, program_name, current_year, current_sem):
     return extracted_data, current_year, current_sem
 
 
+def _is_special_subject(code_str):
+    """
+    Check if a code string contains any special subject label.
+    
+    Args:
+        code_str: The code string to check
+        
+    Returns:
+        True if the code contains a special subject label, False otherwise
+    """
+    if not code_str:
+        return False
+    code_upper = str(code_str).upper()
+    return any(special in code_upper for special in SPECIAL_SUBJECTS)
+
+
+def _contains_year(text):
+    """
+    Check if text contains a 4-digit year (1900-2099).
+    
+    Args:
+        text: The text to check
+        
+    Returns:
+        True if the text contains a 4-digit year, False otherwise
+    """
+    if not text:
+        return False
+    return bool(re.search(r'\b(19|20)\d{2}\b', str(text)))
+
+
+def post_process_rows(rows):
+    """
+    Clean up parsing artifacts from curriculum rows.
+    
+    Filters out:
+    - Header bleed rows (e.g., "Effective 2019", "Revised 2008")
+    - Rows with absurd unit values (> 30.0)
+    - Rows with invalid course codes
+    
+    Preserves:
+    - Special subject labels (NSTP, THESIS, ASSEMBLY, FYDP, etc.)
+    - Valid course codes matching VALID_CODE_PATTERN
+    - Rows with non-numeric unit values (e.g., "NC")
+    
+    Args:
+        rows: List of dictionaries with keys: program, year, semester, code, title, units
+        
+    Returns:
+        Cleaned list of dictionaries with same structure
+    """
+    if not rows:
+        return rows
+    
+    cleaned_rows = []
+    original_count = len(rows)
+    
+    for row in rows:
+        # Normalize fields to strings for checking
+        code = str(row.get('code', '') or '').strip()
+        title = str(row.get('title', '') or '').strip()
+        units_raw = row.get('units', 0)
+        
+        # Drop header bleed rows: check if code or title matches HEADER_REGEX
+        if HEADER_REGEX.search(code) or HEADER_REGEX.search(title):
+            logger.debug(f"[Post-Process] Dropping header bleed row: code='{code}', title='{title}'")
+            continue
+        
+        # Validate course codes
+        # Allow special subjects even if they don't fully match VALID_CODE_PATTERN
+        if not _is_special_subject(code):
+            # Check if code is valid
+            if not VALID_CODE_PATTERN.match(code):
+                # Drop if code is very short (likely junk) or contains a 4-digit year
+                if len(code) < 4 or _contains_year(code):
+                    logger.debug(f"[Post-Process] Dropping invalid code row: code='{code}', title='{title}'")
+                    continue
+        
+        # Normalize and validate units
+        try:
+            # Strip commas and convert to float
+            units_str = str(units_raw).replace(',', '').strip()
+            units_float = float(units_str)
+            
+            # Check for absurd values (likely merged text artifacts)
+            if units_float > 30.0:
+                logger.warning(f"[Post-Process] Dropping row with absurd units: code='{code}', units={units_float}")
+                continue
+            
+            # Store normalized float value
+            row['units'] = units_float
+            
+        except (ValueError, TypeError):
+            # Non-numeric units (e.g., "NC") - keep as-is
+            pass
+        
+        cleaned_rows.append(row)
+    
+    cleaned_count = len(cleaned_rows)
+    logger.info(f"[Post-Process] Cleaned data: {original_count} -> {cleaned_count} rows")
+    
+    return cleaned_rows
+
+
 def parse_curriculum_pdf(pdf_path, program_name):
     """
     Parses a curriculum PDF and returns a list of course dictionaries.
@@ -448,5 +574,8 @@ def parse_curriculum_pdf(pdf_path, program_name):
         print(f"   [PDF] ERROR parsing PDF: {e}")
         return []
     
-    print(f"   [PDF] Total courses extracted: {len(extracted_data)}")
-    return extracted_data
+    # Apply post-processing to clean up parsing artifacts
+    cleaned_data = post_process_rows(extracted_data)
+    
+    print(f"   [PDF] Total courses extracted: {len(cleaned_data)}")
+    return cleaned_data

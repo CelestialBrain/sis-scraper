@@ -16,7 +16,10 @@ from main_scraper import (
     is_pdf_content, discover_pdf_urls, BASE_URLS, GARBAGE_SUBSTRINGS,
     DOWNLOAD_KEYWORDS
 )
-from curriculum_parser import parse_curriculum_pdf, extract_course_code, IGNORE_CODES
+from curriculum_parser import (
+    parse_curriculum_pdf, extract_course_code, IGNORE_CODES,
+    post_process_rows, VALID_CODE_PATTERN, HEADER_REGEX, SPECIAL_SUBJECTS
+)
 
 
 class TestExtractCourseCode:
@@ -814,6 +817,182 @@ class TestDiscoverPdfUrls:
         assert "https://www.addu.edu.ph/academics/school-of-engineering-and-architecture/" in BASE_URLS
         assert "https://www.addu.edu.ph/academics/school-of-nursing/" in BASE_URLS
         assert "https://www.addu.edu.ph/academics/school-of-arts-and-sciences/" in BASE_URLS
+
+
+class TestPostProcessRows:
+    """Unit tests for the post_process_rows function."""
+    
+    def _make_row(self, code="MATH 101", title="Intro to Math", units=3.0):
+        """Helper to create a test row dictionary."""
+        return {
+            "program": "Test Program",
+            "year": 1,
+            "semester": "1st Semester",
+            "code": code,
+            "title": title,
+            "units": units
+        }
+    
+    def test_empty_input_returns_empty(self):
+        """Test that empty input returns empty list."""
+        assert post_process_rows([]) == []
+        assert post_process_rows(None) is None
+    
+    def test_valid_rows_preserved(self):
+        """Test that valid rows are preserved."""
+        rows = [
+            self._make_row("MATH 101", "Introduction to Mathematics", 3.0),
+            self._make_row("ECE 313", "Digital Electronics", 6.0),
+            self._make_row("BIO 1130", "General Biology", 4.0),
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 3
+        assert result[0]['code'] == "MATH 101"
+        assert result[1]['code'] == "ECE 313"
+        assert result[2]['code'] == "BIO 1130"
+    
+    def test_header_bleed_code_dropped(self):
+        """Test that rows with header-like code are dropped."""
+        rows = [
+            self._make_row("Effective 2019", ""),
+            self._make_row("Effective 2019-2020", "Some text"),
+            self._make_row("Revised 2008", "Curriculum"),
+            self._make_row("MATH 101", "Valid course", 3.0),  # This should be kept
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 1
+        assert result[0]['code'] == "MATH 101"
+    
+    def test_header_bleed_title_dropped(self):
+        """Test that rows with header-like title are dropped."""
+        rows = [
+            self._make_row("BS 1234", "Curriculum Effective 2019-2020"),
+            self._make_row("XY 100", "Semester SY 2019-2020"),
+            self._make_row("ENGL 1101", "Valid English Course", 3.0),  # This should be kept
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 1
+        assert result[0]['code'] == "ENGL 1101"
+    
+    def test_absurd_units_dropped(self):
+        """Test that rows with absurd numeric units (> 30.0) are dropped."""
+        rows = [
+            self._make_row("MATH 101", "Normal Course", 3.0),
+            self._make_row("ECE 200", "Mangled Course", 573.0),
+            self._make_row("BIO 300", "Merged Text Artifact", 910911.0),
+            self._make_row("PHYS 101", "Physics", 6.0),  # This should be kept
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 2
+        assert result[0]['code'] == "MATH 101"
+        assert result[1]['code'] == "PHYS 101"
+    
+    def test_normal_units_preserved(self):
+        """Test that normal unit values (up to 30.0) are preserved."""
+        rows = [
+            self._make_row("MATH 101", "Course 1", 3.0),
+            self._make_row("ECE 200", "Course 2", 6.0),
+            self._make_row("THESIS 500", "Research", 12.0),
+            self._make_row("THESIS 600", "Dissertation", 30.0),  # Edge case - should be kept
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 4
+    
+    def test_units_normalized_to_float(self):
+        """Test that units are normalized to floats."""
+        rows = [
+            self._make_row("MATH 101", "Course", "3.0"),
+            self._make_row("ECE 200", "Course", "6"),
+            self._make_row("BIO 300", "Course", "4.5"),
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 3
+        assert result[0]['units'] == 3.0
+        assert isinstance(result[0]['units'], float)
+        assert result[1]['units'] == 6.0
+        assert result[2]['units'] == 4.5
+    
+    def test_nonnumeric_units_preserved(self):
+        """Test that non-numeric unit markers (e.g., 'NC') are preserved as-is."""
+        rows = [
+            self._make_row("NSTP 1", "NSTP Course", "NC"),
+            self._make_row("ASSEMBLY", "Assembly", "N/A"),
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 2
+        assert result[0]['units'] == "NC"
+        assert result[1]['units'] == "N/A"
+    
+    def test_invalid_code_with_year_dropped(self):
+        """Test that codes containing a 4-digit year are dropped when not valid course codes."""
+        rows = [
+            self._make_row("2024", "Just a year", 3.0),  # Just year, too short
+            self._make_row("SY 2019-2020", "Academic year marker", 3.0),  # Has year range, not valid pattern
+            self._make_row("MATH 101", "Valid course", 3.0),  # This should be kept
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 1
+        assert result[0]['code'] == "MATH 101"
+    
+    def test_very_short_invalid_code_dropped(self):
+        """Test that very short codes (< 4 chars) that don't match valid pattern are dropped."""
+        rows = [
+            self._make_row("une", "Invalid code", 3.0),
+            self._make_row("XY", "Too short", 3.0),
+            self._make_row("MATH 101", "Valid course", 3.0),  # This should be kept
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 1
+        assert result[0]['code'] == "MATH 101"
+    
+    def test_special_subjects_preserved(self):
+        """Test that special subject labels (NSTP, THESIS, etc.) are preserved."""
+        rows = [
+            self._make_row("NSTP", "National Service Training", 3.0),
+            self._make_row("NSTP-1", "NSTP First Course", 3.0),
+            self._make_row("THESIS", "Undergraduate Thesis", 6.0),
+            self._make_row("ASSEMBLY", "General Assembly", 0.0),
+            self._make_row("FYDP", "Final Year Design Project", 6.0),
+            self._make_row("OJT", "On-the-Job Training", 3.0),
+            self._make_row("PRACTICUM", "Field Practicum", 6.0),
+            self._make_row("INTERNSHIP", "Industry Internship", 6.0),
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 8
+    
+    def test_mixed_case_codes_preserved(self):
+        """Test that mixed-case valid codes like 'SocWk 1130' are preserved."""
+        rows = [
+            self._make_row("SocWk 1130", "Social Work Course", 3.0),
+            self._make_row("Anthro 1201", "Anthropology Course", 3.0),
+        ]
+        result = post_process_rows(rows)
+        assert len(result) == 2
+        assert result[0]['code'] == "SocWk 1130"
+        assert result[1]['code'] == "Anthro 1201"
+    
+    def test_valid_code_pattern_matches(self):
+        """Test that VALID_CODE_PATTERN matches expected course codes."""
+        valid_codes = [
+            "MATH 101", "ECE 313", "BIO 1130", "ENGL 1101",
+            "CSc-1100", "SocWk 1130", "PE 1", "NSTP1",
+        ]
+        for code in valid_codes:
+            assert VALID_CODE_PATTERN.match(code), f"Expected {code} to match VALID_CODE_PATTERN"
+    
+    def test_header_regex_matches(self):
+        """Test that HEADER_REGEX matches expected header patterns."""
+        headers = [
+            "Effective 2019", "Effective 2020", "Revised 2008",
+            "Curriculum Effective 2019-2020", "Semester SY 2019-2020",
+        ]
+        for header in headers:
+            assert HEADER_REGEX.search(header), f"Expected {header} to match HEADER_REGEX"
+    
+    def test_special_subjects_set_exists(self):
+        """Test that SPECIAL_SUBJECTS set is properly defined."""
+        expected = {"NSTP", "THESIS", "ASSEMBLY", "FYDP", "OJT", "PRACTICUM", "INTERNSHIP"}
+        assert SPECIAL_SUBJECTS == expected
 
 
 if __name__ == "__main__":
