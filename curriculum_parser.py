@@ -81,8 +81,9 @@ def extract_course_code(text):
     normalized = " ".join(text.split())
     
     # Check if text starts with any ignored word (case-insensitive)
-    # This catches cases like "FORMATION 123" where "FORMATION" is longer than 8 chars
-    # and regex would match "ORMATION 123" instead
+    # This catches cases like "FORMATION 123" where the regex would incorrectly
+    # match "ORMATION 123" (skipping the first letter) instead of recognizing
+    # that the text starts with an ignored word
     first_word = normalized.split()[0].upper() if normalized else ""
     if first_word in IGNORE_CODES:
         return None, text
