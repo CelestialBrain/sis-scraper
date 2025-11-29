@@ -15,6 +15,10 @@ logger = logging.getLogger(__name__)
 # Words that match the course code pattern but are not valid course codes
 IGNORE_CODES = {"FORMATION", "SEMESTER", "YEAR", "PAGE", "TOTAL", "UNITS"}
 
+# Post-processing configuration constants
+MIN_CODE_LENGTH = 4  # Minimum length for a valid course code
+MAX_REASONABLE_UNITS = 30.0  # Maximum plausible unit value for a single course
+
 # Regex for validating course codes: 2-6 letters, optional space/dash, 1-5 digits, optional trailing letter
 # Examples: "MATH 101", "ECE 313", "BIO 1130", "SocWk 1130", "NSTP-1"
 VALID_CODE_PATTERN = re.compile(r'^[A-Za-z]{2,6}\s?-?\d{1,5}[A-Za-z]?$', re.IGNORECASE)
@@ -26,7 +30,7 @@ VALID_CODE_PATTERN = re.compile(r'^[A-Za-z]{2,6}\s?-?\d{1,5}[A-Za-z]?$', re.IGNO
 # - "Curriculum Effective 2019-2020"
 # - "Semester SY 2019-2020"
 HEADER_REGEX = re.compile(
-    r'(effective\s+\d{4}|revised\s+\d{4}|curriculum\s+effective|semester\s+sy\s+\d{4})',
+    r'(effective\s+\d{4}|revised\s+\d{4}|curriculum\s+effective\s+\d{4}|semester\s+sy\s+\d{4})',
     re.IGNORECASE
 )
 
@@ -470,7 +474,7 @@ def post_process_rows(rows):
             # Check if code is valid
             if not VALID_CODE_PATTERN.match(code):
                 # Drop if code is very short (likely junk) or contains a 4-digit year
-                if len(code) < 4 or _contains_year(code):
+                if len(code) < MIN_CODE_LENGTH or _contains_year(code):
                     logger.debug(f"[Post-Process] Dropping invalid code row: code='{code}', title='{title}'")
                     continue
         
@@ -481,7 +485,7 @@ def post_process_rows(rows):
             units_float = float(units_str)
             
             # Check for absurd values (likely merged text artifacts)
-            if units_float > 30.0:
+            if units_float > MAX_REASONABLE_UNITS:
                 logger.warning(f"[Post-Process] Dropping row with absurd units: code='{code}', units={units_float}")
                 continue
             

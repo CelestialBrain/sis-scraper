@@ -18,7 +18,8 @@ from main_scraper import (
 )
 from curriculum_parser import (
     parse_curriculum_pdf, extract_course_code, IGNORE_CODES,
-    post_process_rows, VALID_CODE_PATTERN, HEADER_REGEX, SPECIAL_SUBJECTS
+    post_process_rows, VALID_CODE_PATTERN, HEADER_REGEX, SPECIAL_SUBJECTS,
+    MIN_CODE_LENGTH, MAX_REASONABLE_UNITS
 )
 
 
@@ -993,6 +994,11 @@ class TestPostProcessRows:
         """Test that SPECIAL_SUBJECTS set is properly defined."""
         expected = {"NSTP", "THESIS", "ASSEMBLY", "FYDP", "OJT", "PRACTICUM", "INTERNSHIP"}
         assert SPECIAL_SUBJECTS == expected
+    
+    def test_constants_defined(self):
+        """Test that post-processing constants are properly defined."""
+        assert MIN_CODE_LENGTH == 4
+        assert MAX_REASONABLE_UNITS == 30.0
 
 
 if __name__ == "__main__":
