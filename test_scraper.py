@@ -10,7 +10,12 @@ import os
 import tempfile
 import requests
 from unittest.mock import patch, Mock, MagicMock
-from main_scraper import is_pdf_url, extract_program_name_from_url
+from main_scraper import (
+    is_pdf_url, extract_program_name_from_url, is_addu_domain, 
+    is_garbage_url, has_download_keyword, is_department_page,
+    is_pdf_content, discover_pdf_urls, BASE_URLS, GARBAGE_SUBSTRINGS,
+    DOWNLOAD_KEYWORDS
+)
 from curriculum_parser import parse_curriculum_pdf, extract_course_code, IGNORE_CODES
 
 
@@ -439,6 +444,376 @@ class TestSocialWorkCurriculumParsing:
         print(f"Sample courses:")
         for row in rows[:5]:
             print(f"  {row.get('code', 'N/A')} - {row.get('title', 'N/A')[:50]} ({row.get('units', 0)} units)")
+
+
+class TestIsAdduDomain:
+    """Unit tests for the is_addu_domain helper function."""
+    
+    def test_valid_addu_domain(self):
+        """Test that AdDU domain URLs are correctly identified."""
+        assert is_addu_domain("https://www.addu.edu.ph/page") is True
+        assert is_addu_domain("https://addu.edu.ph/page") is True
+        assert is_addu_domain("http://www.addu.edu.ph/page.pdf") is True
+    
+    def test_subdomain_addu(self):
+        """Test that subdomains of addu.edu.ph are accepted."""
+        assert is_addu_domain("https://sis.addu.edu.ph/login") is True
+        assert is_addu_domain("https://library.addu.edu.ph/resources") is True
+    
+    def test_non_addu_domain(self):
+        """Test that non-AdDU domains are rejected."""
+        assert is_addu_domain("https://www.example.com/page") is False
+        assert is_addu_domain("https://google.com/search") is False
+        assert is_addu_domain("https://edu.ph/page") is False
+    
+    def test_addu_in_path_but_wrong_domain(self):
+        """Test that URLs with 'addu' in path but wrong domain are rejected."""
+        assert is_addu_domain("https://example.com/addu.edu.ph/fake") is False
+    
+    def test_invalid_url(self):
+        """Test that invalid URLs return False."""
+        assert is_addu_domain("not-a-url") is False
+        assert is_addu_domain("") is False
+
+
+class TestIsGarbageUrl:
+    """Unit tests for the is_garbage_url helper function."""
+    
+    def test_manual_url_is_garbage(self):
+        """Test that URLs containing 'manual' are detected as garbage."""
+        assert is_garbage_url("https://www.addu.edu.ph/student-manual.pdf") is True
+        assert is_garbage_url("https://www.addu.edu.ph/Manual-2024.pdf") is True
+    
+    def test_handbook_url_is_garbage(self):
+        """Test that URLs containing 'handbook' are detected as garbage."""
+        assert is_garbage_url("https://www.addu.edu.ph/faculty-handbook.pdf") is True
+    
+    def test_memo_url_is_garbage(self):
+        """Test that URLs containing 'memo' are detected as garbage."""
+        assert is_garbage_url("https://www.addu.edu.ph/memo-2024.pdf") is True
+    
+    def test_calendar_url_is_garbage(self):
+        """Test that URLs containing 'calendar' are detected as garbage."""
+        assert is_garbage_url("https://www.addu.edu.ph/academic-calendar.pdf") is True
+    
+    def test_policy_url_is_garbage(self):
+        """Test that URLs containing 'policy' or 'policies' are detected as garbage."""
+        assert is_garbage_url("https://www.addu.edu.ph/privacy-policy.pdf") is True
+        assert is_garbage_url("https://www.addu.edu.ph/policies.pdf") is True
+    
+    def test_curriculum_url_is_not_garbage(self):
+        """Test that curriculum URLs are not detected as garbage."""
+        assert is_garbage_url("https://www.addu.edu.ph/curriculum.pdf") is False
+        assert is_garbage_url("https://www.addu.edu.ph/BS-Computer-Science.pdf") is False
+    
+    def test_garbage_substrings_config(self):
+        """Test that GARBAGE_SUBSTRINGS is properly configured."""
+        expected = {"manual", "handbook", "memo", "calendar", "policy", "policies"}
+        assert set(GARBAGE_SUBSTRINGS) == expected
+
+
+class TestHasDownloadKeyword:
+    """Unit tests for the has_download_keyword helper function."""
+    
+    def test_curriculum_keyword(self):
+        """Test that 'curriculum' keyword is detected."""
+        assert has_download_keyword("https://www.addu.edu.ph/curriculum") is True
+        assert has_download_keyword("https://www.addu.edu.ph/Curriculum-2024") is True
+    
+    def test_prospectus_keyword(self):
+        """Test that 'prospectus' keyword is detected."""
+        assert has_download_keyword("https://www.addu.edu.ph/prospectus") is True
+    
+    def test_download_keyword(self):
+        """Test that 'download' keyword is detected."""
+        assert has_download_keyword("https://www.addu.edu.ph/download/file") is True
+    
+    def test_course_keyword(self):
+        """Test that 'course' keyword is detected."""
+        assert has_download_keyword("https://www.addu.edu.ph/course-list") is True
+    
+    def test_checklist_keyword(self):
+        """Test that 'checklist' keyword is detected."""
+        assert has_download_keyword("https://www.addu.edu.ph/checklist") is True
+    
+    def test_plan_keyword(self):
+        """Test that 'plan' keyword is detected."""
+        assert has_download_keyword("https://www.addu.edu.ph/study-plan") is True
+    
+    def test_no_download_keyword(self):
+        """Test that URLs without download keywords return False."""
+        assert has_download_keyword("https://www.addu.edu.ph/about-us") is False
+        assert has_download_keyword("https://www.addu.edu.ph/contact") is False
+    
+    def test_download_keywords_config(self):
+        """Test that DOWNLOAD_KEYWORDS is properly configured."""
+        expected = {"curriculum", "prospectus", "download", "course", "checklist", "plan"}
+        assert set(DOWNLOAD_KEYWORDS) == expected
+
+
+class TestIsDepartmentPage:
+    """Unit tests for the is_department_page helper function."""
+    
+    def test_school_page(self):
+        """Test that school pages are detected."""
+        assert is_department_page("https://www.addu.edu.ph/academics/school-of-engineering/") is True
+    
+    def test_college_page(self):
+        """Test that college pages are detected."""
+        assert is_department_page("https://www.addu.edu.ph/college-of-law/") is True
+    
+    def test_academics_page(self):
+        """Test that academics pages are detected."""
+        assert is_department_page("https://www.addu.edu.ph/academics/departments") is True
+    
+    def test_department_page(self):
+        """Test that department pages are detected."""
+        assert is_department_page("https://www.addu.edu.ph/department-of-mathematics") is True
+    
+    def test_graduate_programs_page(self):
+        """Test that graduate programs pages are detected."""
+        assert is_department_page("https://www.addu.edu.ph/graduate-programs/") is True
+    
+    def test_undergraduate_programs_page(self):
+        """Test that undergraduate programs pages are detected."""
+        assert is_department_page("https://www.addu.edu.ph/undergraduate-programs/") is True
+    
+    def test_bachelor_page(self):
+        """Test that bachelor program pages are detected."""
+        assert is_department_page("https://www.addu.edu.ph/bachelor-of-science-in-cs") is True
+    
+    def test_non_department_page(self):
+        """Test that non-department pages are not detected."""
+        assert is_department_page("https://www.addu.edu.ph/about-us") is False
+        assert is_department_page("https://www.addu.edu.ph/contact") is False
+
+
+class TestIsPdfContent:
+    """Unit tests for the is_pdf_content helper function."""
+    
+    def test_pdf_extension_fast_path(self):
+        """Test that .pdf extension is detected without HEAD request."""
+        counter = {'count': 0}
+        assert is_pdf_content("https://example.com/file.pdf", counter) is True
+        assert counter['count'] == 0  # No HEAD request made
+    
+    def test_uppercase_pdf_extension(self):
+        """Test that .PDF extension is detected (case insensitive)."""
+        counter = {'count': 0}
+        assert is_pdf_content("https://example.com/file.PDF", counter) is True
+        assert counter['count'] == 0
+    
+    def test_pdf_with_query_params(self):
+        """Test PDF URL with query params is detected."""
+        counter = {'count': 0}
+        assert is_pdf_content("https://example.com/file.pdf?v=1", counter) is True
+        assert counter['count'] == 0
+    
+    @patch('main_scraper.ENABLE_HEAD_PROBE', False)
+    def test_head_probe_disabled(self):
+        """Test that HEAD probe is skipped when disabled."""
+        counter = {'count': 0}
+        # No .pdf extension, and HEAD probe disabled
+        result = is_pdf_content("https://example.com/curriculum-download", counter)
+        assert result is False
+        assert counter['count'] == 0
+    
+    @patch('main_scraper.ENABLE_HEAD_PROBE', True)
+    @patch('main_scraper.requests.head')
+    def test_head_probe_for_download_keyword(self, mock_head):
+        """Test that HEAD probe is used for download keyword URLs."""
+        mock_response = Mock()
+        mock_response.headers = {'Content-Type': 'application/pdf'}
+        mock_head.return_value = mock_response
+        
+        counter = {'count': 0}
+        result = is_pdf_content("https://www.addu.edu.ph/curriculum-download", counter)
+        
+        assert result is True
+        assert counter['count'] == 1
+        mock_head.assert_called_once()
+    
+    @patch('main_scraper.ENABLE_HEAD_PROBE', True)
+    @patch('main_scraper.requests.head')
+    def test_head_probe_non_pdf_content_type(self, mock_head):
+        """Test that non-PDF content type returns False."""
+        mock_response = Mock()
+        mock_response.headers = {'Content-Type': 'text/html'}
+        mock_head.return_value = mock_response
+        
+        counter = {'count': 0}
+        result = is_pdf_content("https://www.addu.edu.ph/curriculum-page", counter)
+        
+        assert result is False
+        assert counter['count'] == 1
+    
+    @patch('main_scraper.ENABLE_HEAD_PROBE', True)
+    def test_head_probe_limit_respected(self):
+        """Test that HEAD probe limit is respected."""
+        counter = {'count': 50}  # Already at limit
+        # URL has download keyword but limit reached
+        result = is_pdf_content("https://www.addu.edu.ph/curriculum-download", counter)
+        assert result is False
+        assert counter['count'] == 50  # Count unchanged
+    
+    def test_no_head_for_non_download_url(self):
+        """Test that HEAD is not used for URLs without download keywords."""
+        counter = {'count': 0}
+        result = is_pdf_content("https://www.addu.edu.ph/about-us", counter)
+        assert result is False
+        assert counter['count'] == 0  # No HEAD request
+
+
+class TestDiscoverPdfUrls:
+    """Unit tests for the discover_pdf_urls function with mocked requests."""
+    
+    @patch('main_scraper.requests.get')
+    def test_discover_finds_pdf_links(self, mock_get):
+        """Test that discover_pdf_urls finds PDF links on pages."""
+        # Mock HTML response with PDF links
+        html_content = """
+        <html>
+            <body>
+                <a href="/wp-content/uploads/2020/06/BS-Computer-Science.pdf">CS Curriculum</a>
+                <a href="https://www.addu.edu.ph/uploads/BS-Math.pdf">Math Curriculum</a>
+            </body>
+        </html>
+        """
+        mock_response = Mock()
+        mock_response.content = html_content.encode()
+        mock_response.raise_for_status = Mock()
+        mock_get.return_value = mock_response
+        
+        urls = discover_pdf_urls(delay_ms=0)
+        
+        # Should find both PDFs
+        assert len(urls) >= 2
+        # Check that URLs are properly normalized
+        pdf_urls_lower = [u.lower() for u in urls]
+        assert any('bs-computer-science.pdf' in u for u in pdf_urls_lower)
+        assert any('bs-math.pdf' in u for u in pdf_urls_lower)
+    
+    @patch('main_scraper.requests.get')
+    def test_discover_respects_domain_restriction(self, mock_get):
+        """Test that discover_pdf_urls only follows AdDU domain links."""
+        html_content = """
+        <html>
+            <body>
+                <a href="https://www.addu.edu.ph/curriculum.pdf">AdDU PDF</a>
+                <a href="https://www.example.com/external.pdf">External PDF</a>
+            </body>
+        </html>
+        """
+        mock_response = Mock()
+        mock_response.content = html_content.encode()
+        mock_response.raise_for_status = Mock()
+        mock_get.return_value = mock_response
+        
+        urls = discover_pdf_urls(delay_ms=0)
+        
+        # Should only include AdDU domain PDFs
+        assert all('addu.edu.ph' in u for u in urls)
+        assert not any('example.com' in u for u in urls)
+    
+    @patch('main_scraper.requests.get')
+    def test_discover_filters_garbage_urls(self, mock_get):
+        """Test that discover_pdf_urls filters out garbage URLs."""
+        html_content = """
+        <html>
+            <body>
+                <a href="https://www.addu.edu.ph/curriculum.pdf">Curriculum</a>
+                <a href="https://www.addu.edu.ph/student-manual.pdf">Manual</a>
+                <a href="https://www.addu.edu.ph/handbook.pdf">Handbook</a>
+            </body>
+        </html>
+        """
+        mock_response = Mock()
+        mock_response.content = html_content.encode()
+        mock_response.raise_for_status = Mock()
+        mock_get.return_value = mock_response
+        
+        urls = discover_pdf_urls(delay_ms=0)
+        
+        # Should include curriculum but not manual or handbook
+        assert any('curriculum.pdf' in u for u in urls)
+        assert not any('manual' in u.lower() for u in urls)
+        assert not any('handbook' in u.lower() for u in urls)
+    
+    @patch('main_scraper.requests.get')
+    def test_discover_deduplicates_urls(self, mock_get):
+        """Test that discover_pdf_urls returns de-duplicated URLs."""
+        html_content = """
+        <html>
+            <body>
+                <a href="https://www.addu.edu.ph/curriculum.pdf">Link 1</a>
+                <a href="https://www.addu.edu.ph/curriculum.pdf">Link 2</a>
+                <a href="https://www.addu.edu.ph/curriculum.pdf">Link 3</a>
+            </body>
+        </html>
+        """
+        mock_response = Mock()
+        mock_response.content = html_content.encode()
+        mock_response.raise_for_status = Mock()
+        mock_get.return_value = mock_response
+        
+        urls = discover_pdf_urls(delay_ms=0)
+        
+        # Should only have one instance of the URL
+        curriculum_count = sum(1 for u in urls if 'curriculum.pdf' in u)
+        assert curriculum_count == 1
+    
+    @patch('main_scraper.requests.get')
+    def test_discover_follows_department_pages(self, mock_get):
+        """Test that discover_pdf_urls follows department pages with depth 1."""
+        # First page (base URL) has link to department
+        base_html = """
+        <html>
+            <body>
+                <a href="https://www.addu.edu.ph/academics/school-of-engineering/">Engineering</a>
+            </body>
+        </html>
+        """
+        # Department page has PDF
+        dept_html = """
+        <html>
+            <body>
+                <a href="https://www.addu.edu.ph/engineering-curriculum.pdf">Curriculum</a>
+            </body>
+        </html>
+        """
+        
+        def mock_get_side_effect(url, **kwargs):
+            mock_response = Mock()
+            mock_response.raise_for_status = Mock()
+            if 'school-of-engineering' in url:
+                mock_response.content = dept_html.encode()
+            else:
+                mock_response.content = base_html.encode()
+            return mock_response
+        
+        mock_get.side_effect = mock_get_side_effect
+        
+        urls = discover_pdf_urls(delay_ms=0)
+        
+        # Should find PDF from department page
+        assert any('engineering-curriculum.pdf' in u for u in urls)
+    
+    @patch('main_scraper.requests.get')
+    def test_discover_handles_request_errors(self, mock_get):
+        """Test that discover_pdf_urls handles request errors gracefully."""
+        mock_get.side_effect = requests.RequestException("Network error")
+        
+        # Should not raise, just return empty or partial results
+        urls = discover_pdf_urls(delay_ms=0)
+        assert isinstance(urls, list)
+    
+    def test_base_urls_configured(self):
+        """Test that BASE_URLS includes all required URLs."""
+        assert "https://www.addu.edu.ph/undergraduate-programs/" in BASE_URLS
+        assert "https://www.addu.edu.ph/graduate-programs/" in BASE_URLS
+        assert "https://www.addu.edu.ph/academics/school-of-engineering-and-architecture/" in BASE_URLS
+        assert "https://www.addu.edu.ph/academics/school-of-nursing/" in BASE_URLS
+        assert "https://www.addu.edu.ph/academics/school-of-arts-and-sciences/" in BASE_URLS
 
 
 if __name__ == "__main__":
