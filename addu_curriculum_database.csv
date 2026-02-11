@@ -1,46 +1,36 @@
 program,year,semester,code,title,units
-p_grad_matell,1,1st Semester,LL 201,Theories of Lan,3.0
-p_grad_matell,1,1st Semester,LL 202,Foundations of,3.0
-p_grad_matell,1,1st Semester,LL 203,Evaluation Proc,0.0
-p_grad_matell,1,1st Semester,LL 204,Materials Desig,3.0
-p_grad_matell,1,1st Semester,LL 205,Teaching Literat,3.0
-p_grad_matell,1,1st Semester,LL 206,Teaching Literat,3.0
-p_grad_matell,1,1st Semester,LL 207,Teaching Langu,0.0
-p_grad_matell,1,1st Semester,LL 208,Teaching Langu,0.0
-p_grad_matell,1,1st Semester,LL 210,Interfacing Lang,3.0
-p_grad_matell,1,1st Semester,LL 214,ELLT Practicum,3.0
-p_grad_matell,1,1st Semester,LL 218,Sociolinguistics,3.0
-p_grad_matell,1,1st Semester,LL 219,Literary Theory,3.0
-p_grad_matell,1,1st Semester,LL 220,British Literatur,3.0
-p_grad_matell,1,1st Semester,LL 221,American Litera,3.0
-p_grad_matell,1,1st Semester,LL 222,Asian Literature,3.0
-p_grad_matell,1,1st Semester,LL 223,Latin American,3.0
-p_grad_educ,1,1st Semester,PhED 601,Advanc,3.0
-p_grad_educ,1,1st Semester,PhED 602,Advanc,3.0
-p_grad_educ,1,1st Semester,PhED 603,Educati,3.0
-p_grad_educ,1,1st Semester,PhED 604,Statisti,3.0
-p_grad_educ,1,1st Semester,PhED 605,Educati,3.0
-p_grad_educ,1,1st Semester,PhED 606,Educati,3.0
-p_grad_educ,1,1st Semester,PhED 607,Analysi,3.0
-p_grad_educ,1,1st Semester,PhED 608,Manage,3.0
-p_grad_educ,1,1st Semester,PhED 609,Admini,3.0
-p_grad_educ,1,1st Semester,PhED 610,Govern,3.0
-p_grad_educ,1,1st Semester,PhED 611,Instruct,3.0
-p_grad_educ,1,1st Semester,PhED 612,Personn,3.0
-p_grad_educ,1,1st Semester,PhED 613,Social,3.0
-p_grad_educ,1,1st Semester,PhED 614,Admini,3.0
-p_grad_educ,1,1st Semester,PhED 615,Compa,3.0
-p_grad_educ,1,1st Semester,PhED 616,Educati,3.0
-p_grad_educ,1,1st Semester,PhED 617,Semina,3.0
-p_grad_educ,1,1st Semester,PhED 618,Semina,3.0
-p_grad_educ,1,1st Semester,PhED 700,Dissert,6.0
-p_grad_educ,1,1st Semester,PhED 701,Dissert,6.0
-p_grad_MPA APEX,1,1st Semester,RE 224,Ignatian Leadership,0.0
-p_grad_MPA APEX,1,1st Semester,MA 300,Management Comm,0.0
-p_grad_MPA APEX,1,1st Semester,PA 100,"Leadership, Ethics",0.0
-p_grad_MPA APEX,1,1st Semester,PA 101,Statistics in Public,0.0
-p_grad_MPA APEX,1,1st Semester,PA 402,International Public,0.0
-p_grad_MPA APEX,1,1st Semester,PA 203,Public Strategic Ma,0.0
+p_grad_philosophy,1,1st Semester,Philo 501,Methods of Research,3.0
+p_grad_philosophy,1,1st Semester,Philo 502,Metaphysics,3.0
+p_grad_philosophy,1,1st Semester,Philo 503,Philosophy of Knowledg,3.0
+p_grad_philosophy,1,1st Semester,Philo 504,Advanced Ethics,3.0
+p_grad_philosophy,1,1st Semester,Philo 505,Ancient Philosophy,3.0
+p_grad_philosophy,1,1st Semester,Philo 506,Medieval Philosophy,3.0
+p_grad_philosophy,1,1st Semester,Philo 507,Modem Philosophy,3.0
+p_grad_philosophy,1,1st Semester,Philo 508,Oriental Philosophy,3.0
+p_grad_philosophy,1,1st Semester,Philo 509,Contemporary Philosoph,3.0
+p_grad_philosophy,1,1st Semester,Philo 510,Social and Political Philo,3.0
+p_grad_philosophy,1,1st Semester,Philo 511,Aesthetics,3.0
+p_grad_philosophy,1,1st Semester,Philo 512,Advanced Philosophy of,3.0
+p_grad_philosophy,1,1st Semester,Philo 513,Philosophy of Science,3.0
+p_grad_philosophy,1,1st Semester,Philo 514,Phenomenology,3.0
+p_grad_philosophy,1,1st Semester,Philo 515,Philosophy of Language,3.0
+p_grad_philosophy,1,1st Semester,Philo 516,Individual Philosopher,3.0
+p_grad_philosophy,1,1st Semester,Philo 517,Post-modernism,3.0
+p_grad_philosophy,1,1st Semester,Philo 518,Existentialism,3.0
+p_grad_philosophy,1,1st Semester,Philo 519,Logic,3.0
+p_grad_philosophy,1,1st Semester,Philo 520,Philosophy of Education,3.0
+p_grad_philosophy,1,1st Semester,Philo 521,Philosophical Perspective,3.0
+p_grad_philosophy,1,1st Semester,Philo 522,Hermeneutics,3.0
+p_grad_philosophy,1,1st Semester,Philo 523,Seminar in Classical and,3.0
+p_grad_philosophy,1,1st Semester,Philo 524,Seminar in Advanced Phi,3.0
+p_grad_philosophy,1,1st Semester,Philo 525,Seminar in the Philosoph,3.0
+p_grad_philosophy,1,1st Semester,Philo 526,Seminar in Anglo-Saxon,3.0
+p_grad_philosophy,1,1st Semester,Philo 527,Seminar in Feminism,3.0
+p_grad_philosophy,1,1st Semester,Philo 528,Seminar in Philosophy of,3.0
+p_grad_philosophy,1,1st Semester,Philo 529,Seminar in Bioethics,3.0
+p_grad_philosophy,1,1st Semester,Philo 530,Seminar in Teaching Phil,3.0
+p_grad_philosophy,1,1st Semester,Philo 531,Thesis I,3.0
+p_grad_philosophy,1,1st Semester,Philo 532,Thesis II,3.0
 PIDSCurriculum2020,1,1st Semester,PIDS 501,osophy of Social Scien,3.0
 PIDSCurriculum2020,1,1st Semester,PIDS 502,ership,3.0
 PIDSCurriculum2020,1,1st Semester,PIDS 503,antitative Research,3.0
@@ -78,265 +68,6 @@ PIDSCurriculum2020,1,1st Semester,PIDS 534,rends and,3.0
 PIDSCurriculum2020,1,1st Semester,BEdA 1034,Manageme,3.0
 PIDSCurriculum2020,1,1st Semester,PIDS 600,I (Proposa,6.0
 PIDSCurriculum2020,1,1st Semester,PIDS 601,II (Final),6.0
-Course Prospectus MA Anthro_2020,1,2nd Semester,TH 524,Political an,0.0
-Course Prospectus MA Anthro_2020,1,2nd Semester,HH 5511,QQuuaalliittaattiivvee,0.0
-Course Prospectus MA Anthro_2020,1,2nd Semester,TH 524,Political an,0.0
-BS Biology Medical Prospectus,1,1st Semester,Bio 1130,General Botany L,0.0
-BS Biology Medical Prospectus,1,1st Semester,Bio 1131,General Botany L,0.0
-BS Biology Medical Prospectus,1,1st Semester,Bio 1132,General Zoology,0.0
-BS Biology Medical Prospectus,1,1st Semester,Bio 1133,General Zoology,0.0
-BS Biology Medical Prospectus,1,1st Semester,Chem 1041,Biology lecture),0.0
-BS Biology Medical Prospectus,1,1st Semester,Chem 1042,Biology laborator,0.0
-BS Biology Medical Prospectus,1,1st Semester,GE 1105,Understanding th,0.0
-BS Biology Medical Prospectus,1,1st Semester,Philo 1000,Philosophy,0.0
-BS Biology Medical Prospectus,1,1st Semester,ASF 1000,Arrupe Social For,0.0
-BS Biology Medical Prospectus,1,1st Semester,ASF 1101,Arrupe Social For,1.0
-BS Biology Medical Prospectus,1,1st Semester,PE 1114,PATH-FIT I,0.0
-BS Biology Medical Prospectus,1,1st Semester,Chem 2065,Chemical Biology,0.0
-BS Biology Medical Prospectus,1,1st Semester,Chem 2066,Chemical Biology,0.0
-BS Biology Medical Prospectus,1,1st Semester,Bio 2138,Evolutionary Biol,0.0
-BS Biology Medical Prospectus,1,1st Semester,Bio 2139,Evolutionary Biol,0.0
-BS Biology Medical Prospectus,1,1st Semester,Math 2176,Statistical Biolog,0.0
-BS Biology Medical Prospectus,1,1st Semester,GE 1109,Ethics,0.0
-BS Biology Medical Prospectus,1,1st Semester,GE 1106,Purposive Comm,0.0
-BS Biology Medical Prospectus,1,1st Semester,GE 1108,Mathematics in t,0.0
-BS Biology Medical Prospectus,1,1st Semester,Engl 2165,Technical Writing,0.0
-BS Biology Medical Prospectus,1,1st Semester,PE 2116,PATH-FIT III,0.0
-BS Biology Medical Prospectus,1,1st Semester,Bio 3144,Cell and Molecul,0.0
-BS Biology Medical Prospectus,1,1st Semester,Bio 3145,Cell and Molecul,0.0
-BS Biology Medical Prospectus,1,1st Semester,Sc 3154,Human Gross An,0.0
-BS Biology Medical Prospectus,1,1st Semester,SC 3155,Human Gross An,0.0
-BS Biology Medical Prospectus,1,1st Semester,Bio 3136,General Physiolo,0.0
-BS Biology Medical Prospectus,1,1st Semester,Bio 3137,General Physiolo,0.0
-BS Biology Medical Prospectus,1,1st Semester,Elec 3150,Free Elective 1,0.0
-BS Biology Medical Prospectus,1,1st Semester,GE 3118,Elective 1,0.0
-BS Biology Medical Prospectus,1,1st Semester,Prac 3370,Bio Practicum (E,0.0
-BS Biology Medical Prospectus,3,1st Semester,SC 4158,Medical Parasitol,0.0
-BS Biology Medical Prospectus,3,1st Semester,SC 4159,Medical Parasitol,0.0
-BS Biology Medical Prospectus,3,1st Semester,Bio 4148,Biophysics Lec,0.0
-BS Biology Medical Prospectus,3,1st Semester,Bio 4149,Biophysics Lab,0.0
-BS Biology Medical Prospectus,3,1st Semester,SP 4161,Special Problems,2.0
-BS Biology Medical Prospectus,3,1st Semester,GE 4120,Elective 3,0.0
-p_grad_man_mn,1,1st Semester,NSG 500,Methods of Researc,3.0
-p_grad_man_mn,1,1st Semester,NSG 600,Elements of Statisti,3.0
-p_grad_man_mn,1,1st Semester,NSG 700,Nursing Ethics,3.0
-p_grad_man_mn,1,1st Semester,NSG 710,,3.0
-p_grad_man_mn,1,1st Semester,NSG 697,Theoretical Founda,3.0
-p_grad_man_mn,1,1st Semester,NSG 698,Clinical Teaching /,3.0
-p_grad_man_mn,1,1st Semester,NSG 699,Seminar in Nursing,3.0
-p_grad_man_mn,1,1st Semester,NSG 701,Curriculum Develo,3.0
-p_grad_man_mn,1,1st Semester,NSG 702,Special Problems in,3.0
-p_grad_man_mn,1,1st Semester,NSG 703,Human Relations in,3.0
-p_grad_man_mn,1,1st Semester,NSG 704,Psychiatric Concept,3.0
-p_grad_man_mn,1,1st Semester,NSG 705,,3.0
-p_grad_man_mn,1,1st Semester,NSG 706,,3.0
-p_grad_man_mn,1,1st Semester,NSG 707,,3.0
-p_grad_man_mn,1,1st Semester,NSG 708,Seminar on Matern,3.0
-p_grad_man_mn,1,1st Semester,MA 300,Management Comm,3.0
-p_grad_man_mn,1,1st Semester,NSG 800,Thesis I,3.0
-p_grad_man_mn,1,1st Semester,NSG 801,Thesis II,3.0
-p_grad_civil,1,2nd Semester,Revised 200,8,0.0
-BSGENBIO,1,1st Semester,BIO 224,3,0.0
-BSGENBIO,1,1st Semester,BIO 224,6,0.0
-BSGENBIO,1,1st Semester,BIO 224,7,0.0
-BSGENBIO,1,1st Semester,PE 2217,,0.0
-BSGENBIO,3,1st Semester,BIO 314,4,0.0
-BSGENBIO,3,1st Semester,BIO 313,6,0.0
-BSGENBIO,3,1st Semester,BIO 313,7,0.0
-BSGENBIO,3,1st Semester,GE 311,8,1.0
-BSGENBIO,3,1st Semester,BIO 314,5,0.0
-BSGENBIO,3,1st Semester,BIO 314,8,0.0
-BSGENBIO,3,1st Semester,BIO 314,9,0.0
-BSGENBIO,3,1st Semester,BIO 325,1,0.0
-BSGENBIO,3,1st Semester,BIO 325,2,0.0
-BSGENBIO,3,1st Semester,GE 121,3,0.0
-BSGENBIO,3,1st Semester,GE 321,9,2.0
-BSGENBIO,4,1st Semester,GE 412,0,3.0
-BSGENBIO,4,1st Semester,ASF 420,4,0.0
-p_grad_masor,1,1st Semester,asor 501,Philosophy of,3.0
-p_grad_masor,1,1st Semester,asor 502,Elements of S,3.0
-p_grad_masor,1,1st Semester,asor 503,Methods of R,3.0
-p_grad_masor,1,1st Semester,asor 504,Mindanao His,3.0
-p_grad_masor,1,1st Semester,asor 505,Advanced Res,3.0
-p_grad_masor,1,1st Semester,asor 506,Gender and D,3.0
-p_grad_masor,1,1st Semester,asor 507,Theories of C,3.0
-p_grad_masor,1,1st Semester,asor 509,Program Man,3.0
-p_grad_masor,1,1st Semester,asor 510,Qualitative Re,3.0
-p_grad_masor,1,1st Semester,asor 511,Gender Theor,3.0
-p_grad_masor,1,1st Semester,asor 512,Women in Hi,3.0
-p_grad_masor,1,1st Semester,asor 513,Population an,3.0
-p_grad_masor,1,1st Semester,asor 514,"Peace, Develo",3.0
-p_grad_masor,1,1st Semester,asor 515,Development,3.0
-p_grad_masor,1,1st Semester,asor 516,"Citizenship, C",3.0
-p_grad_masor,1,1st Semester,asor 520,Philippine Ins,3.0
-p_grad_masor,1,1st Semester,asor 521,Community O,3.0
-p_grad_masor,1,1st Semester,asor 523,Social Anthro,3.0
-p_grad_masor,1,1st Semester,asor 524,Mindanao Eco,3.0
-p_grad_masor,1,1st Semester,asor 525,Sociology of,3.0
-p_grad_masor,1,1st Semester,asor 600,Thesis I,3.0
-p_grad_masor,1,1st Semester,asor 601,Thesis II,3.0
-p_grad_mssocialwork,1,1st Semester,SW 501,Social Issu,3.0
-p_grad_mssocialwork,1,1st Semester,SW 502,Human Be,3.0
-p_grad_mssocialwork,1,1st Semester,SW 503,Social Wo,1.0
-p_grad_mssocialwork,1,1st Semester,SW 504,Social Wo,2.0
-p_grad_mssocialwork,1,1st Semester,SW 505,Social Wo,3.0
-p_grad_mssocialwork,1,1st Semester,SW 506,Social Wo,3.0
-p_grad_mssocialwork,1,1st Semester,SW 510,Social Pla,3.0
-p_grad_mssocialwork,1,1st Semester,SW 511,Social Poli,3.0
-p_grad_mssocialwork,1,1st Semester,SW 521,Theory an,3.0
-p_grad_mssocialwork,1,1st Semester,SW 522,Strategies,3.0
-p_grad_mssocialwork,1,1st Semester,SW 580,Field Instr,1.0
-p_grad_mssocialwork,1,1st Semester,SW 581,Field Instr,2.0
-p_grad_mssocialwork,1,1st Semester,SW 600,Thesis 1 (,3.0
-p_grad_mssocialwork,1,1st Semester,SW 601,Thesis 2 (,3.0
-p_grad_ece,1,2nd Semester,Eng 505,.,0.0
-p_grad_educadmin,1,1st Semester,Educ 101,Phil,3.0
-p_grad_educadmin,1,1st Semester,Educ 102,Elem,3.0
-p_grad_educadmin,1,1st Semester,Educ 103,Met,3.0
-p_grad_educadmin,1,1st Semester,Educ 104,Soci,3.0
-p_grad_educadmin,1,1st Semester,Ad 111,Curr,3.0
-p_grad_educadmin,1,1st Semester,Ad 112,Prin,3.0
-p_grad_educadmin,1,1st Semester,Ad 113,Adm,3.0
-p_grad_educadmin,1,1st Semester,Ad 114,Lega,3.0
-p_grad_educadmin,1,1st Semester,Ad 115,Scho,3.0
-p_grad_educadmin,1,1st Semester,Ad 116,Publ,3.0
-p_grad_educadmin,1,1st Semester,Ad 117,Cont,3.0
-p_grad_educadmin,1,1st Semester,Ad 118,Sem,3.0
-p_grad_educadmin,1,1st Semester,Ad 119,Psyc,3.0
-p_grad_educadmin,1,1st Semester,Ad 120,Adv,3.0
-p_grad_educadmin,1,1st Semester,Educ 500,Thes,3.0
-p_grad_educadmin,1,1st Semester,Educ 501,Thes,3.0
-p grad_MPA Governance,1,2nd Semester,une 201,4,0.0
-p grad_MPA Governance,1,2nd Semester,PA 203,,0.0
-MTRM,1,1st Semester,MTM 601,ATMOSPHERIC SCIENCE,3.0
-MTRM,1,1st Semester,MTM 611,ENVIRONMENTAL ETHIC,3.0
-MTRM,1,1st Semester,MTM 630,GEOGRAPHICAL INFO SY,1.0
-MTRM,1,1st Semester,MTM 621,RISK ASSESSMENT AND,3.0
-MTRM,1,1st Semester,MTM 622,MITIGATION AND ADAPT,3.0
-MTRM,1,1st Semester,MTM 600,ECOSCIENCE,3.0
-MTRM,1,1st Semester,MTM 640,SPECIAL TOPICS/RESEA,3.0
-MTRM,1,1st Semester,MTM 641,RISK MANAGEMENT PLA,6.0
-MTRM,1,1st Semester,MTM 610,CULTURE SOCIETY AND,3.0
-MTRM,1,1st Semester,MTM 620,RESOURCE MANAGEME,3.0
-MTRM,1,1st Semester,MTM 631,GEOGRAPHICAL INFO SY,2.0
-p_grad_economics_0,1,1st Semester,Econ 501,Mac,3.0
-p_grad_economics_0,1,1st Semester,Econ 502,Micr,3.0
-p_grad_economics_0,1,1st Semester,Econ 503,Mat,3.0
-p_grad_economics_0,1,1st Semester,Econ 504,Econ,3.0
-p_grad_economics_0,1,1st Semester,Econ 512,Dev,3.0
-p_grad_economics_0,1,1st Semester,Econ 513,Inter,3.0
-p_grad_economics_0,1,1st Semester,Econ 530,Met,3.0
-p_grad_economics_0,1,1st Semester,Econ 531,Stati,3.0
-p_grad_economics_0,1,1st Semester,Econ 511,Agri,3.0
-p_grad_economics_0,1,1st Semester,Econ 522,Hist,3.0
-p_grad_economics_0,1,1st Semester,Econ 524,Mon,3.0
-p_grad_economics_0,1,1st Semester,Econ 525,Regi,3.0
-p_grad_economics_0,1,1st Semester,Econ 526,Envi,3.0
-p_grad_economics_0,1,1st Semester,Econ 527,Publ,3.0
-p_grad_economics_0,1,1st Semester,Econ 532,Heal,3.0
-p_grad_economics_0,1,1st Semester,Econ 523,Econ,3.0
-p_grad_economics_0,1,1st Semester,Econ 520,Fina,3.0
-p_grad_economics_0,1,1st Semester,Econ 600,Thes,3.0
-p_grad_economics_0,1,1st Semester,Econ 601,Thes,3.0
-p_grad_hrm,1,1st Semester,GB 300,Philosop,0.0
-p_grad_hrm,1,1st Semester,GB 301,Advan,0.0
-p_grad_hrm,1,1st Semester,GB 302,Resea,0.0
-p_grad_hrm,2,1st Semester,DM 601,,0.0
-p_grad_hrm,2,1st Semester,DM 602,,0.0
-p_grad_hrm,2,1st Semester,DM 603,,0.0
-p_grad_hrm,3,1st Semester,GB 901,(Review,0.0
-p_grad_DPA_2003,1,1st Semester,DPA 302,,3.0
-p_grad_philosophy,1,1st Semester,Philo 501,Methods of Research,3.0
-p_grad_philosophy,1,1st Semester,Philo 502,Metaphysics,3.0
-p_grad_philosophy,1,1st Semester,Philo 503,Philosophy of Knowledg,3.0
-p_grad_philosophy,1,1st Semester,Philo 504,Advanced Ethics,3.0
-p_grad_philosophy,1,1st Semester,Philo 505,Ancient Philosophy,3.0
-p_grad_philosophy,1,1st Semester,Philo 506,Medieval Philosophy,3.0
-p_grad_philosophy,1,1st Semester,Philo 507,Modem Philosophy,3.0
-p_grad_philosophy,1,1st Semester,Philo 508,Oriental Philosophy,3.0
-p_grad_philosophy,1,1st Semester,Philo 509,Contemporary Philosoph,3.0
-p_grad_philosophy,1,1st Semester,Philo 510,Social and Political Philo,3.0
-p_grad_philosophy,1,1st Semester,Philo 511,Aesthetics,3.0
-p_grad_philosophy,1,1st Semester,Philo 512,Advanced Philosophy of,3.0
-p_grad_philosophy,1,1st Semester,Philo 513,Philosophy of Science,3.0
-p_grad_philosophy,1,1st Semester,Philo 514,Phenomenology,3.0
-p_grad_philosophy,1,1st Semester,Philo 515,Philosophy of Language,3.0
-p_grad_philosophy,1,1st Semester,Philo 516,Individual Philosopher,3.0
-p_grad_philosophy,1,1st Semester,Philo 517,Post-modernism,3.0
-p_grad_philosophy,1,1st Semester,Philo 518,Existentialism,3.0
-p_grad_philosophy,1,1st Semester,Philo 519,Logic,3.0
-p_grad_philosophy,1,1st Semester,Philo 520,Philosophy of Education,3.0
-p_grad_philosophy,1,1st Semester,Philo 521,Philosophical Perspective,3.0
-p_grad_philosophy,1,1st Semester,Philo 522,Hermeneutics,3.0
-p_grad_philosophy,1,1st Semester,Philo 523,Seminar in Classical and,3.0
-p_grad_philosophy,1,1st Semester,Philo 524,Seminar in Advanced Phi,3.0
-p_grad_philosophy,1,1st Semester,Philo 525,Seminar in the Philosoph,3.0
-p_grad_philosophy,1,1st Semester,Philo 526,Seminar in Anglo-Saxon,3.0
-p_grad_philosophy,1,1st Semester,Philo 527,Seminar in Feminism,3.0
-p_grad_philosophy,1,1st Semester,Philo 528,Seminar in Philosophy of,3.0
-p_grad_philosophy,1,1st Semester,Philo 529,Seminar in Bioethics,3.0
-p_grad_philosophy,1,1st Semester,Philo 530,Seminar in Teaching Phil,3.0
-p_grad_philosophy,1,1st Semester,Philo 531,Thesis I,3.0
-p_grad_philosophy,1,1st Semester,Philo 532,Thesis II,3.0
-New MSIT Curriculum Structure 2014,1,1st Semester,IT 100,ing Fundamenta,3.0
-New MSIT Curriculum Structure 2014,1,1st Semester,IT 210,tures,3.0
-New MSIT Curriculum Structure 2014,1,1st Semester,IT 230,on of Databases,3.0
-New MSIT Curriculum Structure 2014,1,1st Semester,IT 200,ngineering (Pri,3.0
-New MSIT Curriculum Structure 2014,1,1st Semester,IT 220,Organization,3.0
-New MSIT Curriculum Structure 2014,1,1st Semester,IT 240,ing Paradigms,3.0
-New MSIT Curriculum Structure 2014,1,1st Semester,IT 400,mputer Interacti,0.0
-New MSIT Curriculum Structure 2014,1,Summer,IT 501,nt Study I,3.0
-New MSIT Curriculum Structure 2014,2,Summer,IT 444,echnologies (CC,23.0
-New MSIT Curriculum Structure 2014,2,Summer,IT 250,Systems and Info,3.0
-New MSIT Curriculum Structure 2014,2,Summer,IT 440,Seminar I,3.0
-New MSIT Curriculum Structure 2014,2,Summer,IT 448,ms & Technologi,3.0
-New MSIT Curriculum Structure 2014,2,Summer,IT 442,Seminar II,0.0
-New MSIT Curriculum Structure 2014,2,Summer,IT 502,nt Study II,3.0
-AB ENG L,1,1st Semester,ASF 1102,,0.0
-AB ENG L,1,1st Semester,ASF 1000,,0.0
-AB ENG L,1,1st Semester,ASF 1101,,0.0
-AB ENG L,1,1st Semester,GE 1105,,0.0
-AB ENG L,1,1st Semester,GE 1106,,0.0
-AB ENG L,1,1st Semester,GE 1107,,0.0
-AB ENG L,1,1st Semester,GE 1108,,0.0
-AB ENG L,1,1st Semester,GE 1109,,0.0
-AB ENG L,1,1st Semester,PE 1114,,0.0
-AB ENG L,1,1st Semester,Philo 100,0,0.0
-AB ENG L,1,1st Semester,ELS 1130,,0.0
-AB ENG L,1,1st Semester,ELS 1231,,0.0
-AB ENG L,1,1st Semester,Theo 100,0,0.0
-AB ENG L,1,1st Semester,ASF 1203,,0.0
-AB ENG L,1,1st Semester,PE 1215,,0.0
-AB ENG L,1,1st Semester,GE 1210,,0.0
-AB ENG L,1,1st Semester,GE 1211,,0.0
-AB ENG L,1,1st Semester,GE 1213,,0.0
-AB ENG L,1,1st Semester,GE 1212,,0.0
-AB ENG L,1,1st Semester,ELS 1232,,0.0
-AB ENG L,2,1st Semester,GE 3118,,1.0
-AB ENG L,2,1st Semester,PE 2116,,0.0
-AB ENG L,2,1st Semester,FL 1232,,0.0
-AB ENG L,2,1st Semester,ELS 2133,,0.0
-AB ENG L,2,1st Semester,ELS 2134,,0.0
-AB ENG L,2,1st Semester,ELS 2135,,0.0
-AB ENG L,2,1st Semester,ELS 2136,,0.0
-AB ENG L,2,1st Semester,ELS 2137,,0.0
-AB ENG L,2,1st Semester,ELS 2238,,0.0
-AB ENG L,2,1st Semester,ELS 2239,,0.0
-AB ENG L,2,1st Semester,ELS 2240,,0.0
-AB ENG L,2,1st Semester,FL 1333,,0.0
-AB ENG L,2,1st Semester,PE 2217,,0.0
-AB ENG L,2,1st Semester,GE 3219,,2.0
-AB ENG L,2,1st Semester,GE 4120,,3.0
-AB ENG L,2,1st Semester,LIT 2241,,0.0
-AB ENG L,3,1st Semester,ELS 4255,,0.0
-AB ENG L,3,1st Semester,ELS 3142,,0.0
-p_grad_dba,1,1st Semester,GB 300,Philosophy,3.0
-p_grad_dba,1,1st Semester,GB 301,Advance,3.0
-p_grad_dba,1,1st Semester,GB 302,Researc,3.0
-p_grad_dba,1,1st Semester,DBA 401,Marketing,3.0
-p_grad_dba,1,1st Semester,DBA 402,,3.0
-p_grad_dba,1,1st Semester,DBA 403,Financial,3.0
-p_grad_dba,1,1st Semester,GB 901,Review of,6.0
 Bachelor of Science in Social Work,1,1st Semester,ASF 1102,NATIONAL SERVIC,0.0
 Bachelor of Science in Social Work,1,1st Semester,ASF 1000,TARRARIUNPINEG S SOECRIAVLIC F,1.0
 Bachelor of Science in Social Work,1,1st Semester,ASF 1101,ARRUPE SOCIAL F,0.0
@@ -384,6 +115,59 @@ Bachelor of Science in Social Work,3,1st Semester,SOCWK 3250,TRANSFORMATIVE MULT
 Bachelor of Science in Social Work,4,1st Semester,SOCWK 4151,FIELD INSTRUCTION 1,0.0
 Bachelor of Science in Social Work,4,1st Semester,ASF 4204,SENIORS' INTEGRATION,0.0
 Bachelor of Science in Social Work,4,1st Semester,SOCWK 4252,FIELD INSTRUCTION 2,0.0
+p_grad_economics_0,1,1st Semester,Econ 501,Mac,3.0
+p_grad_economics_0,1,1st Semester,Econ 502,Micr,3.0
+p_grad_economics_0,1,1st Semester,Econ 503,Mat,3.0
+p_grad_economics_0,1,1st Semester,Econ 504,Econ,3.0
+p_grad_economics_0,1,1st Semester,Econ 512,Dev,3.0
+p_grad_economics_0,1,1st Semester,Econ 513,Inter,3.0
+p_grad_economics_0,1,1st Semester,Econ 530,Met,3.0
+p_grad_economics_0,1,1st Semester,Econ 531,Stati,3.0
+p_grad_economics_0,1,1st Semester,Econ 511,Agri,3.0
+p_grad_economics_0,1,1st Semester,Econ 522,Hist,3.0
+p_grad_economics_0,1,1st Semester,Econ 524,Mon,3.0
+p_grad_economics_0,1,1st Semester,Econ 525,Regi,3.0
+p_grad_economics_0,1,1st Semester,Econ 526,Envi,3.0
+p_grad_economics_0,1,1st Semester,Econ 527,Publ,3.0
+p_grad_economics_0,1,1st Semester,Econ 532,Heal,3.0
+p_grad_economics_0,1,1st Semester,Econ 523,Econ,3.0
+p_grad_economics_0,1,1st Semester,Econ 520,Fina,3.0
+p_grad_economics_0,1,1st Semester,Econ 600,Thes,3.0
+p_grad_economics_0,1,1st Semester,Econ 601,Thes,3.0
+p_grad_matell,1,1st Semester,LL 201,Theories of Lan,3.0
+p_grad_matell,1,1st Semester,LL 202,Foundations of,3.0
+p_grad_matell,1,1st Semester,LL 203,Evaluation Proc,0.0
+p_grad_matell,1,1st Semester,LL 204,Materials Desig,3.0
+p_grad_matell,1,1st Semester,LL 205,Teaching Literat,3.0
+p_grad_matell,1,1st Semester,LL 206,Teaching Literat,3.0
+p_grad_matell,1,1st Semester,LL 207,Teaching Langu,0.0
+p_grad_matell,1,1st Semester,LL 208,Teaching Langu,0.0
+p_grad_matell,1,1st Semester,LL 210,Interfacing Lang,3.0
+p_grad_matell,1,1st Semester,LL 214,ELLT Practicum,3.0
+p_grad_matell,1,1st Semester,LL 218,Sociolinguistics,3.0
+p_grad_matell,1,1st Semester,LL 219,Literary Theory,3.0
+p_grad_matell,1,1st Semester,LL 220,British Literatur,3.0
+p_grad_matell,1,1st Semester,LL 221,American Litera,3.0
+p_grad_matell,1,1st Semester,LL 222,Asian Literature,3.0
+p_grad_matell,1,1st Semester,LL 223,Latin American,3.0
+p_grad_man_mn,1,1st Semester,NSG 500,Methods of Researc,3.0
+p_grad_man_mn,1,1st Semester,NSG 600,Elements of Statisti,3.0
+p_grad_man_mn,1,1st Semester,NSG 700,Nursing Ethics,3.0
+p_grad_man_mn,1,1st Semester,NSG 710,,3.0
+p_grad_man_mn,1,1st Semester,NSG 697,Theoretical Founda,3.0
+p_grad_man_mn,1,1st Semester,NSG 698,Clinical Teaching /,3.0
+p_grad_man_mn,1,1st Semester,NSG 699,Seminar in Nursing,3.0
+p_grad_man_mn,1,1st Semester,NSG 701,Curriculum Develo,3.0
+p_grad_man_mn,1,1st Semester,NSG 702,Special Problems in,3.0
+p_grad_man_mn,1,1st Semester,NSG 703,Human Relations in,3.0
+p_grad_man_mn,1,1st Semester,NSG 704,Psychiatric Concept,3.0
+p_grad_man_mn,1,1st Semester,NSG 705,,3.0
+p_grad_man_mn,1,1st Semester,NSG 706,,3.0
+p_grad_man_mn,1,1st Semester,NSG 707,,3.0
+p_grad_man_mn,1,1st Semester,NSG 708,Seminar on Matern,3.0
+p_grad_man_mn,1,1st Semester,MA 300,Management Comm,3.0
+p_grad_man_mn,1,1st Semester,NSG 800,Thesis I,3.0
+p_grad_man_mn,1,1st Semester,NSG 801,Thesis II,3.0
 MS SW,1,1st Semester,SW 501,,3.0
 MS SW,1,1st Semester,SW 521,,3.0
 MS SW,1,1st Semester,SW 502,,3.0
@@ -399,26 +183,38 @@ MS SW,2,1st Semester,SW 581,,2.0
 MS SW,2,1st Semester,SW 580,,3.0
 MS SW,3,1st Semester,SW 600,,1.0
 MS SW,3,1st Semester,SW 601,,2.0
-p_grad_mpa,1,1st Semester,RE 224,Ignatian Leadership,3.0
-p_grad_mpa,1,1st Semester,PA 300,Elements of Statistic,3.0
-p_grad_mpa,1,1st Semester,PA 301,Theory and Practice,3.0
-p_grad_mpa,1,1st Semester,PA 302,Research Methods,3.0
-p_grad_mpa,1,1st Semester,MA 300,Management Comm,3.0
-p_grad_mpa,1,1st Semester,MA 302,Administrative Proc,3.0
-p_grad_mpa,1,1st Semester,PA 906,Quantitative Manag,3.0
-p_grad_mpa,1,1st Semester,PA 304,Public Organization,3.0
-p_grad_mpa,1,1st Semester,PA 307,Human Resource De,3.0
-p_grad_mpa,1,1st Semester,PA 308,Public Fiscal Admin,3.0
-p_grad_mpa,1,1st Semester,PA 309,Local Government &,3.0
-p_grad_mpa,1,1st Semester,PA 313,Public Policy Makin,3.0
-p_grad_mpa,1,1st Semester,PA 305,Management Planni,3.0
-p_grad_mpa,1,1st Semester,MA 301,Management Inform,3.0
-p_grad_mpa,1,1st Semester,PA 315,Project Planning and,3.0
-p_grad_mpa,1,1st Semester,PA 319,Special Problems in,3.0
-p_grad_mpa,1,1st Semester,PA 320,Public Relations,3.0
-p_grad_mpa,1,1st Semester,PA 321,Government Ethics,3.0
-p_grad_mpa,1,1st Semester,PA 400,Research Proposal,3.0
-p_grad_mpa,1,1st Semester,PA 401,Research Project,3.0
+MADSCurriculum2018,1,1st Semester,MADS 501,hy of Develop,3.0
+MADSCurriculum2018,1,1st Semester,MADS 502,atistics,3.0
+MADSCurriculum2018,1,1st Semester,MADS 503,s of Social Rese,3.0
+MADSCurriculum2018,1,1st Semester,MADS 504,ment Theory a,3.0
+MADSCurriculum2018,1,1st Semester,MADS 505,ve Research,3.0
+MADSCurriculum2018,1,1st Semester,MADS 506,"o History, Cult",3.0
+MADSCurriculum2018,1,1st Semester,MADS 507,and Developme,3.0
+MADSCurriculum2018,1,1st Semester,MADS 508,of Social-Cultu,3.0
+MADSCurriculum2018,1,1st Semester,MADS 509,Management,3.0
+MADSCurriculum2018,1,1st Semester,MADS 510,on and Develo,3.0
+MADSCurriculum2018,1,1st Semester,MADS 511,evelopment an,3.0
+MADSCurriculum2018,1,1st Semester,MADS 512,ment Commun,3.0
+MADSCurriculum2018,1,1st Semester,MADS 513,in Community,3.0
+MADSCurriculum2018,1,1st Semester,MADS 514,tory Developm,3.0
+MADSCurriculum2018,1,1st Semester,MADS 515,Economy,3.0
+MADSCurriculum2018,1,1st Semester,MADS 516,ble Developme,3.0
+MADSCurriculum2018,1,1st Semester,MADS 517,opics in Philipp,3.0
+MADSCurriculum2018,1,1st Semester,MADS 518,y of Developm,3.0
+MADSCurriculum2018,1,1st Semester,MADS 519,ment Economi,3.0
+MADSCurriculum2018,1,1st Semester,MADS 520,mental Manage,3.0
+MADSCurriculum2018,1,1st Semester,MADS 600,Proposal),3.0
+MADSCurriculum2018,1,1st Semester,MADS 601,(Final),3.0
+p_grad_dba,1,1st Semester,GB 300,Philosophy,3.0
+p_grad_dba,1,1st Semester,GB 301,Advance,3.0
+p_grad_dba,1,1st Semester,GB 302,Researc,3.0
+p_grad_dba,1,1st Semester,DBA 401,Marketing,3.0
+p_grad_dba,1,1st Semester,DBA 402,,3.0
+p_grad_dba,1,1st Semester,DBA 403,Financial,3.0
+p_grad_dba,1,1st Semester,GB 901,Review of,6.0
+p grad_MPA Governance,1,2nd Semester,une 201,4,0.0
+p grad_MPA Governance,1,2nd Semester,PA 203,,0.0
+p_grad_compeng,1,2nd Semester,MEng 505,.,0.0
 p_grad_mspsychology,1,1st Semester,sy 601,,0.0
 p_grad_mspsychology,1,1st Semester,sy 602,,0.0
 p_grad_mspsychology,1,1st Semester,sy 603,,0.0
@@ -442,49 +238,131 @@ p_grad_mspsychology,1,1st Semester,sy 620,P,0.0
 p_grad_mspsychology,1,1st Semester,sy 621,P,0.0
 p_grad_mspsychology,1,1st Semester,sy 700,T,0.0
 p_grad_mspsychology,1,1st Semester,sy 701,T,0.0
-MADSCurriculum2018,1,1st Semester,MADS 501,hy of Develop,3.0
-MADSCurriculum2018,1,1st Semester,MADS 502,atistics,3.0
-MADSCurriculum2018,1,1st Semester,MADS 503,s of Social Rese,3.0
-MADSCurriculum2018,1,1st Semester,MADS 504,ment Theory a,3.0
-MADSCurriculum2018,1,1st Semester,MADS 505,ve Research,3.0
-MADSCurriculum2018,1,1st Semester,MADS 506,"o History, Cult",3.0
-MADSCurriculum2018,1,1st Semester,MADS 507,and Developme,3.0
-MADSCurriculum2018,1,1st Semester,MADS 508,of Social-Cultu,3.0
-MADSCurriculum2018,1,1st Semester,MADS 509,Management,3.0
-MADSCurriculum2018,1,1st Semester,MADS 510,on and Develo,3.0
-MADSCurriculum2018,1,1st Semester,MADS 511,evelopment an,3.0
-MADSCurriculum2018,1,1st Semester,MADS 512,ment Commun,3.0
-MADSCurriculum2018,1,1st Semester,MADS 513,in Community,3.0
-MADSCurriculum2018,1,1st Semester,MADS 514,tory Developm,3.0
-MADSCurriculum2018,1,1st Semester,MADS 515,Economy,3.0
-MADSCurriculum2018,1,1st Semester,MADS 516,ble Developme,3.0
-MADSCurriculum2018,1,1st Semester,MADS 517,opics in Philipp,3.0
-MADSCurriculum2018,1,1st Semester,MADS 518,y of Developm,3.0
-MADSCurriculum2018,1,1st Semester,MADS 519,ment Economi,3.0
-MADSCurriculum2018,1,1st Semester,MADS 520,mental Manage,3.0
-MADSCurriculum2018,1,1st Semester,MADS 600,Proposal),3.0
-MADSCurriculum2018,1,1st Semester,MADS 601,(Final),3.0
-p_grad_PhD_Theology,1,1st Semester,Theo 600,ed Research,0.0
-p_grad_PhD_Theology,1,1st Semester,Theo 610,ed Statistic,0.0
-p_grad_PhD_Theology,1,1st Semester,Philo 251,inism,0.0
-p_grad_PhD_Theology,1,1st Semester,Philo 252,vanced Phil,0.0
-p_grad_PhD_Theology,1,1st Semester,Philo 253,vanced Phil,0.0
-p_grad_PhD_Theology,1,1st Semester,Theo 620,anon Law on,0.0
-p_grad_PhD_Theology,1,1st Semester,Canon 1055,The norms r,0.0
-p_grad_PhD_Theology,1,1st Semester,Theo 630,alized Liturgy,0.0
-p_grad_PhD_Theology,1,1st Semester,Theo 670,Anthropology,0.0
-p_grad_PhD_Theology,1,1st Semester,Theo 680,achings of the Ch,0.0
-p_grad_PhD_Theology,1,1st Semester,Theo 640,of Inculturation,0.0
-p_grad_PhD_Theology,1,1st Semester,Theo 650,orary Issues in M,0.0
-p_grad_PhD_Theology,1,1st Semester,Theo 651,eology of Hu,0.0
-p_grad_PhD_Theology,1,1st Semester,Theo 652,ues in Femin,0.0
-p_grad_PhD_Theology,1,1st Semester,THEO 611,TIN GRAMM,1.0
-p_grad_PhD_Theology,1,1st Semester,THEO 612,TIN GRAMM,2.0
-p_grad_PhD_Theology,1,1st Semester,Theo 603a,Writing,3.0
-p_grad_PhD_Theology,1,1st Semester,Theo 603b,Writing,3.0
-p_grad_PhD_Theology,1,1st Semester,Theo 603c,Writing,3.0
-p_grad_PhD_Theology,1,1st Semester,Theo 603d,Writing,3.0
-p_grad_compeng,1,2nd Semester,MEng 505,.,0.0
+p_grad_educadmin,1,1st Semester,Educ 101,Phil,3.0
+p_grad_educadmin,1,1st Semester,Educ 102,Elem,3.0
+p_grad_educadmin,1,1st Semester,Educ 103,Met,3.0
+p_grad_educadmin,1,1st Semester,Educ 104,Soci,3.0
+p_grad_educadmin,1,1st Semester,Ad 111,Curr,3.0
+p_grad_educadmin,1,1st Semester,Ad 112,Prin,3.0
+p_grad_educadmin,1,1st Semester,Ad 113,Adm,3.0
+p_grad_educadmin,1,1st Semester,Ad 114,Lega,3.0
+p_grad_educadmin,1,1st Semester,Ad 115,Scho,3.0
+p_grad_educadmin,1,1st Semester,Ad 116,Publ,3.0
+p_grad_educadmin,1,1st Semester,Ad 117,Cont,3.0
+p_grad_educadmin,1,1st Semester,Ad 118,Sem,3.0
+p_grad_educadmin,1,1st Semester,Ad 119,Psyc,3.0
+p_grad_educadmin,1,1st Semester,Ad 120,Adv,3.0
+p_grad_educadmin,1,1st Semester,Educ 500,Thes,3.0
+p_grad_educadmin,1,1st Semester,Educ 501,Thes,3.0
+p_grad_ece,1,2nd Semester,Eng 505,.,0.0
+MTRM,1,1st Semester,MTM 601,ATMOSPHERIC SCIENCE,3.0
+MTRM,1,1st Semester,MTM 611,ENVIRONMENTAL ETHIC,3.0
+MTRM,1,1st Semester,MTM 630,GEOGRAPHICAL INFO SY,1.0
+MTRM,1,1st Semester,MTM 621,RISK ASSESSMENT AND,3.0
+MTRM,1,1st Semester,MTM 622,MITIGATION AND ADAPT,3.0
+MTRM,1,1st Semester,MTM 600,ECOSCIENCE,3.0
+MTRM,1,1st Semester,MTM 640,SPECIAL TOPICS/RESEA,3.0
+MTRM,1,1st Semester,MTM 641,RISK MANAGEMENT PLA,6.0
+MTRM,1,1st Semester,MTM 610,CULTURE SOCIETY AND,3.0
+MTRM,1,1st Semester,MTM 620,RESOURCE MANAGEME,3.0
+MTRM,1,1st Semester,MTM 631,GEOGRAPHICAL INFO SY,2.0
+BS Biology Medical Prospectus,1,1st Semester,Bio 1130,General Botany L,0.0
+BS Biology Medical Prospectus,1,1st Semester,Bio 1131,General Botany L,0.0
+BS Biology Medical Prospectus,1,1st Semester,Bio 1132,General Zoology,0.0
+BS Biology Medical Prospectus,1,1st Semester,Bio 1133,General Zoology,0.0
+BS Biology Medical Prospectus,1,1st Semester,Chem 1041,Biology lecture),0.0
+BS Biology Medical Prospectus,1,1st Semester,Chem 1042,Biology laborator,0.0
+BS Biology Medical Prospectus,1,1st Semester,GE 1105,Understanding th,0.0
+BS Biology Medical Prospectus,1,1st Semester,Philo 1000,Philosophy,0.0
+BS Biology Medical Prospectus,1,1st Semester,ASF 1000,Arrupe Social For,0.0
+BS Biology Medical Prospectus,1,1st Semester,ASF 1101,Arrupe Social For,1.0
+BS Biology Medical Prospectus,1,1st Semester,PE 1114,PATH-FIT I,0.0
+BS Biology Medical Prospectus,1,1st Semester,Chem 2065,Chemical Biology,0.0
+BS Biology Medical Prospectus,1,1st Semester,Chem 2066,Chemical Biology,0.0
+BS Biology Medical Prospectus,1,1st Semester,Bio 2138,Evolutionary Biol,0.0
+BS Biology Medical Prospectus,1,1st Semester,Bio 2139,Evolutionary Biol,0.0
+BS Biology Medical Prospectus,1,1st Semester,Math 2176,Statistical Biolog,0.0
+BS Biology Medical Prospectus,1,1st Semester,GE 1109,Ethics,0.0
+BS Biology Medical Prospectus,1,1st Semester,GE 1106,Purposive Comm,0.0
+BS Biology Medical Prospectus,1,1st Semester,GE 1108,Mathematics in t,0.0
+BS Biology Medical Prospectus,1,1st Semester,Engl 2165,Technical Writing,0.0
+BS Biology Medical Prospectus,1,1st Semester,PE 2116,PATH-FIT III,0.0
+BS Biology Medical Prospectus,1,1st Semester,Bio 3144,Cell and Molecul,0.0
+BS Biology Medical Prospectus,1,1st Semester,Bio 3145,Cell and Molecul,0.0
+BS Biology Medical Prospectus,1,1st Semester,Sc 3154,Human Gross An,0.0
+BS Biology Medical Prospectus,1,1st Semester,SC 3155,Human Gross An,0.0
+BS Biology Medical Prospectus,1,1st Semester,Bio 3136,General Physiolo,0.0
+BS Biology Medical Prospectus,1,1st Semester,Bio 3137,General Physiolo,0.0
+BS Biology Medical Prospectus,1,1st Semester,Elec 3150,Free Elective 1,0.0
+BS Biology Medical Prospectus,1,1st Semester,GE 3118,Elective 1,0.0
+BS Biology Medical Prospectus,1,1st Semester,Prac 3370,Bio Practicum (E,0.0
+BS Biology Medical Prospectus,3,1st Semester,SC 4158,Medical Parasitol,0.0
+BS Biology Medical Prospectus,3,1st Semester,SC 4159,Medical Parasitol,0.0
+BS Biology Medical Prospectus,3,1st Semester,Bio 4148,Biophysics Lec,0.0
+BS Biology Medical Prospectus,3,1st Semester,Bio 4149,Biophysics Lab,0.0
+BS Biology Medical Prospectus,3,1st Semester,SP 4161,Special Problems,2.0
+BS Biology Medical Prospectus,3,1st Semester,GE 4120,Elective 3,0.0
+p_grad_masor,1,1st Semester,asor 501,Philosophy of,3.0
+p_grad_masor,1,1st Semester,asor 502,Elements of S,3.0
+p_grad_masor,1,1st Semester,asor 503,Methods of R,3.0
+p_grad_masor,1,1st Semester,asor 504,Mindanao His,3.0
+p_grad_masor,1,1st Semester,asor 505,Advanced Res,3.0
+p_grad_masor,1,1st Semester,asor 506,Gender and D,3.0
+p_grad_masor,1,1st Semester,asor 507,Theories of C,3.0
+p_grad_masor,1,1st Semester,asor 509,Program Man,3.0
+p_grad_masor,1,1st Semester,asor 510,Qualitative Re,3.0
+p_grad_masor,1,1st Semester,asor 511,Gender Theor,3.0
+p_grad_masor,1,1st Semester,asor 512,Women in Hi,3.0
+p_grad_masor,1,1st Semester,asor 513,Population an,3.0
+p_grad_masor,1,1st Semester,asor 514,"Peace, Develo",3.0
+p_grad_masor,1,1st Semester,asor 515,Development,3.0
+p_grad_masor,1,1st Semester,asor 516,"Citizenship, C",3.0
+p_grad_masor,1,1st Semester,asor 520,Philippine Ins,3.0
+p_grad_masor,1,1st Semester,asor 521,Community O,3.0
+p_grad_masor,1,1st Semester,asor 523,Social Anthro,3.0
+p_grad_masor,1,1st Semester,asor 524,Mindanao Eco,3.0
+p_grad_masor,1,1st Semester,asor 525,Sociology of,3.0
+p_grad_masor,1,1st Semester,asor 600,Thesis I,3.0
+p_grad_masor,1,1st Semester,asor 601,Thesis II,3.0
+AB ENG L,1,1st Semester,ASF 1102,,0.0
+AB ENG L,1,1st Semester,ASF 1000,,0.0
+AB ENG L,1,1st Semester,ASF 1101,,0.0
+AB ENG L,1,1st Semester,GE 1105,,0.0
+AB ENG L,1,1st Semester,GE 1106,,0.0
+AB ENG L,1,1st Semester,GE 1107,,0.0
+AB ENG L,1,1st Semester,GE 1108,,0.0
+AB ENG L,1,1st Semester,GE 1109,,0.0
+AB ENG L,1,1st Semester,PE 1114,,0.0
+AB ENG L,1,1st Semester,Philo 100,0,0.0
+AB ENG L,1,1st Semester,ELS 1130,,0.0
+AB ENG L,1,1st Semester,ELS 1231,,0.0
+AB ENG L,1,1st Semester,Theo 100,0,0.0
+AB ENG L,1,1st Semester,ASF 1203,,0.0
+AB ENG L,1,1st Semester,PE 1215,,0.0
+AB ENG L,1,1st Semester,GE 1210,,0.0
+AB ENG L,1,1st Semester,GE 1211,,0.0
+AB ENG L,1,1st Semester,GE 1213,,0.0
+AB ENG L,1,1st Semester,GE 1212,,0.0
+AB ENG L,1,1st Semester,ELS 1232,,0.0
+AB ENG L,2,1st Semester,GE 3118,,1.0
+AB ENG L,2,1st Semester,PE 2116,,0.0
+AB ENG L,2,1st Semester,FL 1232,,0.0
+AB ENG L,2,1st Semester,ELS 2133,,0.0
+AB ENG L,2,1st Semester,ELS 2134,,0.0
+AB ENG L,2,1st Semester,ELS 2135,,0.0
+AB ENG L,2,1st Semester,ELS 2136,,0.0
+AB ENG L,2,1st Semester,ELS 2137,,0.0
+AB ENG L,2,1st Semester,ELS 2238,,0.0
+AB ENG L,2,1st Semester,ELS 2239,,0.0
+AB ENG L,2,1st Semester,ELS 2240,,0.0
+AB ENG L,2,1st Semester,FL 1333,,0.0
+AB ENG L,2,1st Semester,PE 2217,,0.0
+AB ENG L,2,1st Semester,GE 3219,,2.0
+AB ENG L,2,1st Semester,GE 4120,,3.0
+AB ENG L,2,1st Semester,LIT 2241,,0.0
+AB ENG L,3,1st Semester,ELS 4255,,0.0
+AB ENG L,3,1st Semester,ELS 3142,,0.0
+p_grad_civil,1,2nd Semester,Revised 200,8,0.0
 BS ELECTRNCS,3,1st Semester,GE 3118,,1.0
 BS ELECTRNCS,3,1st Semester,ECE 313,3,0.0
 BS ELECTRNCS,3,1st Semester,ECE 313,4,0.0
@@ -521,3 +399,125 @@ BS ELECTRNCS,4,1st Semester,ECE 425,9,0.0
 BS ELECTRNCS,4,1st Semester,ECE 426,0,2.0
 BS ELECTRNCS,4,1st Semester,ECE 426,1,2.0
 BS ELECTRNCS,4,1st Semester,ASF 4204,,0.0
+p_grad_mssocialwork,1,1st Semester,SW 501,Social Issu,3.0
+p_grad_mssocialwork,1,1st Semester,SW 502,Human Be,3.0
+p_grad_mssocialwork,1,1st Semester,SW 503,Social Wo,1.0
+p_grad_mssocialwork,1,1st Semester,SW 504,Social Wo,2.0
+p_grad_mssocialwork,1,1st Semester,SW 505,Social Wo,3.0
+p_grad_mssocialwork,1,1st Semester,SW 506,Social Wo,3.0
+p_grad_mssocialwork,1,1st Semester,SW 510,Social Pla,3.0
+p_grad_mssocialwork,1,1st Semester,SW 511,Social Poli,3.0
+p_grad_mssocialwork,1,1st Semester,SW 521,Theory an,3.0
+p_grad_mssocialwork,1,1st Semester,SW 522,Strategies,3.0
+p_grad_mssocialwork,1,1st Semester,SW 580,Field Instr,1.0
+p_grad_mssocialwork,1,1st Semester,SW 581,Field Instr,2.0
+p_grad_mssocialwork,1,1st Semester,SW 600,Thesis 1 (,3.0
+p_grad_mssocialwork,1,1st Semester,SW 601,Thesis 2 (,3.0
+p_grad_educ,1,1st Semester,PhED 601,Advanc,3.0
+p_grad_educ,1,1st Semester,PhED 602,Advanc,3.0
+p_grad_educ,1,1st Semester,PhED 603,Educati,3.0
+p_grad_educ,1,1st Semester,PhED 604,Statisti,3.0
+p_grad_educ,1,1st Semester,PhED 605,Educati,3.0
+p_grad_educ,1,1st Semester,PhED 606,Educati,3.0
+p_grad_educ,1,1st Semester,PhED 607,Analysi,3.0
+p_grad_educ,1,1st Semester,PhED 608,Manage,3.0
+p_grad_educ,1,1st Semester,PhED 609,Admini,3.0
+p_grad_educ,1,1st Semester,PhED 610,Govern,3.0
+p_grad_educ,1,1st Semester,PhED 611,Instruct,3.0
+p_grad_educ,1,1st Semester,PhED 612,Personn,3.0
+p_grad_educ,1,1st Semester,PhED 613,Social,3.0
+p_grad_educ,1,1st Semester,PhED 614,Admini,3.0
+p_grad_educ,1,1st Semester,PhED 615,Compa,3.0
+p_grad_educ,1,1st Semester,PhED 616,Educati,3.0
+p_grad_educ,1,1st Semester,PhED 617,Semina,3.0
+p_grad_educ,1,1st Semester,PhED 618,Semina,3.0
+p_grad_educ,1,1st Semester,PhED 700,Dissert,6.0
+p_grad_educ,1,1st Semester,PhED 701,Dissert,6.0
+p_grad_MPA APEX,1,1st Semester,RE 224,Ignatian Leadership,0.0
+p_grad_MPA APEX,1,1st Semester,MA 300,Management Comm,0.0
+p_grad_MPA APEX,1,1st Semester,PA 100,"Leadership, Ethics",0.0
+p_grad_MPA APEX,1,1st Semester,PA 101,Statistics in Public,0.0
+p_grad_MPA APEX,1,1st Semester,PA 402,International Public,0.0
+p_grad_MPA APEX,1,1st Semester,PA 203,Public Strategic Ma,0.0
+p_grad_hrm,1,1st Semester,GB 300,Philosop,0.0
+p_grad_hrm,1,1st Semester,GB 301,Advan,0.0
+p_grad_hrm,1,1st Semester,GB 302,Resea,0.0
+p_grad_hrm,2,1st Semester,DM 601,,0.0
+p_grad_hrm,2,1st Semester,DM 602,,0.0
+p_grad_hrm,2,1st Semester,DM 603,,0.0
+p_grad_hrm,3,1st Semester,GB 901,(Review,0.0
+New MSIT Curriculum Structure 2014,1,1st Semester,IT 100,ing Fundamenta,3.0
+New MSIT Curriculum Structure 2014,1,1st Semester,IT 210,tures,3.0
+New MSIT Curriculum Structure 2014,1,1st Semester,IT 230,on of Databases,3.0
+New MSIT Curriculum Structure 2014,1,1st Semester,IT 200,ngineering (Pri,3.0
+New MSIT Curriculum Structure 2014,1,1st Semester,IT 220,Organization,3.0
+New MSIT Curriculum Structure 2014,1,1st Semester,IT 240,ing Paradigms,3.0
+New MSIT Curriculum Structure 2014,1,1st Semester,IT 400,mputer Interacti,0.0
+New MSIT Curriculum Structure 2014,1,Summer,IT 501,nt Study I,3.0
+New MSIT Curriculum Structure 2014,2,Summer,IT 444,echnologies (CC,23.0
+New MSIT Curriculum Structure 2014,2,Summer,IT 250,Systems and Info,3.0
+New MSIT Curriculum Structure 2014,2,Summer,IT 440,Seminar I,3.0
+New MSIT Curriculum Structure 2014,2,Summer,IT 448,ms & Technologi,3.0
+New MSIT Curriculum Structure 2014,2,Summer,IT 442,Seminar II,0.0
+New MSIT Curriculum Structure 2014,2,Summer,IT 502,nt Study II,3.0
+Course Prospectus MA Anthro_2020,1,2nd Semester,TH 524,Political an,0.0
+Course Prospectus MA Anthro_2020,1,2nd Semester,HH 5511,QQuuaalliittaattiivvee,0.0
+Course Prospectus MA Anthro_2020,1,2nd Semester,TH 524,Political an,0.0
+BSGENBIO,1,1st Semester,BIO 224,3,0.0
+BSGENBIO,1,1st Semester,BIO 224,6,0.0
+BSGENBIO,1,1st Semester,BIO 224,7,0.0
+BSGENBIO,1,1st Semester,PE 2217,,0.0
+BSGENBIO,3,1st Semester,BIO 314,4,0.0
+BSGENBIO,3,1st Semester,BIO 313,6,0.0
+BSGENBIO,3,1st Semester,BIO 313,7,0.0
+BSGENBIO,3,1st Semester,GE 311,8,1.0
+BSGENBIO,3,1st Semester,BIO 314,5,0.0
+BSGENBIO,3,1st Semester,BIO 314,8,0.0
+BSGENBIO,3,1st Semester,BIO 314,9,0.0
+BSGENBIO,3,1st Semester,BIO 325,1,0.0
+BSGENBIO,3,1st Semester,BIO 325,2,0.0
+BSGENBIO,3,1st Semester,GE 121,3,0.0
+BSGENBIO,3,1st Semester,GE 321,9,2.0
+BSGENBIO,4,1st Semester,GE 412,0,3.0
+BSGENBIO,4,1st Semester,ASF 420,4,0.0
+p_grad_PhD_Theology,1,1st Semester,Theo 600,ed Research,0.0
+p_grad_PhD_Theology,1,1st Semester,Theo 610,ed Statistic,0.0
+p_grad_PhD_Theology,1,1st Semester,Philo 251,inism,0.0
+p_grad_PhD_Theology,1,1st Semester,Philo 252,vanced Phil,0.0
+p_grad_PhD_Theology,1,1st Semester,Philo 253,vanced Phil,0.0
+p_grad_PhD_Theology,1,1st Semester,Theo 620,anon Law on,0.0
+p_grad_PhD_Theology,1,1st Semester,Canon 1055,The norms r,0.0
+p_grad_PhD_Theology,1,1st Semester,Theo 630,alized Liturgy,0.0
+p_grad_PhD_Theology,1,1st Semester,Theo 670,Anthropology,0.0
+p_grad_PhD_Theology,1,1st Semester,Theo 680,achings of the Ch,0.0
+p_grad_PhD_Theology,1,1st Semester,Theo 640,of Inculturation,0.0
+p_grad_PhD_Theology,1,1st Semester,Theo 650,orary Issues in M,0.0
+p_grad_PhD_Theology,1,1st Semester,Theo 651,eology of Hu,0.0
+p_grad_PhD_Theology,1,1st Semester,Theo 652,ues in Femin,0.0
+p_grad_PhD_Theology,1,1st Semester,THEO 611,TIN GRAMM,1.0
+p_grad_PhD_Theology,1,1st Semester,THEO 612,TIN GRAMM,2.0
+p_grad_PhD_Theology,1,1st Semester,Theo 603a,Writing,3.0
+p_grad_PhD_Theology,1,1st Semester,Theo 603b,Writing,3.0
+p_grad_PhD_Theology,1,1st Semester,Theo 603c,Writing,3.0
+p_grad_PhD_Theology,1,1st Semester,Theo 603d,Writing,3.0
+p_grad_DPA_2003,1,1st Semester,DPA 302,,3.0
+p_grad_mpa,1,1st Semester,RE 224,Ignatian Leadership,3.0
+p_grad_mpa,1,1st Semester,PA 300,Elements of Statistic,3.0
+p_grad_mpa,1,1st Semester,PA 301,Theory and Practice,3.0
+p_grad_mpa,1,1st Semester,PA 302,Research Methods,3.0
+p_grad_mpa,1,1st Semester,MA 300,Management Comm,3.0
+p_grad_mpa,1,1st Semester,MA 302,Administrative Proc,3.0
+p_grad_mpa,1,1st Semester,PA 906,Quantitative Manag,3.0
+p_grad_mpa,1,1st Semester,PA 304,Public Organization,3.0
+p_grad_mpa,1,1st Semester,PA 307,Human Resource De,3.0
+p_grad_mpa,1,1st Semester,PA 308,Public Fiscal Admin,3.0
+p_grad_mpa,1,1st Semester,PA 309,Local Government &,3.0
+p_grad_mpa,1,1st Semester,PA 313,Public Policy Makin,3.0
+p_grad_mpa,1,1st Semester,PA 305,Management Planni,3.0
+p_grad_mpa,1,1st Semester,MA 301,Management Inform,3.0
+p_grad_mpa,1,1st Semester,PA 315,Project Planning and,3.0
+p_grad_mpa,1,1st Semester,PA 319,Special Problems in,3.0
+p_grad_mpa,1,1st Semester,PA 320,Public Relations,3.0
+p_grad_mpa,1,1st Semester,PA 321,Government Ethics,3.0
+p_grad_mpa,1,1st Semester,PA 400,Research Proposal,3.0
+p_grad_mpa,1,1st Semester,PA 401,Research Project,3.0
