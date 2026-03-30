@@ -1,9 +1,9 @@
 name: AdDU Curriculum Scraper
 
 on:
-  workflow_dispatch:      # Allows manual trigger
+  workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'   # Runs every 6 hours
+    - cron: '0 */6 * * *'
 
 permissions:
   contents: write
@@ -11,37 +11,37 @@ permissions:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    
+
     env:
       # Supabase integration
-      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_INGEST_ENDPOINT: ${{ secrets.SUPABASE_INGEST_ENDPOINT }}
       DATA_INGEST_TOKEN: ${{ secrets.DATA_INGEST_TOKEN }}
-      SUPABASE_CLIENT_BATCH_SIZE: ${{ secrets.SUPABASE_CLIENT_BATCH_SIZE || '2000' }}
-      
+      SUPABASE_CLIENT_BATCH_SIZE: ${{ vars.SUPABASE_CLIENT_BATCH_SIZE || '2000' }}
+
       # Google Sheets integration
       GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
       SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
-      
+
       # Scraper configuration
-      CURRICULUM_CONCURRENCY: ${{ secrets.CURRICULUM_CONCURRENCY || '2' }}
-      CURRICULUM_DELAY_MS: ${{ secrets.CURRICULUM_DELAY_MS || '100' }}
-    
+      CURRICULUM_CONCURRENCY: ${{ vars.CURRICULUM_CONCURRENCY || '2' }}
+      CURRICULUM_DELAY_MS: ${{ vars.CURRICULUM_DELAY_MS || '100' }}
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      
-      - name: Set up Python
-        uses: actions/setup-python@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.11'
-      
+          node-version: '20'
+          cache: 'npm'
+
       - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
-      
+        run: npm ci
+
       - name: Run Scraper
-        run: python main_scraper.py
-      
+        run: npm run scrape
+
       - name: Upload CSV Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -49,11 +49,12 @@ jobs:
           path: |
             addu_curriculum_database.csv
             addu_curriculum_aisis.csv
+            data/curriculum.db
           retention-days: 90
-      
-      - name: Commit and Push Results (Optional)
+
+      - name: Commit and Push Results
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add -A
+          git add addu_curriculum_database.csv addu_curriculum_aisis.csv data/baseline.json
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update curriculum database [automated]" && git push)

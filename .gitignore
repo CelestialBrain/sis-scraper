@@ -54,6 +54,11 @@ node_modules/
 .env
 .env.local
 
+# Service account keys (secrets)
+google-sa-key.json
+*-sa-key.json
+*.credentials.json
+
 # Test coverage
 coverage/
 .nyc_output/
