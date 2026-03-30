@@ -22,16 +22,15 @@ export function initDatabase(dbPath: string): Database.Database {
   db.pragma('foreign_keys = ON');
   db.pragma('journal_mode = WAL');
 
-  // Create tables if they don't exist
-  db.exec(SCHEMA_SQL);
-
-  // Clear existing data for a clean scrape
+  // Drop and recreate all tables for a clean scrape
+  // (also handles schema migrations like column renames)
   db.exec(`
-    DELETE FROM curriculum_course;
-    DELETE FROM course;
-    DELETE FROM degree_program;
-    DELETE FROM department;
+    DROP TABLE IF EXISTS curriculum_course;
+    DROP TABLE IF EXISTS course;
+    DROP TABLE IF EXISTS degree_program;
+    DROP TABLE IF EXISTS department;
   `);
+  db.exec(SCHEMA_SQL);
 
   logger.info('DB', `Initialized: ${dbPath}`);
   return db;

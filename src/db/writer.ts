@@ -163,12 +163,12 @@ export function writeParsedData(courses: ParsedCourse[]): {
   `);
 
   const insertCourse = db.prepare(`
-    INSERT OR IGNORE INTO course (course_code, title, unit, department_id)
+    INSERT OR IGNORE INTO course (course_code, title, units, department_id)
     VALUES (?, ?, ?, ?)
   `);
 
   const updateCourse = db.prepare(`
-    UPDATE course SET title = ?, unit = ?, department_id = ?
+    UPDATE course SET title = ?, units = ?, department_id = ?
     WHERE course_code = ? AND (title = '' OR title IS NULL OR length(?) > length(title))
   `);
 

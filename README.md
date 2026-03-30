@@ -228,10 +228,12 @@ Test coverage:
 
 ```sql
 department(department_id, department_code, name)
-course(course_id, course_code, title, unit, department_id)
+course(course_id, course_code, title, units, department_id)
 degree_program(degree_program_id, code, name, is_honor, track, specialization, version_year, version_semester)
-curriculum_course(curriculum_course_id, degree_program_id, course_id, year, semester)
+curriculum_course(curriculum_course_id, degree_program_id, course_id, year, semester, prerequisites_raw, category)
 ```
+
+Schema matches sisia-app's SQLite conventions exactly — `course.units` (plural), `curriculum_course.prerequisites_raw` (plural), same table/column names for direct integration.
 
 ## Current Stats
 
