@@ -209,5 +209,18 @@ export async function parseCurriculumPdf(
   // Step 5: Post-process
   const cleaned = postProcessRows(allCourses);
   logger.info('PDF', `Total courses extracted: ${cleaned.length}`);
+
+  // Step 6: Flag unknown/problematic formats
+  if (cleaned.length === 0 && allCourses.length === 0) {
+    logger.warn('PDF', `⚠ UNKNOWN FORMAT: "${programName}" yielded 0 courses — may be a new PDF template`);
+  } else if (cleaned.length < 5 && !programName.toLowerCase().includes('doctor') && !programName.toLowerCase().includes('master')) {
+    logger.warn('PDF', `⚠ LOW YIELD: "${programName}" yielded only ${cleaned.length} courses — check PDF format`);
+  }
+
+  const semesters = new Set(cleaned.map(c => c.semester));
+  if (cleaned.length > 30 && semesters.size < 2) {
+    logger.warn('PDF', `⚠ MISSING SEMESTERS: "${programName}" has ${cleaned.length} courses but only ${[...semesters].join(',')} — possible format issue`);
+  }
+
   return cleaned;
 }
