@@ -104,18 +104,29 @@ describe('postProcessRows', () => {
     expect(result[0].course_code).toBe('MATH 101');
   });
 
-  it('preserves special subjects', () => {
+  it('preserves special subjects but drops standalone completion requirements', () => {
     const rows = [
       makeRow({ course_code: 'NSTP', unit: 3.0 }),
       makeRow({ course_code: 'NSTP-1', unit: 3.0 }),
-      makeRow({ course_code: 'THESIS', unit: 6.0 }),
+      makeRow({ course_code: 'THESIS', unit: 6.0 }),       // standalone → dropped
       makeRow({ course_code: 'ASSEMBLY', unit: 0.0 }),
       makeRow({ course_code: 'FYDP', unit: 6.0 }),
       makeRow({ course_code: 'OJT', unit: 3.0 }),
-      makeRow({ course_code: 'PRACTICUM', unit: 6.0 }),
-      makeRow({ course_code: 'INTERNSHIP', unit: 6.0 }),
+      makeRow({ course_code: 'PRACTICUM', unit: 6.0 }),    // standalone → dropped
+      makeRow({ course_code: 'INTERNSHIP', unit: 6.0 }),   // standalone → dropped
     ];
-    expect(postProcessRows(rows)).toHaveLength(8);
+    // NSTP, NSTP-1, ASSEMBLY, FYDP, OJT kept (5)
+    // THESIS, PRACTICUM, INTERNSHIP dropped (standalone completion requirements)
+    expect(postProcessRows(rows)).toHaveLength(5);
+  });
+
+  it('preserves numbered completion subjects', () => {
+    const rows = [
+      makeRow({ course_code: 'THESIS 1', unit: 3.0 }),
+      makeRow({ course_code: 'PRACTICUM 600', unit: 6.0 }),
+      makeRow({ course_code: 'DISSERTATION 2', unit: 6.0 }),
+    ];
+    expect(postProcessRows(rows)).toHaveLength(3);
   });
 
   it('preserves mixed-case codes', () => {

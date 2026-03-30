@@ -21,10 +21,18 @@ export const VALID_CODE_PATTERN =
 /** Special subject labels preserved even without a number */
 export const SPECIAL_SUBJECTS = new Set([
   'NSTP',
-  'THESIS',
   'ASSEMBLY',
   'FYDP',
   'OJT',
+]);
+
+/**
+ * Completion requirements that are only valid WITH a number suffix.
+ * "THESIS 1", "PRACTICUM 600" = real courses.
+ * Standalone "THESIS", "DISSERTATION" = milestones, dropped in postProcessor.
+ */
+export const COMPLETION_SUBJECTS = new Set([
+  'THESIS',
   'PRACTICUM',
   'INTERNSHIP',
   'DISSERTATION',
@@ -72,7 +80,21 @@ export function extractCourseCode(
       const remaining = dashNormalized.replace(specialMatch[1], '').trim();
       return [specialMatch[1], remaining];
     }
-    // Just the keyword alone (e.g. "NSTP", "THESIS", "OJT")
+    // Just the keyword alone (e.g. "NSTP", "OJT", "ASSEMBLY")
+    const remaining = dashNormalized.slice(firstWord.length).trim();
+    return [firstWord, remaining];
+  }
+
+  // Completion subjects: THESIS, DISSERTATION, PRACTICUM, INTERNSHIP
+  // Only extract when they have a number (e.g. "THESIS 1", "PRACTICUM 600").
+  // Standalone forms are extracted but dropped later by postProcessor.
+  if (COMPLETION_SUBJECTS.has(firstWord)) {
+    const compMatch = dashNormalized.match(/^([A-Za-z]+[\s-]+(?:[A-Za-z]+[\s-]+)?\d+)/);
+    if (compMatch) {
+      const remaining = dashNormalized.replace(compMatch[1], '').trim();
+      return [compMatch[1], remaining];
+    }
+    // Standalone — still extract so postProcessor can drop it with context
     const remaining = dashNormalized.slice(firstWord.length).trim();
     return [firstWord, remaining];
   }

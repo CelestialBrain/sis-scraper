@@ -9,6 +9,7 @@ import {
   cleanText,
   VALID_CODE_PATTERN,
   SPECIAL_SUBJECTS,
+  COMPLETION_SUBJECTS,
 } from '../../src/parsers/courseCodeExtractor.js';
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -174,9 +175,16 @@ describe('VALID_CODE_PATTERN', () => {
 
 describe('SPECIAL_SUBJECTS', () => {
   it('contains all expected subjects', () => {
-    const expected = ['NSTP', 'THESIS', 'ASSEMBLY', 'FYDP', 'OJT', 'PRACTICUM', 'INTERNSHIP'];
+    const expected = ['NSTP', 'ASSEMBLY', 'FYDP', 'OJT'];
     for (const s of expected) {
       expect(SPECIAL_SUBJECTS.has(s)).toBe(true);
+    }
+  });
+
+  it('completion subjects are separate', () => {
+    const expected = ['THESIS', 'PRACTICUM', 'INTERNSHIP', 'DISSERTATION'];
+    for (const s of expected) {
+      expect(COMPLETION_SUBJECTS.has(s)).toBe(true);
     }
   });
 });

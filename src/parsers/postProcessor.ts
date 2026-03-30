@@ -6,7 +6,7 @@
  */
 
 import type { ParsedCourse } from '../types.js';
-import { VALID_CODE_PATTERN, SPECIAL_SUBJECTS } from './courseCodeExtractor.js';
+import { VALID_CODE_PATTERN, SPECIAL_SUBJECTS, COMPLETION_SUBJECTS } from './courseCodeExtractor.js';
 import { logger } from '../utils/logger.js';
 
 /** Minimum length for a valid course code */
@@ -22,6 +22,18 @@ const HEADER_REGEX =
 /** Regex for detecting 4-digit years (1900-2099) */
 const YEAR_REGEX = /\b(19|20)\d{2}\b/;
 
+/** Codes that are noise from broken PDF text, not real course codes */
+const JUNK_CODE_PATTERNS = [
+  /^rk\s+\d/i,       // "rk 6" — broken "Work 6xx"
+  /^Core\s+\d/i,     // "Core 18" — broken header text
+  /^tic\s+\d/i,      // "tic 101" — broken "Practic..."
+  /^lec$/i,           // "lec" — column header
+  /^lab$/i,           // "lab" — column header
+  /^credit$/i,        // "credit" — column header
+  /^unit$/i,          // "unit" — column header
+  /^pre$/i,           // "pre" — "Pre requisite" header
+];
+
 /** Titles that are footnote markers or noise, not real course titles */
 const JUNK_TITLE_PATTERNS = [
   /^\*+$/,                    // "*", "**", "***"
@@ -35,7 +47,10 @@ const JUNK_TITLE_PATTERNS = [
 function isSpecialSubject(code: string): boolean {
   if (!code) return false;
   const upper = code.toUpperCase();
-  return [...SPECIAL_SUBJECTS].some((s) => upper.includes(s));
+  return (
+    [...SPECIAL_SUBJECTS].some((s) => upper.includes(s)) ||
+    [...COMPLETION_SUBJECTS].some((s) => upper.includes(s))
+  );
 }
 
 function containsYear(text: string): boolean {
@@ -73,6 +88,12 @@ export function postProcessRows(rows: ParsedCourse[]): ParsedCourse[] {
       continue;
     }
 
+    // Drop junk codes from broken PDF text
+    if (JUNK_CODE_PATTERNS.some((p) => p.test(code))) {
+      logger.debug('PostProcess', `Dropping junk code: '${code}'`);
+      continue;
+    }
+
     // Drop rows where title is footnote noise
     if (JUNK_TITLE_PATTERNS.some((p) => p.test(title))) {
       logger.debug('PostProcess', `Dropping junk title: code='${code}', title='${title}'`);
@@ -82,6 +103,15 @@ export function postProcessRows(rows: ParsedCourse[]): ParsedCourse[] {
     // Drop "COMPREHENSIVE" (exam, not a course)
     if (/^COMPREHENSIVE$/i.test(code)) {
       logger.debug('PostProcess', `Dropping comprehensive exam: '${code}'`);
+      continue;
+    }
+
+    // Drop standalone completion requirements (no number = not a course section).
+    // "THESIS", "DISSERTATION", "PRACTICUM", "INTERNSHIP" alone are degree
+    // milestones, not enrollable courses. Numbered variants like "THESIS 1"
+    // or "PRACTICUM 600" are kept.
+    if (/^(THESIS|DISSERTATION|PRACTICUM|INTERNSHIP)$/i.test(code)) {
+      logger.debug('PostProcess', `Dropping standalone completion requirement: '${code}'`);
       continue;
     }
 
@@ -118,7 +148,8 @@ export function postProcessRows(rows: ParsedCourse[]): ParsedCourse[] {
     }
 
     // Deduplicate: same program + code + year + semester = duplicate
-    const dedupeKey = `${row.program_name}|${code}|${row.year_level}|${row.semester}`;
+    // Normalize code to uppercase for dedup (catches "Theo 603a" vs "THEO 603A")
+    const dedupeKey = `${row.program_name}|${code.toUpperCase()}|${row.year_level}|${row.semester}`;
     if (seen.has(dedupeKey)) {
       logger.debug('PostProcess', `Dropping duplicate: '${code}' in ${row.program_name}`);
       continue;
