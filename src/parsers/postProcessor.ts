@@ -27,6 +27,7 @@ const JUNK_CODE_PATTERNS = [
   /^rk\s+\d/i,       // "rk 6" — broken "Work 6xx"
   /^Core\s+\d/i,     // "Core 18" — broken header text
   /^tic\s+\d/i,      // "tic 101" — broken "Practic..."
+  /^Revised\s+\d/i,  // "Revised 20" — broken header "Revised 2020"
   /^lec$/i,           // "lec" — column header
   /^lab$/i,           // "lab" — column header
   /^credit$/i,        // "credit" — column header
@@ -42,6 +43,7 @@ const JUNK_TITLE_PATTERNS = [
   /^~~~/,                     // "~~~ Effective ..."
   /^\(Revised Version/i,      // "(Revised Version, ...)"
   /^Page\s+\d/i,              // "Page 1"
+  /^&\d/,                      // "&3101" — broken ampersand-merged code in title
 ];
 
 function isSpecialSubject(code: string): boolean {
@@ -72,7 +74,8 @@ export function postProcessRows(rows: ParsedCourse[]): ParsedCourse[] {
   const originalCount = rows.length;
 
   for (const row of rows) {
-    const code = (row.course_code ?? '').trim();
+    // Normalize en-dash/em-dash to ASCII dash in codes (e.g. "NSTP – CWTS" → "NSTP - CWTS")
+    const code = (row.course_code ?? '').trim().replace(/[\u2013\u2014]/g, '-');
     const title = (row.course_title ?? '').trim();
     const unitRaw = row.unit;
 
@@ -156,9 +159,10 @@ export function postProcessRows(rows: ParsedCourse[]): ParsedCourse[] {
     }
     seen.add(dedupeKey);
 
-    // Store normalized float
+    // Store with normalized code (en-dash→dash) and float unit
     cleaned.push({
       ...row,
+      course_code: code,
       unit: isNaN(unitNum) ? 0 : unitNum,
     });
   }

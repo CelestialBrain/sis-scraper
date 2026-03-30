@@ -233,6 +233,22 @@ export function parseStandardLayout(
 
       if (!title) title = leftover;
 
+      // ── Fix number-bleed: code has short number and title starts with digits ──
+      // e.g. "PIDS 5" + "07 Monitoring..." → "PIDS 507" + "Monitoring..."
+      // or "DPA 302" + "9 Philosophy..." → "DPA 3029" + "Philosophy..."
+      if (code && title) {
+        const codeNumMatch = code.match(/^([A-Za-z].+?)(\d{1,2})$/);
+        const titleLeadDigits = title.match(/^(\d{1,3})\s+(.*)/);
+        if (codeNumMatch && titleLeadDigits) {
+          const mergedNum = codeNumMatch[2] + titleLeadDigits[1];
+          // Only merge if result is 3-4 digit number (typical course numbers)
+          if (mergedNum.length >= 3 && mergedNum.length <= 5) {
+            code = codeNumMatch[1] + mergedNum;
+            title = titleLeadDigits[2];
+          }
+        }
+      }
+
       // ── Look at adjacent rows for title when current row has none ──
       if (!title) {
         const fragments: string[] = [];

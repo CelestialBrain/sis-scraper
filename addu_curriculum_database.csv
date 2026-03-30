@@ -2303,7 +2303,6 @@ Bachelor of Science in Robotics Engineering,3,2nd Semester,ROBO 3209,Instrumenta
 Bachelor of Science in Robotics Engineering,3,1st Semester,ROBO 3111,Advanced Mathematics for Robotics Eng'g.,3
 Bachelor of Science in Robotics Engineering,3,2nd Semester,ROBO 5100,Professional Elective I,3
 Bachelor of Science in Robotics Engineering,3,1st Semester,ROBO 3100,Research Methods for Robotics Eng'g.,3
-Bachelor of Science in Robotics Engineering,3,2nd Semester,ROBO 3100,&3101,0
 Bachelor of Science in Robotics Engineering,3,1st Semester,GE 3118,Elective 1,3
 Bachelor of Science in Robotics Engineering,3,2nd Semester,GE 3219,Elective 2,3
 Bachelor of Science in Robotics Engineering,3,1st Semester,ROBO 3000,Industry Immersion for Robotics Eng'g,2
@@ -2852,23 +2851,41 @@ BACHELOR OF SECONDARY EDUCATION MAJOR IN SOCIAL STUDIES,4,1st Semester,SSED 4167
 BACHELOR OF SECONDARY EDUCATION MAJOR IN SOCIAL STUDIES,4,1st Semester,SSED 4166,ASSESSMENT AND EVALUATION IN THE SOCIAL SCIENCES,3
 BACHELOR OF SECONDARY EDUCATION MAJOR IN SOCIAL STUDIES,4,2nd Semester,ASF 4204,SENIORS' INTEGRATION PROGRAM,2
 BACHELOR OF SECONDARY EDUCATION MAJOR IN SOCIAL STUDIES,4,2nd Semester,EDUC 4243,TEACHING INTERNSHIP,6
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,Revised 20,(PIDS),20
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 501,Sciences,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 502,Ignatian Leadership,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 503,Advanced Quantitative Research,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 504,Advanced Qualitative Research,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 505,Development Administration,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 506,Advanced Social Statistics,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 5,07 Monitoring and Evaluation Research,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 51,2 The Philippines in Southeast Asia,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 52,0 International Economics,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 302,9 Philosophy of Governance,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 303,30 Organizational Theory and Development,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 504,1 Regional and Urban Planning,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DM 608,2 Industrial Psychology,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PhEd 912,3 Social Change and Educational Administration,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 53,4 Seminar in Trends and Practices in Education,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,BEdA 1034,5 Management of Educational Resources and Technology,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 507,Monitoring and Evaluation Research,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 508,Policy Analysis in the Philippines,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 509,"Seminar on Mindanao: Past, Present, and Prospects",3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 510,Seminar in Philippine History,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 511,Seminar on the Philippine Development Experience,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 512,The Philippines in Southeast Asia,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 513,Anthropology/Sociology of Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 514,Theories and Issues in Development Economics,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 515,Agricultural and Environmental Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 516,Theories of State and Political Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 517,Demographic Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 518,Social Psychology and Devel,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 519,Management of Innovative Programs,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 520,International Economics,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 521,Seminar in Program Management,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 522,Community Organization & Community Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 523,Gender Issues in Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 524,Third World Politics,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 525,Peace and Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 526,Cultural and Social Forces in Asia,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 527,Contemporary Problems,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 528,Health and De,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 3029,Philosophy of Governance,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 30330,Organizational Theory and Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 5041,Regional and Urban Planning,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DM 6082,Industrial Psychology,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PhEd 9123,Social Change and Educational Administration,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 534,Seminar in Trends and Practices in Education,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,BEdA 10345,Management of Educational Resources and Technology,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 600,Dissertation I (Proposal),6
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 601,Dissertation II (Final),6
 DOCTOR OF BUSINESS ADMINISTRATION (D.B.A.),1,1st Semester,GB 300,PHILOSOPHY OF BUSINESS,3
@@ -4314,23 +4331,41 @@ DOCTOR OF PHILOSOPHY IN PSYCHOLOGY,1,1st Semester,Ph P 526,Advanced Industrial P
 DOCTOR OF PHILOSOPHY IN PSYCHOLOGY,1,1st Semester,Ph P 527,Issues in Social Psychology,3
 DOCTOR OF PHILOSOPHY IN PSYCHOLOGY,1,1st Semester,Ph P 529,Internship,6
 DOCTOR OF PHILOSOPHY IN PSYCHOLOGY,1,1st Semester,Ph P 531,Dissertation II,6
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,Revised 20,(PIDS),20
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 501,Sciences,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 502,Ignatian Leadership,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 503,Advanced Quantitative Research,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 504,Advanced Qualitative Research,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 505,Development Administration,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 506,Advanced Social Statistics,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 5,07 Monitoring and Evaluation Research,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 51,2 The Philippines in Southeast Asia,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 52,0 International Economics,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 302,9 Philosophy of Governance,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 303,30 Organizational Theory and Development,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 504,1 Regional and Urban Planning,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DM 608,2 Industrial Psychology,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PhEd 912,3 Social Change and Educational Administration,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 53,4 Seminar in Trends and Practices in Education,3
-DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,BEdA 1034,5 Management of Educational Resources and Technology,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 507,Monitoring and Evaluation Research,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 508,Policy Analysis in the Philippines,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 509,"Seminar on Mindanao: Past, Present, and Prospects",3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 510,Seminar in Philippine History,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 511,Seminar on the Philippine Development Experience,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 512,The Philippines in Southeast Asia,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 513,Anthropology/Sociology of Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 514,Theories and Issues in Development Economics,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 515,Agricultural and Environmental Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 516,Theories of State and Political Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 517,Demographic Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 518,Social Psychology and Devel,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 519,Management of Innovative Programs,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 520,International Economics,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 521,Seminar in Program Management,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 522,Community Organization & Community Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 523,Gender Issues in Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 524,Third World Politics,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 525,Peace and Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 526,Cultural and Social Forces in Asia,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 527,Contemporary Problems,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 528,Health and De,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 3029,Philosophy of Governance,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 30330,Organizational Theory and Development,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DPA 5041,Regional and Urban Planning,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,DM 6082,Industrial Psychology,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PhEd 9123,Social Change and Educational Administration,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 534,Seminar in Trends and Practices in Education,3
+DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,BEdA 10345,Management of Educational Resources and Technology,3
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 600,Dissertation I (Proposal),6
 DOCTOR OF PHILOSOPHY IN DEVELOPMENT STUDIES,1,1st Semester,PIDS 601,Dissertation II (Final),6
 Theology,1,2nd Semester,Theo 600,Advanced Research Methods,0
@@ -4477,7 +4512,7 @@ Master in Public Administration,2,1st Semester,PA 203,Public Strategic M,3
 Master in Public Administration,2,2nd Semester,PA 510,Integration Paper,6
 Master in Public Administration,2,2nd Semester,PA 500,Thesis A: Proposal Writing &,3
 Master in Public Administration,2,Summer,PA 501,Thesis B:,3
-Master in Public Administration,2,Summer,PA 200,"2 , PA",3
+Master in Public Administration,2,Summer,PA 2002,", PA",3
 Master in Public Administration: Major in Local Governance,1,1st Semester,RE 224,Ignatian Leadership for Public Ad,3
 Master in Public Administration: Major in Local Governance,1,2nd Semester,PA 200,Theory & Practice in Public Adm.,3
 Master in Public Administration: Major in Local Governance,1,1st Semester,MA 300,Management Communication Arts,3
