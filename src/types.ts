@@ -36,7 +36,7 @@ export interface CourseRow {
   course_id?: number;
   course_code: string;
   title: string;
-  units: number;
+  unit: number;
   department_id: number | null;
   created_at?: string;
 }
@@ -59,7 +59,7 @@ export interface CurriculumCourseRow {
   course_id: number;
   year: number; // 1-5
   semester: number; // 1, 2, 3 (summer)
-  prerequisites_raw: string | null;
+  prerequisite_raw: string | null;
   category: string | null;
   created_at?: string;
 }

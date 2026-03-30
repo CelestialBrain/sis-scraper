@@ -71,10 +71,10 @@ describe('SQLite schema', () => {
   });
 
   it('enforces unique course_code', () => {
-    db.prepare('INSERT INTO course (course_code, title, units) VALUES (?, ?, ?)').run('MATH 101', 'Algebra', 3.0);
+    db.prepare('INSERT INTO course (course_code, title, unit) VALUES (?, ?, ?)').run('MATH 101', 'Algebra', 3.0);
 
     // Duplicate should be ignored
-    db.prepare('INSERT OR IGNORE INTO course (course_code, title, units) VALUES (?, ?, ?)').run('MATH 101', 'Algebra', 3.0);
+    db.prepare('INSERT OR IGNORE INTO course (course_code, title, unit) VALUES (?, ?, ?)').run('MATH 101', 'Algebra', 3.0);
 
     const count = db.prepare('SELECT COUNT(*) as n FROM course').get() as { n: number };
     expect(count.n).toBe(1);
@@ -83,7 +83,7 @@ describe('SQLite schema', () => {
   it('enforces foreign keys on curriculum_course', () => {
     // Insert a program and course first
     db.prepare('INSERT INTO degree_program (code, name) VALUES (?, ?)').run('BSCS', 'BS CS');
-    db.prepare('INSERT INTO course (course_code, title, units) VALUES (?, ?, ?)').run('CSCI 111', 'Intro', 3);
+    db.prepare('INSERT INTO course (course_code, title, unit) VALUES (?, ?, ?)').run('CSCI 111', 'Intro', 3);
 
     const prog = db.prepare('SELECT degree_program_id FROM degree_program WHERE code = ?').get('BSCS') as { degree_program_id: number };
     const course = db.prepare('SELECT course_id FROM course WHERE course_code = ?').get('CSCI 111') as { course_id: number };
@@ -105,7 +105,7 @@ describe('SQLite schema', () => {
     expect(colNames).toContain('course_id');
     expect(colNames).toContain('course_code');
     expect(colNames).toContain('title');
-    expect(colNames).toContain('units');
+    expect(colNames).toContain('unit');
     expect(colNames).toContain('department_id');
 
     const deptColumns = db.prepare("PRAGMA table_info('department')").all() as { name: string }[];

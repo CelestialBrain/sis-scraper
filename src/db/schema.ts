@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS course (
     course_id INTEGER PRIMARY KEY AUTOINCREMENT,
     course_code TEXT UNIQUE NOT NULL,
     title TEXT NOT NULL,
-    units REAL DEFAULT 0,
+    unit REAL DEFAULT 0,
     department_id INTEGER REFERENCES department(department_id),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS curriculum_course (
     course_id INTEGER NOT NULL REFERENCES course(course_id) ON DELETE CASCADE,
     year INTEGER,
     semester INTEGER,
-    prerequisites_raw TEXT,
+    prerequisite_raw TEXT,
     category TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(degree_program_id, course_id)
