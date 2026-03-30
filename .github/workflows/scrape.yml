@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # Supabase integration
+      # Supabase integration (optional)
       SUPABASE_INGEST_ENDPOINT: ${{ secrets.SUPABASE_INGEST_ENDPOINT }}
       DATA_INGEST_TOKEN: ${{ secrets.DATA_INGEST_TOKEN }}
       SUPABASE_CLIENT_BATCH_SIZE: ${{ vars.SUPABASE_CLIENT_BATCH_SIZE || '2000' }}
 
-      # Google Sheets integration
+      # Google Sheets integration (optional)
       GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
       SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
 
@@ -38,6 +38,9 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
+
+      - name: Run Tests
+        run: npm test
 
       - name: Run Scraper
         run: npm run scrape

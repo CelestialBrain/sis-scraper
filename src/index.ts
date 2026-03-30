@@ -112,17 +112,25 @@ async function scrapeCommand(): Promise<void> {
 
   // Supabase
   if (supabaseManager.isEnabled()) {
-    const cleanSchedule = supabaseManager.transformScheduleData(coursesWithTerm);
-    await supabaseManager.syncToSupabase('curriculum', cleanSchedule, term, ALL_DEPARTMENTS_LABEL);
+    try {
+      const cleanSchedule = supabaseManager.transformScheduleData(coursesWithTerm);
+      await supabaseManager.syncToSupabase('curriculum', cleanSchedule, term, ALL_DEPARTMENTS_LABEL);
+    } catch (err) {
+      logger.warn('Supabase', `Sync failed (non-fatal): ${err}`);
+    }
   } else {
     logger.info('Supabase', 'Skipped (not configured)');
   }
 
   // Google Sheets
   if (sheetsManager.isEnabled() && spreadsheetId) {
-    await sheetsManager.init();
-    const cleanSchedule = supabaseManager.transformScheduleData(coursesWithTerm);
-    await sheetsManager.syncData(spreadsheetId, 'Schedules', cleanSchedule as unknown as Record<string, unknown>[]);
+    try {
+      await sheetsManager.init();
+      const cleanSchedule = supabaseManager.transformScheduleData(coursesWithTerm);
+      await sheetsManager.syncData(spreadsheetId, 'Schedules', cleanSchedule as unknown as Record<string, unknown>[]);
+    } catch (err) {
+      logger.warn('Sheets', `Sync failed (non-fatal): ${err}`);
+    }
   } else {
     logger.info('Sheets', 'Skipped (not configured)');
   }
