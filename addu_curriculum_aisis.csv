@@ -2963,8 +2963,6 @@ MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,1st Semes
 MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,1st Semester,ANTH 558,Anthropology of Education,0,,,ADDU
 MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 600,Thesis 1,0,,,ADDU
 MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 601,Thesis 2: Full Research,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,2nd Semester,Thesis 2,:,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,1st Semester,Thesis 1,: Proposal Defense and,0,,,ADDU
 MM,MASTER IN TROPICAL RISK MANAGEMENT,MASTER IN TROPICAL RISK MANAGEMENT,1,1st Semester,MTM 600,ECOSCIENCE,3,,,ADDU
 MM,MASTER IN TROPICAL RISK MANAGEMENT,MASTER IN TROPICAL RISK MANAGEMENT,1,1st Semester,MTM 610,CULTURE SOCIETY AND ENVIRONMENT,3,,,ADDU
 MM,MASTER IN TROPICAL RISK MANAGEMENT,MASTER IN TROPICAL RISK MANAGEMENT,1,1st Semester,MTM 620,RESOURCE MANAGEMENT,3,,,ADDU
@@ -3479,7 +3477,6 @@ BSE,Bachelor of Science in Mechanical Engineering,Bachelor of Science in Mechani
 BSE,Bachelor of Science in Mechanical Engineering,Bachelor of Science in Mechanical Engineering,2,1st Semester,ES 211,Computer Fundamentals & Programming Lec,3,,,ADDU
 BSE,Bachelor of Science in Mechanical Engineering,Bachelor of Science in Mechanical Engineering,2,1st Semester,ES 212,Computer Fundamentals & Programming Lab,1,,,ADDU
 BSE,Bachelor of Science in Mechanical Engineering,Bachelor of Science in Mechanical Engineering,2,1st Semester,Lit I,Literatures of the Philippines,3,,,ADDU
-BSE,Bachelor of Science in Mechanical Engineering,Bachelor of Science in Mechanical Engineering,2,1st Semester,The 0,Jesus Christ and Salvation History,3,,,ADDU
 BSE,Bachelor of Science in Mechanical Engineering,Bachelor of Science in Mechanical Engineering,2,1st Semester,PE 3,Physical Education,2,,,ADDU
 BSE,Bachelor of Science in Mechanical Engineering,Bachelor of Science in Mechanical Engineering,2,2nd Semester,ME 220,Machine Shop Theory and Practice,2,,,ADDU
 BSE,Bachelor of Science in Mechanical Engineering,Bachelor of Science in Mechanical Engineering,2,2nd Semester,Math 311E,Differential Equations,3,,,ADDU
@@ -4342,16 +4339,13 @@ T,Theology,Theology,1,2nd Semester,Theo 651,Theology of Human Sexuality,3,,,ADDU
 T,Theology,Theology,1,2nd Semester,Theo 652,Issues in Feminist Ethics,3,,,ADDU
 T,Theology,Theology,1,2nd Semester,THEO 611,Latin Grammar and Translation,3,,,ADDU
 T,Theology,Theology,1,1st Semester,T heo 600,Advanced Research Methods,0,,,ADDU
-T,Theology,Theology,1,1st Semester,the 20,"century’s attempts at more contextualized theologies. Moreover, the course",0,,,ADDU
 T,Theology,Theology,1,1st Semester,Canon 1055,-­‐ 1165),0,,,ADDU
-T,Theology,Theology,1,1st Semester,the 1983,will examine the norms of  Code of Canon concerning consecrated life and,0,,,ADDU
 T,Theology,Theology,1,1st Semester,Canons 607,-­‐,0,,,ADDU
 T,Theology,Theology,1,1st Semester,Theo 640,Theology of Inculturation and Interreligious,0,,,ADDU
 T,Theology,Theology,1,1st Semester,THEO 612,LATIN GRAMMAR AND TRANSLATION FROM LATIN 2,0,,,ADDU
 T,Theology,Theology,1,1st Semester,Theo 603a,Dissertation Writing I,3,,,ADDU
 T,Theology,Theology,1,1st Semester,Theo 603b,Dissertation Writing II,3,,,ADDU
 T,Theology,Theology,1,1st Semester,Theo 603c,Dissertation Writing III,3,,,ADDU
-T,Theology,Theology,1,1st Semester,o 603d,Dissertation Writing IV,3,,,ADDU
 DPHIL-ED,DOCTOR OF PHILOSOPHY IN EDUCATION ADMINISTRATION,DOCTOR OF PHILOSOPHY IN EDUCATION ADMINISTRATION,1,1st Semester,PhED 601,Advanced Philosophy of Education,3,,,ADDU
 DPHIL-ED,DOCTOR OF PHILOSOPHY IN EDUCATION ADMINISTRATION,DOCTOR OF PHILOSOPHY IN EDUCATION ADMINISTRATION,1,1st Semester,PhED 602,Advanced Methods of Research,3,,,ADDU
 DPHIL-ED,DOCTOR OF PHILOSOPHY IN EDUCATION ADMINISTRATION,DOCTOR OF PHILOSOPHY IN EDUCATION ADMINISTRATION,1,1st Semester,PhED 603,Educational Psychology,3,,,ADDU
@@ -4392,15 +4386,12 @@ MBA,Master in Business Administration,Master in Business Administration,1,1st Se
 MBA,Master in Business Administration,Master in Business Administration,1,2nd Semester,B.A. 908,Marketing Management,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,1,1st Semester,B.A. 932,Responsibility and Good Governance,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,1,2nd Semester,B.A. 906,Quantitative Methods in Management,3,,,ADDU
-MBA,Master in Business Administration,Master in Business Administration,1,2nd Semester,B.A. 930,/,0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,1,2nd Semester,B.A. 933,Resource Management,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,1st Semester,B.A. 931,Methods of Business Research,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,B.A. 911,Strategic Management,3,,,ADDU
-MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,BA 906,", BA908, BA909 and BA 910)",0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,B.A. 903,Development of an Enterprise,3,,,ADDU
-MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,and BA 910,),0,,,ADDU
+MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,BA 906,"e - requisite: , BA908, BA909",0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,1st Semester,M.A. 300,Management Communication Arts,3,,,ADDU
-MBA,Master in Business Administration,Master in Business Administration,2,1st Semester,ive 3,(non,0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,3,1st Semester,B.A. 900,Thesis A: Thesis Proposal,0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,1,1st Semester,B.A. 90,Managerial Statistics,7,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,1,2nd Semester,B.A. 908,Marketing Management,3,,,ADDU
@@ -4408,13 +4399,13 @@ MBA,Master in Business Administration,Master in Business Administration,1,1st Se
 MBA,Master in Business Administration,Master in Business Administration,1,2nd Semester,B.A. 906,Quantitative Methods in Management,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,1,2nd Semester,B.A. 930,Development,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,B.A. 911,Strategic Management,3,,,ADDU
-MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,BA 906,", BA908, BA909 and BA 910)",0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,1st Semester,B.A. 933,Foundations of Human Resource,0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,B.A. 934,Applications in Organizational,0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,1st Semester,M.A. 300,Management Communication Arts,0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,B.A. 941,Advanced Organizational Behavior,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,1st Semester,B.A. 931,Methods of Business Research,0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,3,2nd Semester,B.A. 903,Integration Paper,6,,,ADDU
+MBA,Master in Business Administration,Master in Business Administration,3,2nd Semester,BA 906,"or BA 907, BA909, BA910 & BA 911",0,,,ADDU
 MPA,Master in Public Administration (MPA),Master in Public Administration (MPA),1,1st Semester,RE 224,Ignatian Leadership for Public Administrators,3,,,ADDU
 MPA,Master in Public Administration (MPA),Master in Public Administration (MPA),1,1st Semester,PA 300,Elements of Statistics,3,,,ADDU
 MPA,Master in Public Administration (MPA),Master in Public Administration (MPA),1,1st Semester,PA 301,Theory and Practice in Public Administration*,3,,,ADDU
@@ -4450,7 +4441,6 @@ MPA,Master in Public Administration,Master in Public Administration,2,1st Semest
 MPA,Master in Public Administration,Master in Public Administration,2,2nd Semester,PA 510,Integration Paper,6,,,ADDU
 MPA,Master in Public Administration,Master in Public Administration,2,2nd Semester,PA 500,Thesis A: Proposal Writing &,3,,,ADDU
 MPA,Master in Public Administration,Master in Public Administration,2,Summer,PA 501,Thesis B:,3,,,ADDU
-MPA,Master in Public Administration,Master in Public Administration,2,Summer,PA 2002,", PA",3,,,ADDU
 MPA,Master in Public Administration: Major in Local Governance,Master in Public Administration: Major in Local Governance,1,1st Semester,RE 224,Ignatian Leadership for Public Ad,3,,,ADDU
 MPA,Master in Public Administration: Major in Local Governance,Master in Public Administration: Major in Local Governance,1,2nd Semester,PA 200,Theory & Practice in Public Adm.,3,,,ADDU
 MPA,Master in Public Administration: Major in Local Governance,Master in Public Administration: Major in Local Governance,1,1st Semester,MA 300,Management Communication Arts,3,,,ADDU
@@ -4466,7 +4456,6 @@ MPA,Master in Public Administration: Major in Local Governance,Master in Public 
 MPA,Master in Public Administration: Major in Local Governance,Master in Public Administration: Major in Local Governance,3,1st Semester,P.A. 220,Environmental Planning DRR & CCA,0,,,ADDU
 MPA,Master in Public Administration: Major in Local Governance,Master in Public Administration: Major in Local Governance,3,1st Semester,P.A. 2,2 4,24,,,ADDU
 MPA,Master in Public Administration: Major in Local Governance,Master in Public Administration: Major in Local Governance,3,1st Semester,P.A. 403,Public Operations Management and Quantitative Methods,0,,,ADDU
-MPA,Master in Public Administration: Major in Local Governance,Master in Public Administration: Major in Local Governance,3,2nd Semester,PA 203,",",0,,,ADDU
 DM,Doctor of Management – Human Resource Management,Doctor of Management – Human Resource Management,1,1st Semester,GB 300,Philosophy of Business,3,,,ADDU
 DM,Doctor of Management – Human Resource Management,Doctor of Management – Human Resource Management,1,1st Semester,GB 301,Advanced Statistics,3,,,ADDU
 DM,Doctor of Management – Human Resource Management,Doctor of Management – Human Resource Management,1,1st Semester,GB 302,Research Methods,3,,,ADDU
@@ -4495,8 +4484,6 @@ ANTH,MA Anthropology,MA Anthropology,1,1st Semester,ANTH 557,Anthropology of Dis
 ANTH,MA Anthropology,MA Anthropology,1,1st Semester,ANTH 558,Anthropology of Education,0,,,ADDU
 ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 600,Thesis 1,0,,,ADDU
 ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 601,Thesis 2: Full Research,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,2nd Semester,Thesis 2,:,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,1st Semester,Thesis 1,: Proposal Defense and,0,,,ADDU
 MAASR,Master of Arts in Applied Social Research (MASOR),Master of Arts in Applied Social Research (MASOR),1,1st Semester,Masor 501,Philosophy of Social Sciences,3,,,ADDU
 MAASR,Master of Arts in Applied Social Research (MASOR),Master of Arts in Applied Social Research (MASOR),1,1st Semester,Masor 502,Elements of Statistics,3,,,ADDU
 MAASR,Master of Arts in Applied Social Research (MASOR),Master of Arts in Applied Social Research (MASOR),1,1st Semester,Masor 503,Methods of Research,3,,,ADDU

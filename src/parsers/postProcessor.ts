@@ -33,6 +33,10 @@ const JUNK_CODE_PATTERNS = [
   /^credit$/i,        // "credit" — column header
   /^unit$/i,          // "unit" — column header
   /^pre$/i,           // "pre" — "Pre requisite" header
+  /^and\s+[A-Z]/,     // "and BA 910" — broken text continuation
+  /^ive\s+\d/i,       // "ive 3" — broken "Elective 3"
+  /^the\s+\d/i,       // "the 20" / "the 1983" — broken sentence fragments
+  /^o\s+\d{3}/i,      // "o 603d" — broken "Theo 603d" with missing prefix
 ];
 
 /** Titles that are footnote markers or noise, not real course titles */
@@ -44,6 +48,9 @@ const JUNK_TITLE_PATTERNS = [
   /^\(Revised Version/i,      // "(Revised Version, ...)"
   /^Page\s+\d/i,              // "Page 1"
   /^&\d/,                      // "&3101" — broken ampersand-merged code in title
+  /^[,/:;]\s*$/,               // ",", "/", ":", ";" — punctuation-only titles
+  /^[,/:;]\s/,                 // ", BA908..." — title starting with punctuation
+  /^\(non/i,                   // "(non" — broken "non-thesis" fragment
 ];
 
 function isSpecialSubject(code: string): boolean {
