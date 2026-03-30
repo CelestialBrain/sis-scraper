@@ -60,15 +60,22 @@ export function extractCourseCode(
   // Normalize en-dash/em-dash to ASCII dash for codes like "NSTP – CWTS 1"
   const dashNormalized = normalized.replace(/[\u2013\u2014]/g, '-');
 
-  // Elective prefix codes: "SOCIO ELEC 1331", "FREE ELEC 2138", "PHILO ELECTIVE 1"
+  // Hyphenated elective prefix codes: "FIN-ELEC 2247", "PM-ELEC 4252"
+  const hyphenElec = dashNormalized.match(/^([A-Za-z]+-ELEC(?:TIVE)?\s?\d{1,4})/i);
+  if (hyphenElec) {
+    const remaining = dashNormalized.slice(hyphenElec[1].length).trim();
+    return [hyphenElec[1], remaining];
+  }
+
+  // Spaced elective prefix codes: "SOCIO ELEC 1331", "FREE ELEC 2138", "PHILO ELECTIVE 1"
   const elecWithNum = dashNormalized.match(/^([A-Za-z]+\s+ELEC(?:TIVE)?\s?\d{1,4})/i);
   if (elecWithNum) {
     const remaining = dashNormalized.slice(elecWithNum[1].length).trim();
     return [elecWithNum[1], remaining];
   }
 
-  // Elective prefix without number: "SOCIO ELEC", "FREE ELEC" (number may be on next row)
-  if (/^[A-Za-z]+\s+ELEC(?:TIVE)?\s*$/i.test(dashNormalized)) {
+  // Elective prefix without number: "SOCIO ELEC", "FREE ELEC", "FIN-ELEC" (number may be on next row)
+  if (/^[A-Za-z]+[-\s]+ELEC(?:TIVE)?\s*$/i.test(dashNormalized)) {
     return [dashNormalized.trim(), ''];
   }
 

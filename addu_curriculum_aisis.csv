@@ -1382,16 +1382,16 @@ BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,1st Semester
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,1st Semester,FIN 2133,FINANCIAL MANAGEMENT,3,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,1st Semester,FIN 2134,MONETARY POLICY AND CENTRAL BANKING,3,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,1st Semester,FIN 2135,APPLIED MANAGEMENT SCIENCE,3,,,ADDU
-BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,2nd Semester,ELEC 2247,BEHAVIORAL FINANCE,3,,,ADDU
+BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,2nd Semester,FIN-ELEC 2247,BEHAVIORAL FINANCE,3,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,2nd Semester,MGT 2255,GOOD GOVERNANCE AND SOCIAL RESPONSIBILITY,3,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,2nd Semester,PE 2217,PATH-FIT IV,2,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,2nd Semester,GE 4120,ELECTIVE 3,3,,,ADDU
-BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,2nd Semester,ELEC 3251,PERSONAL FINANCE,3,,,ADDU
-BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,2nd Semester,ELEC 2248,FINANCE IN ASIA,3,,,ADDU
+BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,2nd Semester,FIN-ELEC 3251,PERSONAL FINANCE,3,,,ADDU
+BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,2nd Semester,FIN-ELEC 2248,FINANCE IN ASIA,3,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,2,2nd Semester,BL 2151,BUSINESS LAW,3,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,3,1st Semester,FIN 3137,CORPORATE FINANCE,3,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,3,1st Semester,FIN 3138,CREDIT AND COLLECTION,3,,,ADDU
-BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,3,1st Semester,ELEC 3149,MUTUAL FUND,3,,,ADDU
+BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,3,1st Semester,FIN-ELEC 3149,MUTUAL FUND,3,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,3,1st Semester,FIN 3139,SPECIAL TOPICS IN FINANCIAL MANAGEMENT,3,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,3,1st Semester,FIN 3140,CAPITAL MARKETS,3,,,ADDU
 BSF,BACHELOR OF SCIENCE IN FINANCE,BACHELOR OF SCIENCE IN FINANCE,3,1st Semester,BMTAX 2141,INCOME AND BUSINESS TAXATION,3,,,ADDU
@@ -1511,11 +1511,11 @@ BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,3,2nd Semester,PM
 BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,3,2nd Semester,PM 3245,OFFICE AND SYSTEMS MANAGEMENT,3,,,ADDU
 BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,3,2nd Semester,PM 3246,IGNATIAN LEADERSHIP AND DECISION MAKING,3,,,ADDU
 BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,3,2nd Semester,PM 3247,RESEARCH METHODS 2,3,,,ADDU
-BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,1st Semester,ELEC 4252,PROJECT DEVELOPMENT AND MANAGEMENT,3,,,ADDU
-BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,1st Semester,ELEC 4253,"INTERNATIONAL RELATION, GLOBALIZATION AND",3,,,ADDU
+BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,1st Semester,PM-ELEC 4252,PROJECT DEVELOPMENT AND MANAGEMENT,3,,,ADDU
+BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,1st Semester,PM-ELEC 4253,"INTERNATIONAL RELATION, GLOBALIZATION AND",3,,,ADDU
 BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,1st Semester,PM 4149,REGIONALIZATION POLITICS AND ADMINISTRATION,3,,,ADDU
-BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,1st Semester,ELEC 4150,ENVIRONMENTAL MANAGEMENT,3,,,ADDU
-BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,1st Semester,ELEC 4151,SERVICE DELIVERY SYSTEM,3,,,ADDU
+BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,1st Semester,PM-ELEC 4150,ENVIRONMENTAL MANAGEMENT,3,,,ADDU
+BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,1st Semester,PM-ELEC 4151,SERVICE DELIVERY SYSTEM,3,,,ADDU
 BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,1st Semester,FL 3170,FOREIGN LANGUAGE 1,3,,,ADDU
 BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,2nd Semester,ASF 4204,SENIORS' INTEGRATION PROGRAM,2,,,ADDU
 BM,BACHELOR OF PUBLIC MANAGEMENT,BACHELOR OF PUBLIC MANAGEMENT,4,2nd Semester,FL 4271,FOREIGN LANGUAGE 2,3,,,ADDU
@@ -2265,7 +2265,6 @@ BSE,Bachelor of Science in Robotics Engineering,Bachelor of Science in Robotics 
 BSE,Bachelor of Science in Robotics Engineering,Bachelor of Science in Robotics Engineering,1,2nd Semester,Theo 1000,Theology,3,,,ADDU
 BSE,Bachelor of Science in Robotics Engineering,Bachelor of Science in Robotics Engineering,1,1st Semester,ASF 1000,Arrupe Social Formation 0,2,,,ADDU
 BSE,Bachelor of Science in Robotics Engineering,Bachelor of Science in Robotics Engineering,1,2nd Semester,ASF 1101,Arrupe Social Formation 1,2,,,ADDU
-BSE,Bachelor of Science in Robotics Engineering,Bachelor of Science in Robotics Engineering,1,1st Semester,ASF 1101,Arrupe Social Formation 1,2,,,ADDU
 BSE,Bachelor of Science in Robotics Engineering,Bachelor of Science in Robotics Engineering,1,2nd Semester,PE 1215,PATH-FIT II,2,,,ADDU
 BSE,Bachelor of Science in Robotics Engineering,Bachelor of Science in Robotics Engineering,1,1st Semester,PE 1114,PATH-FIT I,2,,,ADDU
 BSE,Bachelor of Science in Robotics Engineering,Bachelor of Science in Robotics Engineering,1,2nd Semester,ASF 1203,National Service Training Program-Civic Welfare,3,,,ADDU
@@ -2964,31 +2963,8 @@ MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,1st Semes
 MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,1st Semester,ANTH 558,Anthropology of Education,0,,,ADDU
 MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 600,Thesis 1,0,,,ADDU
 MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 601,Thesis 2: Full Research,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 501,Three (3) units,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 502,Reading Course in Ethnographic Writing,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 511,Seminar on Anthropological Theory/Thought,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 512,Introduction to Philippine Culture and Society,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 513,Qualitative Methods in Research 1,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 514,Quantitative Methods in Research,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 515,Three (3) units,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 521,Ecological / Environmental Anthropology,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 522,Economic Anthropology,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 523,Anthropology of Development and Peace in Mindanao-Sulu,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 524,Political and Legal Anthropology,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 525,Medical Anthropology,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 551,Anthropology of Religion / Religious Systems,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 552,Psychological Anthropology,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 553,Seminar Course in Applied Anthropology,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 554,Visual Anthropology,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 555,Public Anthropology,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 556,Anthropology of Islam,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 557,Anthropology of Disaster and Social Suffering,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,Summer,ANTH 558,Anthropology of Education,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,2nd Semester,ANTH 511,Seminar on,0,,,ADDU
 MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,2nd Semester,Thesis 2,:,0,,,ADDU
 MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,1st Semester,Thesis 1,: Proposal Defense and,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,2nd Semester,ANTH 514,Quantitative Methods,0,,,ADDU
-MAANTH,Master of Arts in Anthropology,Master of Arts in Anthropology,1,2nd Semester,ANTH 524,Political and Legal,0,,,ADDU
 MM,MASTER IN TROPICAL RISK MANAGEMENT,MASTER IN TROPICAL RISK MANAGEMENT,1,1st Semester,MTM 600,ECOSCIENCE,3,,,ADDU
 MM,MASTER IN TROPICAL RISK MANAGEMENT,MASTER IN TROPICAL RISK MANAGEMENT,1,1st Semester,MTM 610,CULTURE SOCIETY AND ENVIRONMENT,3,,,ADDU
 MM,MASTER IN TROPICAL RISK MANAGEMENT,MASTER IN TROPICAL RISK MANAGEMENT,1,1st Semester,MTM 620,RESOURCE MANAGEMENT,3,,,ADDU
@@ -3136,7 +3112,6 @@ BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,2,
 BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,2,2nd Semester,NSTP,National Training Service Program – Civic,3,,,ADDU
 BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,2,2nd Semester,CWTS 2,Welfare Training Service 2,0,,,ADDU
 BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,2,1st Semester,PE 3,Physical Education,2,,,ADDU
-BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,2,1st Semester,NSTP,National Training Service Program – Civic,3,,,ADDU
 BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,2,1st Semester,CWTS 1,Welfare Training Service 1,0,,,ADDU
 BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,3,1st Semester,Socio 311,Philippine Contemporary Social Issues,3,,,ADDU
 BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,3,2nd Semester,Socio 321,Practicum,3,,,ADDU
@@ -3160,9 +3135,6 @@ BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,3,
 BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,3,2nd Semester,Socio 424,Sociology of Education,3,,,ADDU
 BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,3,1st Semester,Theo 141,Christian Commitment and Solidarity,3,,,ADDU
 BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,3,2nd Semester,Philo 107,Moral Philosophy,3,,,ADDU
-BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,3,1st Semester,Socio 111,is a pre-requisite for all other professional subjects;,0,,,ADDU
-BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,3,2nd Semester,Socio 222,Math 213,0,,,ADDU
-BASOC,Bachelor of Arts Major in Sociology,Bachelor of Arts Major in Sociology,3,2nd Semester,Socio 314,are pre-requisites,0,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,1,1st Semester,EDP 111,Fundamentals of Computer Software and,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,1,1st Semester,Fil 1,Komunikasyon sa Akademikong Filipino,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,1,1st Semester,Lit 1,Literatures of the Philippines,3,,,ADDU
@@ -3197,7 +3169,6 @@ BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,2,2nd Semester,Econ 224,History of Economic Thought,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,2,2nd Semester,Engl 23,Writing Across the Disciplines,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,2,2nd Semester,Hum 1,Introduction to Arts Appreciation,3,,,ADDU
-BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,2,2nd Semester,NSTP,- CWTS 2,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,2,2nd Semester,PE 4,Physical Education,2,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,1st Semester,Econ 312,Development Economics,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,1st Semester,Econ 314,Microeconomic Analysis,3,,,ADDU
@@ -3205,10 +3176,8 @@ BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,1st Semester,Philo 103,Introduction to Philosophy with Logic and Critical Thinking,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,1st Semester,PS 211,Philippine Constitution and Government,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,2nd Semester,Econ 321,Managerial Economics,3,,,ADDU
-BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,2nd Semester,Math 213,", Econ 214",0,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,2nd Semester,Acctg 111,Fundamentals of Accounting,6,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,2nd Semester,Econ 322,Basic Research,3,,,ADDU
-BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,2nd Semester,Econ 313,", Econ 225,",0,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,2nd Semester,Econ 323,Public Economics,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,2nd Semester,Philo 104,Philosophy of Human Person,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,3,2nd Semester,Theo 131,Christian Morality and Spirituality,3,,,ADDU
@@ -3222,7 +3191,6 @@ BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,4,2nd Semester,Philo 107,Moral Philosophy,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,4,2nd Semester,Econ 422,Development Management and Planning,3,,,ADDU
 BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,4,2nd Semester,Econ 424,Practicum,3,,,ADDU
-BAECON,BACHELOR OF ARTS: MAJOR IN ECONOMICS,BACHELOR OF ARTS: MAJOR IN ECONOMICS,4,2nd Semester,Econ 223,", Econ 314",0,,,ADDU
 BSBIO,Bachelor of Science in Biology,Bachelor of Science in Biology,1,1st Semester,Eng 11,Basic Communication Skills,3,,,ADDU
 BSBIO,Bachelor of Science in Biology,Bachelor of Science in Biology,1,2nd Semester,Eng 13,Grammar and Composition,3,,,ADDU
 BSBIO,Bachelor of Science in Biology,Bachelor of Science in Biology,1,1st Semester,Bio 111,Botany Lec,3,,,ADDU
@@ -3331,7 +3299,6 @@ BSCHEM,Bachelor of Science in chemistry,Bachelor of Science in chemistry,2,2nd S
 BSCHEM,Bachelor of Science in chemistry,Bachelor of Science in chemistry,2,1st Semester,Theo 121,Church and Sacraments,3,,,ADDU
 BSCHEM,Bachelor of Science in chemistry,Bachelor of Science in chemistry,2,2nd Semester,PE 4,Physical Education,2,,,ADDU
 BSCHEM,Bachelor of Science in chemistry,Bachelor of Science in chemistry,2,1st Semester,NSTP,National Service Training Program,3,,,ADDU
-BSCHEM,Bachelor of Science in chemistry,Bachelor of Science in chemistry,2,2nd Semester,NSTP,National Service Training Program,3,,,ADDU
 BSCHEM,Bachelor of Science in chemistry,Bachelor of Science in chemistry,2,1st Semester,CWTS 1,Civil Welfare Training Service,0,,,ADDU
 BSCHEM,Bachelor of Science in chemistry,Bachelor of Science in chemistry,2,2nd Semester,CWTS 2,Civil Welfare Training Service,0,,,ADDU
 BSCHEM,Bachelor of Science in chemistry,Bachelor of Science in chemistry,2,1st Semester,PE 3,Physical Education,2,,,ADDU
@@ -4185,14 +4152,10 @@ BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,1,1st Semester
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,1,2nd Semester,Theo 1000,Theology,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,1,1st Semester,ASF 1000,Arrupe Social Formation 0,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,1,2nd Semester,ASF 1101,Arrupe Social Formation 1,0,,,ADDU
-BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,1,1st Semester,ASF 1101,Arrupe Social Formation 1,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,1,2nd Semester,PE 1215,PATH-FIT II,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,1,1st Semester,PE 1114,PATH-FIT I,0,,,ADDU
-BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,1st Semester,Chem 1051,", 1052, 1041,",0,,,ADDU
-BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,2nd Semester,Bio 1130,", 1131, 1132,",0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,2nd Semester,Bio 2240,General Ecology Lec,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,2nd Semester,Bio 2241,General Ecology Lab,0,,,ADDU
-BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,1st Semester,Bio 1130,",",0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,1st Semester,Math 2176,Statistical Biology,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,1st Semester,GE 1109,Ethics,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,1st Semester,GE 1106,Purposive Communication,0,,,ADDU
@@ -4203,8 +4166,6 @@ BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,1st Semester
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,2nd Semester,GE 1212,"Science, Technology, and Society",0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,1st Semester,PE 2116,PATH-FIT III,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,2,2nd Semester,PE 2217,PATH-FIT IV,0,,,ADDU
-BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,3,1st Semester,Bio 1130,", 1131, 1132,",0,,,ADDU
-BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,3,2nd Semester,Bio 1130,", 1131, 1132,",0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,3,1st Semester,Bio Sc 3154,Human Gross Anatomy Lec,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,3,2nd Semester,Bio SC 3256,Medical Physiology Lec,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,3,1st Semester,Bio SC 3155,Human Gross Anatomy Lab,0,,,ADDU
@@ -4218,9 +4179,7 @@ BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,3,2nd Semester
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,3,1st Semester,GE 3118,Elective 1,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,3,2nd Semester,Bio SP 3253,Special Problems 1,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,3,1st Semester,Prac 3370,Bio Practicum (Epidemiology),0,,,ADDU
-BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,4,2nd Semester,GE 1109,", Philo 1000, Bio",0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,4,1st Semester,Bio SC 4158,Medical Parasitology Lec,0,,,ADDU
-BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,4,2nd Semester,Bio SC 3154,", 3155, Bio",0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,4,1st Semester,Bio SC 4159,Medical Parasitology Lab,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,4,1st Semester,Bio 4148,Biophysics Lec,0,,,ADDU
 BSBIO,BS Biology Medical Prospectus,BS Biology Medical Prospectus,4,1st Semester,Bio 4149,Biophysics Lab,0,,,ADDU
@@ -4384,22 +4343,10 @@ T,Theology,Theology,1,2nd Semester,Theo 652,Issues in Feminist Ethics,3,,,ADDU
 T,Theology,Theology,1,2nd Semester,THEO 611,Latin Grammar and Translation,3,,,ADDU
 T,Theology,Theology,1,1st Semester,T heo 600,Advanced Research Methods,0,,,ADDU
 T,Theology,Theology,1,1st Semester,the 20,"century’s attempts at more contextualized theologies. Moreover, the course",0,,,ADDU
-T,Theology,Theology,1,1st Semester,Theo 610,Advanced Statistical Methods,0,,,ADDU
-T,Theology,Theology,1,1st Semester,Philo 251,Ecofeminism,0,,,ADDU
-T,Theology,Theology,1,1st Semester,Philo 252,Advanced Philosophy of Knowledge,0,,,ADDU
-T,Theology,Theology,1,1st Semester,Philo 253,Advanced Philosophy of Science,0,,,ADDU
-T,Theology,Theology,1,1st Semester,Theo 620,Canon Law on Marriage,0,,,ADDU
 T,Theology,Theology,1,1st Semester,Canon 1055,-­‐ 1165),0,,,ADDU
 T,Theology,Theology,1,1st Semester,the 1983,will examine the norms of  Code of Canon concerning consecrated life and,0,,,ADDU
 T,Theology,Theology,1,1st Semester,Canons 607,-­‐,0,,,ADDU
-T,Theology,Theology,1,1st Semester,Theo 630,Contextualized Liturgy,0,,,ADDU
-T,Theology,Theology,1,1st Semester,Theo 670,Christian Anthropology,0,,,ADDU
-T,Theology,Theology,1,1st Semester,Theo 680,Social Teachings of the Church,0,,,ADDU
 T,Theology,Theology,1,1st Semester,Theo 640,Theology of Inculturation and Interreligious,0,,,ADDU
-T,Theology,Theology,1,1st Semester,Theo 650,Contemporary Issues in Moral Theology,0,,,ADDU
-T,Theology,Theology,1,1st Semester,Theo 651,Theology of Human Se,0,,,ADDU
-T,Theology,Theology,1,1st Semester,Theo 652,Issues in Feminist Ethics,0,,,ADDU
-T,Theology,Theology,1,1st Semester,THEO 611,LATIN GRAMMAR AND TRANSLATION FROM LATIN,1,,,ADDU
 T,Theology,Theology,1,1st Semester,THEO 612,LATIN GRAMMAR AND TRANSLATION FROM LATIN 2,0,,,ADDU
 T,Theology,Theology,1,1st Semester,Theo 603a,Dissertation Writing I,3,,,ADDU
 T,Theology,Theology,1,1st Semester,Theo 603b,Dissertation Writing II,3,,,ADDU
@@ -4436,12 +4383,8 @@ DBA,Doctor of Business Administration,Doctor of Business Administration,2,2nd Se
 DBA,Doctor of Business Administration,Doctor of Business Administration,3,1st Semester,GB 901,(Review of Related Lit. /,6,,,ADDU
 DBA,Doctor of Business Administration,Doctor of Business Administration,3,2nd Semester,GB 902,(Actual Research and,6,,,ADDU
 DPA,Doctor of Public Administration,Doctor of Public Administration,1,1st Semester,DPA 3O,Philosophy of Business,3,,,ADDU
-DPA,Doctor of Public Administration,Doctor of Public Administration,1,2nd Semester,DPA 3O,Organizational Theory and,3,,,ADDU
 DPA,Doctor of Public Administration,Doctor of Public Administration,1,1st Semester,DPA 302,Research Methods,3,,,ADDU
 DPA,Doctor of Public Administration,Doctor of Public Administration,1,2nd Semester,DPA 5O,Quantitative Analysis for,3,,,ADDU
-DPA,Doctor of Public Administration,Doctor of Public Administration,2,1st Semester,DPA 5O,Policy Science in Publi,3,,,ADDU
-DPA,Doctor of Public Administration,Doctor of Public Administration,2,2nd Semester,DPA 3O,Administrative Policy,3,,,ADDU
-DPA,Doctor of Public Administration,Doctor of Public Administration,2,2nd Semester,DPA 5O,Regional and Urban,3,,,ADDU
 DPA,Doctor of Public Administration,Doctor of Public Administration,3,1st Semester,DPA 506,(Review of Related Lit. /,0,,,ADDU
 DPA,Doctor of Public Administration,Doctor of Public Administration,3,2nd Semester,DPA 507,(Actual Research and,0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,1,2nd Semester,B.A. 905,Managerial Accounting,3,,,ADDU
@@ -4458,10 +4401,7 @@ MBA,Master in Business Administration,Master in Business Administration,2,2nd Se
 MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,and BA 910,),0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,1st Semester,M.A. 300,Management Communication Arts,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,1st Semester,ive 3,(non,0,,,ADDU
-MBA,Master in Business Administration,Master in Business Administration,3,1st Semester,B.A. 903,Integration paper,3,,,ADDU
-MBA,Master in Business Administration,Master in Business Administration,3,2nd Semester,B.A. 90,Thesis B: Final Defense,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,3,1st Semester,B.A. 900,Thesis A: Thesis Proposal,0,,,ADDU
-MBA,Master in Business Administration,Master in Business Administration,3,1st Semester,BA 906,", BA 911",0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,1,1st Semester,B.A. 90,Managerial Statistics,7,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,1,2nd Semester,B.A. 908,Marketing Management,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,1,1st Semester,B.A. 932,Responsibility and Goo,0,,,ADDU
@@ -4475,8 +4415,6 @@ MBA,Master in Business Administration,Master in Business Administration,2,1st Se
 MBA,Master in Business Administration,Master in Business Administration,2,2nd Semester,B.A. 941,Advanced Organizational Behavior,3,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,2,1st Semester,B.A. 931,Methods of Business Research,0,,,ADDU
 MBA,Master in Business Administration,Master in Business Administration,3,2nd Semester,B.A. 903,Integration Paper,6,,,ADDU
-MBA,Master in Business Administration,Master in Business Administration,3,2nd Semester,B.A. 90,Thesis A,3,,,ADDU
-MBA,Master in Business Administration,Master in Business Administration,3,2nd Semester,BA 906,"or BA 907, BA909, BA910 & BA 911",0,,,ADDU
 MPA,Master in Public Administration (MPA),Master in Public Administration (MPA),1,1st Semester,RE 224,Ignatian Leadership for Public Administrators,3,,,ADDU
 MPA,Master in Public Administration (MPA),Master in Public Administration (MPA),1,1st Semester,PA 300,Elements of Statistics,3,,,ADDU
 MPA,Master in Public Administration (MPA),Master in Public Administration (MPA),1,1st Semester,PA 301,Theory and Practice in Public Administration*,3,,,ADDU
@@ -4557,31 +4495,8 @@ ANTH,MA Anthropology,MA Anthropology,1,1st Semester,ANTH 557,Anthropology of Dis
 ANTH,MA Anthropology,MA Anthropology,1,1st Semester,ANTH 558,Anthropology of Education,0,,,ADDU
 ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 600,Thesis 1,0,,,ADDU
 ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 601,Thesis 2: Full Research,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 501,Three (3) units,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 502,Reading Course in Ethnographic Writing,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 511,Seminar on Anthropological Theory/Thought,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 512,Introduction to Philippine Culture and Society,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 513,Qualitative Methods in Research 1,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 514,Quantitative Methods in Research,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 515,Three (3) units,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 521,Ecological / Environmental Anthropology,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 522,Economic Anthropology,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 523,Anthropology of Development and Peace in Mindanao-Sulu,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 524,Political and Legal Anthropology,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 525,Medical Anthropology,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 551,Anthropology of Religion / Religious Systems,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 552,Psychological Anthropology,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 553,Seminar Course in Applied Anthropology,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 554,Visual Anthropology,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 555,Public Anthropology,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 556,Anthropology of Islam,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 557,Anthropology of Disaster and Social Suffering,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,Summer,ANTH 558,Anthropology of Education,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,2nd Semester,ANTH 511,Seminar on,0,,,ADDU
 ANTH,MA Anthropology,MA Anthropology,1,2nd Semester,Thesis 2,:,0,,,ADDU
 ANTH,MA Anthropology,MA Anthropology,1,1st Semester,Thesis 1,: Proposal Defense and,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,2nd Semester,ANTH 514,Quantitative Methods,0,,,ADDU
-ANTH,MA Anthropology,MA Anthropology,1,2nd Semester,ANTH 524,Political and Legal,0,,,ADDU
 MAASR,Master of Arts in Applied Social Research (MASOR),Master of Arts in Applied Social Research (MASOR),1,1st Semester,Masor 501,Philosophy of Social Sciences,3,,,ADDU
 MAASR,Master of Arts in Applied Social Research (MASOR),Master of Arts in Applied Social Research (MASOR),1,1st Semester,Masor 502,Elements of Statistics,3,,,ADDU
 MAASR,Master of Arts in Applied Social Research (MASOR),Master of Arts in Applied Social Research (MASOR),1,1st Semester,Masor 503,Methods of Research,3,,,ADDU

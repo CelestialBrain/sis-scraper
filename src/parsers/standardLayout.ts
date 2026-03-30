@@ -41,7 +41,7 @@ const PREREQ_COLUMN_HEADERS = ['pre-requisite', 'prerequisite', 'pre-req', 'prof
 const CONTEXT_KEYWORDS = /\b(year|semester|summer|total|course code|course title|units|course no|course #|description|subject)\b/i;
 
 /** Pattern for bare elective prefixes like "SOCIO ELEC", "FREE ELEC" */
-const ELECTIVE_PREFIX_RE = /^[A-Za-z]+\s+ELEC(?:TIVE)?\s*$/i;
+const ELECTIVE_PREFIX_RE = /^[A-Za-z]+[-\s]+ELEC(?:TIVE)?\s*$/i;
 
 /**
  * Detect columns that contain prerequisites or other non-course-data

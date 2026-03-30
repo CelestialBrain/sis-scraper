@@ -61,7 +61,7 @@ function containsYear(text: string): boolean {
 }
 
 /** Elective prefix pattern — valid even though it doesn't match VALID_CODE_PATTERN */
-const ELECTIVE_PREFIX_RE = /^[A-Za-z]+\s+ELEC(?:TIVE)?(\s+\d{1,4})?$/i;
+const ELECTIVE_PREFIX_RE = /^[A-Za-z]+[-\s]+ELEC(?:TIVE)?(\s+\d{1,4})?$/i;
 
 /**
  * Clean up parsing artifacts from curriculum rows.
@@ -167,6 +167,22 @@ export function postProcessRows(rows: ParsedCourse[]): ParsedCourse[] {
     });
   }
 
-  logger.debug('PostProcess', `Cleaned: ${originalCount} -> ${cleaned.length} rows`);
-  return cleaned;
+  // Secondary dedup: within a single curriculum, a course code only appears
+  // once. If the same code appears in different year/semesters for the same
+  // program, it's a catalog repeat (graduate prospectus listing the same
+  // course under multiple sections). Keep only the first occurrence.
+  const codeOnlySeen = new Set<string>();
+  const deduped: ParsedCourse[] = [];
+  for (const row of cleaned) {
+    const codeKey = `${row.program_name}|${row.course_code.toUpperCase()}`;
+    if (codeOnlySeen.has(codeKey)) {
+      logger.debug('PostProcess', `Dropping catalog repeat: '${row.course_code}' Y${row.year_level}/${row.semester}`);
+      continue;
+    }
+    codeOnlySeen.add(codeKey);
+    deduped.push(row);
+  }
+
+  logger.debug('PostProcess', `Cleaned: ${originalCount} -> ${cleaned.length} -> ${deduped.length} rows`);
+  return deduped;
 }
