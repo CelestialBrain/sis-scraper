@@ -39,7 +39,8 @@ export class BaselineManager {
   private async loadBaseline(): Promise<BaselineData> {
     try {
       const content = await fs.readFile(this.baselineFile, 'utf-8');
-      return JSON.parse(content) as BaselineData;
+      const parsed = JSON.parse(content) as Partial<BaselineData>;
+      return { terms: parsed.terms ?? {} };
     } catch (err: unknown) {
       if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
         return { terms: {} };
