@@ -66,3 +66,4 @@ coverage/
 # Data artifacts
 data/
 !data/.gitkeep
+!data/baseline.json
